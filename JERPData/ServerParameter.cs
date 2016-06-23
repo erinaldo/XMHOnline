@@ -24,7 +24,7 @@ namespace JERPData
         public static string ServerName = "192.168.1.88";//"(local)"
         public static string UserName = "sa";//jyfsoft
         public static string Password = "902157";//902157
-        public static string Customer = "XMH";//Soongon,Vaco，Yongshengjie,s,ToMoon,Yongshengjie
+        public static string Customer = "XMHOnline";//Soongon,Vaco，Yongshengjie,s,ToMoon,Yongshengjie
         public static string DbName = Customer +"Solution";
         public static string ERPFileFolder = @"\\" + ServerName + @"\ERP文档";
         //public static string ERPFileFolder = @"E:\\ERP文档"; 

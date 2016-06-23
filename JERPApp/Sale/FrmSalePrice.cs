@@ -20,7 +20,7 @@ namespace JERPApp.Sale
             this.SetPermit();
         }
         private JERPData.Product.SalePriceNotes accNotes;
-        private FrmSalePriceOper frmOper;
+        //private FrmSalePriceOper frmOper;
         private DataTable dtblNotes;
         private string whereclause = string.Empty;
         private string InitWhereclause = string.Empty;
@@ -98,14 +98,14 @@ namespace JERPApp.Sale
         }
         void lnkNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (frmOper == null)
-            {
-                frmOper = new FrmSalePriceOper();
-                new FrmStyle(frmOper).SetPopFrmStyle(this);
-                frmOper.AffterSave += new FrmSalePriceOper.AffterSaveDelegate(frmOper_AffterSave);
-            }
-            frmOper.NewNote();
-            frmOper.ShowDialog();
+            //if (frmOper == null)
+            //{
+            //    frmOper = new FrmSalePriceOper();
+            //    new FrmStyle(frmOper).SetPopFrmStyle(this);
+            //    frmOper.AffterSave += new FrmSalePriceOper.AffterSaveDelegate(frmOper_AffterSave);
+            //}
+            //frmOper.NewNote();
+            //frmOper.ShowDialog();
         }
 
         void dgrdv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -116,14 +116,14 @@ namespace JERPApp.Sale
             if (this.dgrdv.Columns[icol].Name == this.ColumnBtnEdit.Name)
             {
                 long NoteID = (long)this.dtblNotes.DefaultView[irow]["NoteID"];
-                if (this.frmOper == null)
-                {
-                    frmOper = new FrmSalePriceOper();
-                    new FrmStyle(frmOper).SetPopFrmStyle(this);
-                    frmOper.AffterSave += new FrmSalePriceOper.AffterSaveDelegate(frmOper_AffterSave);
-                }
-                frmOper.EditNote(NoteID);
-                frmOper.ShowDialog();
+                //if (this.frmOper == null)
+                //{
+                //    frmOper = new FrmSalePriceOper();
+                //    new FrmStyle(frmOper).SetPopFrmStyle(this);
+                //    frmOper.AffterSave += new FrmSalePriceOper.AffterSaveDelegate(frmOper_AffterSave);
+                //}
+                //frmOper.EditNote(NoteID);
+                //frmOper.ShowDialog();
             }
         }
 

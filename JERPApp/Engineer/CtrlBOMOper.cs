@@ -51,7 +51,7 @@ namespace JERPApp.Engineer
         private JERPApp.Define.Product.FrmProduct frmPrd;
         private JERPApp.Define.Product.FrmProduct frmPrdAlter;
         private JERPBiz.Manufacture.ManufProcessEntity ManufProcessEntity;
-        private FrmBOMClone frmClone;
+        //private FrmBOMClone frmClone;
         private FrmProductOper frmOper;
         private DataTable dtblSourceType; 
         private int GetDefaultSourceTypeID(int PrdID)
@@ -247,14 +247,14 @@ namespace JERPApp.Engineer
         void btnClone_Click(object sender, EventArgs e)
         {
          
-            if (frmClone == null)
-            {
-                frmClone = new FrmBOMClone();
-                new FrmStyle(frmClone).SetPopFrmStyle(this.ParentForm );
-                frmClone.AffterImport += new FrmBOMClone.AffterImportSaveDelegate(frmClone_AffterImport);
-            }
-            frmClone.BOMClone  ();
-            frmClone.ShowDialog();
+            //if (frmClone == null)
+            //{
+            //    frmClone = new FrmBOMClone();
+            //    new FrmStyle(frmClone).SetPopFrmStyle(this.ParentForm );
+            //    frmClone.AffterImport += new FrmBOMClone.AffterImportSaveDelegate(frmClone_AffterImport);
+            //}
+            //frmClone.BOMClone  ();
+            //frmClone.ShowDialog();
         }
 
         void frmClone_AffterImport(DataRow drow)

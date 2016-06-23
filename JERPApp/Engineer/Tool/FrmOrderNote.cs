@@ -24,7 +24,7 @@ namespace JERPApp.Engineer.Tool
         }
         private JERPData.Tool.BuyOrderNotes accNotes;
         private JERPBiz.Tool.BuyOrderNotePrintHelper printer;
-        private FrmOrderNoteOper frmOper;
+        //private FrmOrderNoteOper frmOper;
         private Report.Bill.FrmBuyOrderNote frmDetail;
         private DataTable dtblNonConfirms, dtblNonPrints, dtblPrints; 
         private string iniwhereclause = " and (PrintFlag=1)";
@@ -102,29 +102,29 @@ namespace JERPApp.Engineer.Tool
             if ((irow == -1) || (icol == -1)) return;            
             if (this.dgrdvNonConfirm.Columns[icol].Name == this.ColumnbtnEdit.Name)
             {
-                long NoteID = (long)this.dtblNonConfirms.DefaultView[irow]["NoteID"];
-                if (this.frmOper == null)
-                {
-                    this.frmOper = new FrmOrderNoteOper();
-                    new FrmStyle(frmOper).SetPopFrmStyle(this);
-                    frmOper.AffterSave += this.LoadNonConfirm ;
-                }
-                frmOper.EditNote(NoteID);
-                frmOper.ShowDialog();
+                //long NoteID = (long)this.dtblNonConfirms.DefaultView[irow]["NoteID"];
+                //if (this.frmOper == null)
+                //{
+                //    this.frmOper = new FrmOrderNoteOper();
+                //    new FrmStyle(frmOper).SetPopFrmStyle(this);
+                //    frmOper.AffterSave += this.LoadNonConfirm ;
+                //}
+                //frmOper.EditNote(NoteID);
+                //frmOper.ShowDialog();
             } 
            
         }
 
         void lnkNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (this.frmOper == null)
-            {
-                this.frmOper = new FrmOrderNoteOper();
-                new FrmStyle(frmOper).SetPopFrmStyle(this);
-                frmOper.AffterSave += this.LoadNonConfirm ;
-            }
-            frmOper.NewNote();
-            frmOper.ShowDialog();
+            //if (this.frmOper == null)
+            //{
+            //    this.frmOper = new FrmOrderNoteOper();
+            //    new FrmStyle(frmOper).SetPopFrmStyle(this);
+            //    frmOper.AffterSave += this.LoadNonConfirm ;
+            //}
+            //frmOper.NewNote();
+            //frmOper.ShowDialog();
         }
 
         void mItemRefresh_Click(object sender, EventArgs e)

@@ -138,7 +138,7 @@
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = "Email:jyfsoft@sohu.com \r\n电话: 13760232498\r\nURL:  http://www.天衣软件.com\r\nQQ:   500627" +
-                "65 微信:jyfsoft\r\n联系人:金先生";
+    "65 微信:jyfsoft\r\n联系人:金先生";
             // 
             // okButton
             // 

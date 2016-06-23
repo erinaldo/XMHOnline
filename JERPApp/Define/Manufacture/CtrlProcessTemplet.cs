@@ -27,7 +27,7 @@ namespace JERPApp.Define.Manufacture
         }
         private JERPData.Manufacture.ProcessTemplet accDataProcessTemplet;
         private DataTable dtblProcessTemplet;
-        private FrmProcessTemplet frmDefine;
+        //private FrmProcessTemplet frmDefine;
         public void AllowDefine()
         {
             new ToolTip().SetToolTip(this.cmbItem, "ÓÒ»÷×Ô¶¨Òå");
@@ -38,13 +38,13 @@ namespace JERPApp.Define.Manufacture
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (frmDefine == null)
-                {
-                    frmDefine = new FrmProcessTemplet();
-                    new FrmStyle(frmDefine).SetPopFrmStyle(this.ParentForm);
-                    frmDefine.AffterSave += this.RefreshData;
-                }
-                frmDefine.ShowDialog();
+                //if (frmDefine == null)
+                //{
+                //    frmDefine = new FrmProcessTemplet();
+                //    new FrmStyle(frmDefine).SetPopFrmStyle(this.ParentForm);
+                //    frmDefine.AffterSave += this.RefreshData;
+                //}
+                //frmDefine.ShowDialog();
             }
         }
         private void RefreshData()

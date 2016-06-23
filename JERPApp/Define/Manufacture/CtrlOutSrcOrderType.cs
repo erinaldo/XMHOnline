@@ -27,7 +27,7 @@ namespace JERPApp.Define.Manufacture
         }
         private JERPData.Manufacture.OutSrcOrderType accDataOutSrcOrderType;
         private DataTable dtblOutSrcOrderType;
-        private FrmOutSrcOrderType frmDefine;
+        //private FrmOutSrcOrderType frmDefine;
         public void AllowDefine()
         {
             new ToolTip().SetToolTip(this.cmbItem, "”“ª˜…Ë÷√");
@@ -37,13 +37,13 @@ namespace JERPApp.Define.Manufacture
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (frmDefine == null)
-                {
-                    this.frmDefine = new FrmOutSrcOrderType();
-                    new FrmStyle(this.frmDefine).SetPopFrmStyle(this.ParentForm);
-                    this.frmDefine.AffterSave += this.RefreshData;
-                }
-                frmDefine.ShowDialog();
+                //if (frmDefine == null)
+                //{
+                //    this.frmDefine = new FrmOutSrcOrderType();
+                //    new FrmStyle(this.frmDefine).SetPopFrmStyle(this.ParentForm);
+                //    this.frmDefine.AffterSave += this.RefreshData;
+                //}
+                //frmDefine.ShowDialog();
             }
         }
         private void RefreshData()

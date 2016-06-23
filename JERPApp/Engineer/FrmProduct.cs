@@ -23,7 +23,7 @@ namespace JERPApp.Engineer
         private FrmPrdClone frmClone;
         private FrmProductOper frmOper;
         private FrmPrdSetOper frmPrdSetOper;
-        private FrmBOMMove frmBOMRemove;
+        //private FrmBOMMove frmBOMRemove;
         private JCommon.FrmFileBrowse frmFileBrowse;
         private JCommon.FrmImgBrowse frmImgBrowse;
         private string whereclause = string.Empty;
@@ -102,12 +102,12 @@ namespace JERPApp.Engineer
 
         void lnkRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (frmBOMRemove == null)
-            {
-                frmBOMRemove = new FrmBOMMove();
-                new FrmStyle(frmBOMRemove).SetPopFrmStyle(this);               
-            }
-            frmBOMRemove.ShowDialog();
+            //if (frmBOMRemove == null)
+            //{
+            //    frmBOMRemove = new FrmBOMMove();
+            //    new FrmStyle(frmBOMRemove).SetPopFrmStyle(this);               
+            //}
+            //frmBOMRemove.ShowDialog();
         }
 
       

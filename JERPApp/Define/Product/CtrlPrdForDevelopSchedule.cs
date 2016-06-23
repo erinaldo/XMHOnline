@@ -17,22 +17,22 @@ namespace JERPApp.Define.Product
             this.btnSelect.Click += new EventHandler(btnSelect_Click);
         }
         public  JERPBiz.Product.ProductEntity PrdEntity;
-        private FrmPrdForDevelopSchedule  frmPrd;
+        //private FrmPrdForDevelopSchedule  frmPrd;
         void btnSelect_Click(object sender, EventArgs e)
         {
-            if (frmPrd == null)
-            {
-                frmPrd = new FrmPrdForDevelopSchedule();
-                new FrmStyle(frmPrd).SetPopFrmStyle(this.ParentForm);
-                frmPrd.AffterSelected +=frmPrd_AffterSelected;
-            }
-            frmPrd.ShowDialog();
+            //if (frmPrd == null)
+            //{
+            //    frmPrd = new FrmPrdForDevelopSchedule();
+            //    new FrmStyle(frmPrd).SetPopFrmStyle(this.ParentForm);
+            //    frmPrd.AffterSelected +=frmPrd_AffterSelected;
+            //}
+            //frmPrd.ShowDialog();
         }
 
         void frmPrd_AffterSelected(DataRow drow)
         {
             this.PrdID = (int)drow["PrdID"];
-            this.frmPrd.Close();
+            //this.frmPrd.Close();
         }
        
         private int prdID = -1;

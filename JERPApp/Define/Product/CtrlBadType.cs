@@ -20,7 +20,7 @@ namespace JERPApp.Define.Product
         }
         DataTable dtblBadType;
         JERPData.Product.BadType  accBadType;
-        FrmBadType frmDefine = null;
+        //FrmBadType frmDefine = null;
         public void AllowDefine()
         {
             new ToolTip().SetToolTip(this.cmbItem, "ÓÒ½¡ÐÂÔö");
@@ -30,13 +30,13 @@ namespace JERPApp.Define.Product
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (frmDefine == null)
-                {
-                    frmDefine = new FrmBadType();
-                    new FrmStyle(frmDefine).SetPopFrmStyle(this);
-                    frmDefine.AffterSave += this.frmDefine_AffterSave;
-                }
-                frmDefine.ShowDialog();
+                //if (frmDefine == null)
+                //{
+                //    frmDefine = new FrmBadType();
+                //    new FrmStyle(frmDefine).SetPopFrmStyle(this);
+                //    frmDefine.AffterSave += this.frmDefine_AffterSave;
+                //}
+                //frmDefine.ShowDialog();
             }
         }
 
