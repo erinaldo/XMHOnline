@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JERPData", "JERPData\JERPData.csproj", "{98BC55C8-BFDF-4C64-B264-5622C6DF9F6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JERPBiz", "JERPBiz\JERPBiz.csproj", "{1844DD83-0859-4AD0-B5DC-0D6174B1D6B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JERPApp", "JERPApp\JERPApp.csproj", "{E4A402A9-61C9-4DDD-BB13-DD047A39ED22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98BC55C8-BFDF-4C64-B264-5622C6DF9F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98BC55C8-BFDF-4C64-B264-5622C6DF9F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98BC55C8-BFDF-4C64-B264-5622C6DF9F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98BC55C8-BFDF-4C64-B264-5622C6DF9F6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1844DD83-0859-4AD0-B5DC-0D6174B1D6B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1844DD83-0859-4AD0-B5DC-0D6174B1D6B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1844DD83-0859-4AD0-B5DC-0D6174B1D6B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1844DD83-0859-4AD0-B5DC-0D6174B1D6B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4A402A9-61C9-4DDD-BB13-DD047A39ED22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4A402A9-61C9-4DDD-BB13-DD047A39ED22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4A402A9-61C9-4DDD-BB13-DD047A39ED22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4A402A9-61C9-4DDD-BB13-DD047A39ED22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

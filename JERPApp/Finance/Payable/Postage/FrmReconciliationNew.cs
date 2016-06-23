@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace JERPApp.Finance.Payable.Postage
+{
+    public partial class FrmReconciliationNew : Form
+    {
+        public FrmReconciliationNew()
+        {
+            InitializeComponent();
+            this.dtpDateNote.Value = DateTime.Now.Date;
+            this.dtpDateTarget.Value = this.dtpDateNote.Value.AddDays(30);
+            this.ctrlYear.Year = DateTime.Now.Year;
+            this.ctrlMonth.Month = DateTime.Now.Month;
+            this.accReconciliation = new JERPData.Finance .PostageReconciliations();
+            this.btnSave.Click += new EventHandler(btnSave_Click);
+        }
+        private JERPData.Finance.PostageReconciliations accReconciliation;
+        public delegate void AffterSaveDelegate(long ReconciliationID);
+        private AffterSaveDelegate affterSave;
+        public event AffterSaveDelegate AffterSave
+        {
+            add
+            {
+                affterSave += value;
+            }
+            remove
+            {
+                affterSave -= value;
+            }
+        }
+        public void New()
+        {
+            this.txtReconciliationCode.Text = string.Empty;
+            this.txtReconciliationName.Text = string.Empty;
+        }
+
+        void btnSave_Click(object sender, EventArgs e)
+        {
+             DialogResult rut = MessageBox.Show("你将新增对账单，一经保存，供应商、币种、年、月、发票类型不能变更，确认否?", "新增确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+             if (rut == DialogResult.Yes)
+             {
+                 object objReconciliationID = DBNull.Value;
+                 string errormsg=string.Empty ;
+                 bool flag=this.accReconciliation.InsertPostageReconciliations  (
+                     ref errormsg,
+                     ref objReconciliationID,
+                     this.txtReconciliationCode.Text,
+                     this.txtReconciliationName.Text,
+                     this.ctrlExpressID.CompanyID,
+                     this.ctrlYear.Year,
+                     this.ctrlMonth.Month,
+                     this.dtpDateNote.Value.Date,
+                     this.dtpDateTarget .Value .Date ,
+                     JERPBiz.Frame.UserBiz.PsnID);
+                 if (flag)
+                 {
+                     MessageBox.Show("成功新增对账单");
+                     if (this.affterSave != null) this.affterSave((long)objReconciliationID);
+                     this.Close();
+                 }
+             }
+              
+        }
+    }
+}

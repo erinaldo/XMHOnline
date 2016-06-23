@@ -1,0 +1,211 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7482A449-D0A5-4A4C-B5BC-3F010DD71319}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JCEApp</RootNamespace>
+    <AssemblyName>天衣CE</AssemblyName>
+    <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>c664686a-7dc7-490b-9599-105cc7747b23</PlatformID>
+    <OSVersion>6.00</OSVersion>
+    <DeployDirSuffix>天衣CE</DeployDirSuffix>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FormFactorID>
+    </FormFactorID>
+    <ApplicationIcon>soft.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;$(PlatformFamilyName)</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <FileAlignment>512</FileAlignment>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataGrid" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlStyle.cs" />
+    <Compile Include="Define\Frame\CtrlUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Frame\CtrlUser.Designer.cs">
+      <DependentUpon>CtrlUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Define\Hr\CtrlPersonnel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Hr\CtrlPersonnel.Designer.cs">
+      <DependentUpon>CtrlPersonnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Define\Product\CtrlBranchStore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Product\CtrlBranchStore.Designer.cs">
+      <DependentUpon>CtrlBranchStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Define\Product\CtrlBoxItemRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Product\CtrlBoxItemRow.designer.cs">
+      <DependentUpon>CtrlBoxItemRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Define\Product\CtrlBoxRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Product\CtrlBoxRow.designer.cs">
+      <DependentUpon>CtrlBoxRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBoxing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBoxing.Designer.cs">
+      <DependentUpon>FrmBoxing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChipset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChipset.Designer.cs">
+      <DependentUpon>FrmChipset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIntoStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIntoStore.Designer.cs">
+      <DependentUpon>FrmIntoStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogo.Designer.cs">
+      <DependentUpon>FrmLogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NavMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NavMenu.designer.cs">
+      <DependentUpon>NavMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Define\Frame\CtrlUser.resx">
+      <DependentUpon>CtrlUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Define\Hr\CtrlPersonnel.resx">
+      <DependentUpon>CtrlPersonnel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Define\Product\CtrlBranchStore.resx">
+      <DependentUpon>CtrlBranchStore.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Define\Product\CtrlBoxItemRow.resx">
+      <DependentUpon>CtrlBoxItemRow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Define\Product\CtrlBoxRow.resx">
+      <DependentUpon>CtrlBoxRow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBoxing.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmBoxing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChipset.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmChipset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIntoStore.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmIntoStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogo.resx">
+      <DependentUpon>FrmLogo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NavMenu.resx">
+      <DependentUpon>NavMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOutStore.resx">
+      <DependentUpon>FrmOutStore.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="FrmOutStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOutStore.Designer.cs">
+      <DependentUpon>FrmOutStore.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JCEBiz\JCEBiz.csproj">
+      <Project>{FE776BE1-DE5E-4C83-8F29-8ACFA3ECDDE5}</Project>
+      <Name>JCEBiz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JCEData\JCEData.csproj">
+      <Project>{808433B2-F74C-4D1C-8B9E-E79951FAFE9E}</Project>
+      <Name>JCEData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="soft.ico" />
+  </ItemGroup>
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />
+  <Import Condition="'$(TargetFrameworkVersion)' == 'v2.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}">
+        <HostingProcess disable="1" />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

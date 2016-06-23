@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+namespace JERPApp.Sale
+{
+    public partial class FrmSaleReplenishPlan : Form
+    {
+
+        public FrmSaleReplenishPlan()
+        {
+            InitializeComponent();
+            this.accReplenishPlan = new JERPData.Product .SaleReplenishPlans();
+            this.SetPermit();
+        }
+        private JERPData.Product.SaleReplenishPlans accReplenishPlan; 
+        private DataTable dtblCustomer;
+        //权限码
+        private bool enableBrowse = false;//浏览
+        private bool enableSave = false;//保存
+        private void SetPermit()
+        {
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(744);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(745);
+            if (this.enableBrowse)
+            {
+
+                //加载数据
+                this.LoadData();
+                this.lnkRefreshAll.Click += new EventHandler(lnkRefreshAll_Click);
+            }
+            this.btnAppend.Enabled = this.enableSave;
+            if (this.enableSave)
+            {
+                this.btnAppend.Click += new EventHandler(btnAppend_Click);
+            }
+        }
+
+
+        void lnkRefreshAll_Click(object sender, EventArgs e)
+        { 
+            this.LoadData();
+        }
+
+        private void Append(int CompanyID, string CompanyAbbName)
+        {
+            TabPage page;
+            CtrlSaleReplenishPlanOper ctrlOper;
+            page = new TabPage();
+            page.Tag = CompanyID;
+            page.Text = CompanyAbbName;
+            ctrlOper = new CtrlSaleReplenishPlanOper();
+            ctrlOper.ReplenishPlan(CompanyID);
+            ctrlOper.Enabled = this.enableSave;
+            page.Controls.Add(ctrlOper);
+            ctrlOper.Dock = DockStyle.Fill;
+            this.tabMain.TabPages.Add(page);
+            this.ctrlTabNav.NavTabControl = this.tabMain;
+        }
+        private void LoadData()
+        {
+            this.dtblCustomer = this.accReplenishPlan.GetDataSaleReplenishPlansCustomer().Tables[0];
+            this.tabMain.TabPages.Clear();
+            foreach (DataRow drow in this.dtblCustomer.Rows)
+            {
+                this.Append((int)drow["CompanyID"], drow["CompanyAbbName"].ToString());
+            }
+        }
+
+        void btnAppend_Click(object sender, EventArgs e)
+        {
+            foreach (TabPage page in this.tabMain.TabPages)
+            {
+                if ((int)page.Tag == this.ctrlCompanyID.CompanyID)
+                {
+                    page.Select();
+                    return;
+                }
+            }
+            this.Append(this.ctrlCompanyID.CompanyID, this.ctrlCompanyID.CompanyAbbName);
+        }
+    }
+}

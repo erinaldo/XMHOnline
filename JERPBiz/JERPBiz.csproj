@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1844DD83-0859-4AD0-B5DC-0D6174B1D6B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JERPBiz</RootNamespace>
+    <AssemblyName>JERPBiz</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JCommon, Version=0.0.5810.27742, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\JCommon\JCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="Office2003Helper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\Office2003App\Office2003Helper\Office2003Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Asset\ProductEntity.cs" />
+    <Compile Include="Config\ConfigInfo.cs" />
+    <Compile Include="Finance\AccountType.cs" />
+    <Compile Include="Finance\ExpenseTypeParm.cs" />
+    <Compile Include="Finance\MoneyTypeEntity.cs" />
+    <Compile Include="Finance\MoneyTypeParm.cs" />
+    <Compile Include="Finance\NoteNameParm.cs" />
+    <Compile Include="Finance\PostageNoteEntity.cs" />
+    <Compile Include="Finance\PostageReceiptNoteEntity.cs" />
+    <Compile Include="Finance\PostageReconciliationEntity.cs" />
+    <Compile Include="Finance\PriceTypeEntity.cs" />
+    <Compile Include="Finance\RevenueTypeParm.cs" />
+    <Compile Include="Finance\SettleTypeEntity.cs" />
+    <Compile Include="Finance\WageNoteEntity.cs" />
+    <Compile Include="General\DeliverAddressEntity.cs" />
+    <Compile Include="General\DiaryEntity.cs" />
+    <Compile Include="General\ExpressEntity.cs" />
+    <Compile Include="General\FinanceAddressEntity.cs" />
+    <Compile Include="General\FrmFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General\FrmFormat.Designer.cs">
+      <DependentUpon>FrmFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General\MeetingEntity.cs" />
+    <Compile Include="General\PotentialCustomerEntity.cs" />
+    <Compile Include="General\WorkingReportEntity.cs" />
+    <Compile Include="Hr\PersonnelEntity.cs" />
+    <Compile Include="Manufacture\InstructFormatEntity.cs" />
+    <Compile Include="Manufacture\WorkingSheetListFormatEntity.cs" />
+    <Compile Include="Manufacture\WorkingSheetListPrintHelper.cs" />
+    <Compile Include="Manufacture\ManufPlanEntity.cs" />
+    <Compile Include="Manufacture\InstructPrintHelper.cs" />
+    <Compile Include="Material\BuyOrderApplyNoteEntity.cs" />
+    <Compile Include="Material\OtherOutStoreNoteEntity.cs" />
+    <Compile Include="Material\OutSrcLossSupplyFormatEntity.cs" />
+    <Compile Include="Material\OutSrcLossSupplyInvoiceEntity.cs" />
+    <Compile Include="Material\OutSrcLossSupplyNoteEntity.cs" />
+    <Compile Include="Material\OutSrcLossSupplyNotePrintHelper.cs" />
+    <Compile Include="Material\OutSrcStoreNoteName.cs" />
+    <Compile Include="Material\OutSrcSupplyPlanEntity.cs" />
+    <Compile Include="Material\OutStoreNotePrintHelper.cs" />
+    <Compile Include="Material\OEMOutStoreNotePrintHelper.cs" />
+    <Compile Include="OtherRes\BuyOrderApplyNoteEntity.cs" />
+    <Compile Include="Packing\PackingPlanEntity.cs" />
+    <Compile Include="Packing\WorkingSheetEntity.cs" />
+    <Compile Include="Packing\BoxEntity.cs" />
+    <Compile Include="Packing\BoxFormatEntity.cs" />
+    <Compile Include="Packing\BoxItemEntity.cs" />
+    <Compile Include="Manufacture\ManufBadReportNoteEntity.cs" />
+    <Compile Include="Manufacture\ManufProcessEntity.cs" />
+    <Compile Include="Manufacture\ManufScheduleEntity.cs" />
+    <Compile Include="Manufacture\ManufScheduleFormatEntity.cs" />
+    <Compile Include="Manufacture\ManufSchedulePrintHelper.cs" />
+    <Compile Include="Manufacture\OutSrcInvoiceEntity.cs" />
+    <Compile Include="Manufacture\OutSrcOrderItemEntity.cs" />
+    <Compile Include="Manufacture\OutSrcPriceNoteEntity.cs" />
+    <Compile Include="Manufacture\OutSrcReceiptNoteEntity.cs" />
+    <Compile Include="Manufacture\OutSrcReceiveFormatEntity.cs" />
+    <Compile Include="Manufacture\OutSrcReceiveNotePrintHelper.cs" />
+    <Compile Include="Manufacture\ReportLossNoteEntity.cs" />
+    <Compile Include="Manufacture\WorkingSheetFormatEntity.cs" />
+    <Compile Include="Manufacture\WorkingSheetPrintHelper.cs" />
+    <Compile Include="Manufacture\WIPEntity.cs" />
+    <Compile Include="Manufacture\WorkingSheetEntity.cs" />
+    <Compile Include="Manufacture\BOMPlanHelper.cs" />
+    <Compile Include="Material\BuyInvoiceEntity.cs" />
+    <Compile Include="Material\BuyPriceNoteEntity.cs" />
+    <Compile Include="Material\BuyReceiptNoteEntity.cs" />
+    <Compile Include="Material\BuyReceiveFormatEntity.cs" />
+    <Compile Include="Material\BuyReceiveNotePrintHelper.cs" />
+    <Compile Include="Material\OEMIntoStoreNoteEntity.cs" />
+    <Compile Include="Material\OEMOrderFormatEntity.cs" />
+    <Compile Include="Material\OEMOrderNoteEntity.cs" />
+    <Compile Include="Material\OEMOrderNotePrintHelper.cs" />
+    <Compile Include="Material\OEMReceiveNoteEntity.cs" />
+    <Compile Include="Material\OEMReturnNoteEntity.cs" />
+    <Compile Include="Material\OEMStoreCheckNoteEntity.cs" />
+    <Compile Include="Material\OEMStore.cs" />
+    <Compile Include="Material\OutSrcRecycleNoteEntity.cs" />
+    <Compile Include="Material\OutSrcStoreCheckNoteEntity.cs" />
+    <Compile Include="Material\OutSrcSupplyFormatEntity.cs" />
+    <Compile Include="Material\OutSrcSupplyNoteEntity.cs" />
+    <Compile Include="Material\OEMOutSrcRecycleNoteEntity.cs" />
+    <Compile Include="Material\OutSrcSupplyNotePrintHelper.cs" />
+    <Compile Include="Material\OutSrcStore.cs" />
+    <Compile Include="OtherRes\BranchStoreMoveNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyFineAMTNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyInvoiceEntity.cs" />
+    <Compile Include="OtherRes\BuyOrderFormatEntity.cs" />
+    <Compile Include="OtherRes\BuyOrderNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyOrderNotePrintHelper.cs" />
+    <Compile Include="OtherRes\BuyPriceNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyReceiptNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyReceiveFormatEntity.cs" />
+    <Compile Include="OtherRes\BuyReceiveNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyReceiveNotePrintHelper.cs" />
+    <Compile Include="OtherRes\BuyReconciliationEntity.cs" />
+    <Compile Include="OtherRes\BuyReplenishNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyReturnFormatEntity.cs" />
+    <Compile Include="OtherRes\BuyReturnNoteEntity.cs" />
+    <Compile Include="OtherRes\BuyReturnNotePrintHelper.cs" />
+    <Compile Include="OtherRes\IntoStoreNoteEntity.cs" />
+    <Compile Include="OtherRes\OutStoreNoteEntity.cs" />
+    <Compile Include="OtherRes\ProductEntity.cs" />
+    <Compile Include="OtherRes\ReportLossNoteEntity.cs" />
+    <Compile Include="OtherRes\Store.cs" />
+    <Compile Include="OtherRes\StoreCheckNoteEntity.cs" />
+    <Compile Include="Packing\BoxPrinterHelper.cs" />
+    <Compile Include="Packing\WorkingSheetFormatEntity.cs" />
+    <Compile Include="Packing\WorkingSheetListFormatEntity.cs" />
+    <Compile Include="Packing\WorkingSheetListPrintHelper.cs" />
+    <Compile Include="Packing\WorkingSheetPrintHelper.cs" />
+    <Compile Include="Product\BranchStoreMoveNoteEntity.cs" />
+    <Compile Include="Product\BuyBadReportNoteEntity.cs" />
+    <Compile Include="Product\BuyFineAMTNoteEntity.cs" />
+    <Compile Include="Product\BuyInvoiceEntity.cs" />
+    <Compile Include="Product\BuyOrderFormatEntity.cs" />
+    <Compile Include="Product\BuyPriceNoteEntity.cs" />
+    <Compile Include="Product\BuyReceiptNoteEntity.cs" />
+    <Compile Include="Product\BuyReceiveFormatEntity.cs" />
+    <Compile Include="Product\BuyReceiveNotePrintHelper.cs" />
+    <Compile Include="Product\BuyReplenishNoteEntity.cs" />
+    <Compile Include="Product\BuyReturnFormatEntity.cs" />
+    <Compile Include="Product\BuyReturnNoteEntity.cs" />
+    <Compile Include="Product\ExpressReceiptFormatEntity.cs" />
+    <Compile Include="Product\ExpressReceiptNoteEntity.cs" />
+    <Compile Include="Product\ExpressReceiptNotePrintHelper.cs" />
+    <Compile Include="Product\ExpressReconciliationEntity.cs" />
+    <Compile Include="Product\ExpressReconciliationFormatEntity.cs" />
+    <Compile Include="Product\ExpressReconciliationPrintHelper.cs" />
+    <Compile Include="Product\SaleDeliverPlanNoteEntity.cs" />
+    <Compile Include="Product\SaleInvoiceEntity.cs" />
+    <Compile Include="Product\SaleInvoiceFormatEntity.cs" />
+    <Compile Include="Product\SaleInvoicePrintHelper.cs" />
+    <Compile Include="Product\SalePriceNotePrintHelper.cs" />
+    <Compile Include="Product\PackingTypeEntity.cs" />
+    <Compile Include="Product\BOMPrintHelper.cs" />
+    <Compile Include="Product\RepairDeliverNoteEntity.cs" />
+    <Compile Include="Product\RepairDeliverFormatEntity.cs" />
+    <Compile Include="Product\ReportLossNoteEntity.cs" />
+    <Compile Include="Product\SaleDeliverFormatEntity.cs" />
+    <Compile Include="Product\SaleDeliverNoteEntity.cs" />
+    <Compile Include="Product\SaleDeliverPrintHelper.cs" />
+    <Compile Include="Product\SaleFineAMTNoteEntity.cs" />
+    <Compile Include="Product\SaleOrderFormatEntity.cs" />
+    <Compile Include="Product\SaleOrderItemEntity.cs" />
+    <Compile Include="Product\SaleOrderNoteEntity.cs" />
+    <Compile Include="Product\SaleOrderNotePrintHelper.cs" />
+    <Compile Include="Product\SalePriceNoteEntity.cs" />
+    <Compile Include="Product\SaleReceiptFormatEntity.cs" />
+    <Compile Include="Product\SaleReceiptNoteEntity.cs" />
+    <Compile Include="Product\SaleReceiptNotePrintHelper.cs" />
+    <Compile Include="Product\SaleReconciliationEntity.cs" />
+    <Compile Include="Product\SaleReconciliationFormatEntity.cs" />
+    <Compile Include="Product\SaleReconciliationPrintHelper.cs" />
+    <Compile Include="Frame\Passport.cs" />
+    <Compile Include="Frame\PermitBiz.cs" />
+    <Compile Include="Frame\UserBiz.cs" />
+    <Compile Include="General\CustomerEntity.cs" />
+    <Compile Include="General\SupplierEntity.cs" />
+    <Compile Include="Product\BuyReconciliationEntity.cs" />
+    <Compile Include="Product\ProductEntity.cs" />
+    <Compile Include="Product\SaleReplenishFormatEntity.cs" />
+    <Compile Include="Product\SaleReplenishNoteEntity.cs" />
+    <Compile Include="Product\SaleReplenishPrintHelper.cs" />
+    <Compile Include="Product\SaleReturnFormatEntity.cs" />
+    <Compile Include="Product\SaleReturnNoteEntity.cs" />
+    <Compile Include="Product\SaleReturnNotePrintHelper.cs" />
+    <Compile Include="Product\RepairDeliverPrintHelper.cs" />
+    <Compile Include="Manufacture\OutSrcBadReportNoteEntity.cs" />
+    <Compile Include="Manufacture\OutSrcFineAMTNoteEntity.cs" />
+    <Compile Include="Manufacture\OutSrcOrderFormatEntity.cs" />
+    <Compile Include="Manufacture\OutSrcOrderNoteEntity.cs" />
+    <Compile Include="Manufacture\OutSrcOrderNotePrintHelper.cs" />
+    <Compile Include="Manufacture\OutSrcReceiveNoteEntity.cs" />
+    <Compile Include="Manufacture\OutSrcReconciliationEntity.cs" />
+    <Compile Include="Product\BuyReturnNotePrintHelper.cs" />
+    <Compile Include="Packing\BoxItemFormatEntity.cs" />
+    <Compile Include="Packing\BoxItemPrinterHelper.cs" />
+    <Compile Include="Product\RepairInvoiceEntity.cs" />
+    <Compile Include="Product\RepairInvoiceFormatEntity.cs" />
+    <Compile Include="Product\RepairInvoicePrintHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Product\BuyOrderNoteEntity.cs" />
+    <Compile Include="Product\BuyOrderNotePrintHelper.cs" />
+    <Compile Include="Product\BuyReceiveNoteEntity.cs" />
+    <Compile Include="Product\IntoStoreNoteEntity.cs" />
+    <Compile Include="Product\OutStoreNoteEntity.cs" />
+    <Compile Include="Product\Store.cs" />
+    <Compile Include="Product\StoreCheckNoteEntity.cs" />
+    <Compile Include="Material\BranchStoreMoveNoteEntity.cs" />
+    <Compile Include="Material\BuyBadReportNoteEntity.cs" />
+    <Compile Include="Material\BuyFineAMTNoteEntity.cs" />
+    <Compile Include="Material\BuyOrderFormatEntity.cs" />
+    <Compile Include="Material\BuyOrderNoteEntity.cs" />
+    <Compile Include="Material\BuyOrderNotePrintHelper.cs" />
+    <Compile Include="Material\BuyReceiveNoteEntity.cs" />
+    <Compile Include="Material\BuyReconciliationEntity.cs" />
+    <Compile Include="Material\BuyReplenishNoteEntity.cs" />
+    <Compile Include="Material\BuyReturnFormatEntity.cs" />
+    <Compile Include="Material\BuyReturnNoteEntity.cs" />
+    <Compile Include="Material\BuyReturnNotePrintHelper.cs" />
+    <Compile Include="Material\IntoStoreNoteEntity.cs" />
+    <Compile Include="Material\OutStoreNoteEntity.cs" />
+    <Compile Include="Material\ReportLossNoteEntity.cs" />
+    <Compile Include="Material\Store.cs" />
+    <Compile Include="Material\StoreCheckNoteEntity.cs" />
+    <Compile Include="SemiPrd\IntoStoreNoteEntity.cs" />
+    <Compile Include="SemiPrd\OutStoreNoteEntity.cs" />
+    <Compile Include="SemiPrd\ReportLossNoteEntity.cs" />
+    <Compile Include="SemiPrd\StoreCheckNoteEntity.cs" />
+    <Compile Include="SemiPrd\SwitchStoreNoteEntity.cs" />
+    <Compile Include="Tool\BuyFineAMTNoteEntity.cs" />
+    <Compile Include="Tool\BuyInvoiceEntity.cs" />
+    <Compile Include="Tool\BuyOrderFormatEntity.cs" />
+    <Compile Include="Tool\BuyOrderNoteEntity.cs" />
+    <Compile Include="Tool\BuyOrderNotePrintHelper.cs" />
+    <Compile Include="Tool\BuyReceiptNoteEntity.cs" />
+    <Compile Include="Tool\BuyReceiveFormatEntity.cs" />
+    <Compile Include="Tool\BuyReceiveNoteEntity.cs" />
+    <Compile Include="Tool\BuyReceiveNotePrintHelper.cs" />
+    <Compile Include="Tool\BuyReconciliationEntity.cs" />
+    <Compile Include="Tool\ProductEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="General\FrmFormat.resx">
+      <DependentUpon>FrmFormat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JERPData\JERPData.csproj">
+      <Project>{98BC55C8-BFDF-4C64-B264-5622C6DF9F6B}</Project>
+      <Name>JERPData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
