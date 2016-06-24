@@ -299,6 +299,7 @@
     <Compile Include="Product\ExpressReconciliationFormat.cs" />
     <Compile Include="Product\ExpressReconciliations.cs" />
     <Compile Include="Product\IntoStoreItemPlans.cs" />
+    <Compile Include="Product\ManuPrdType.cs" />
     <Compile Include="Product\PackingType.cs" />
     <Compile Include="Product\PackingBOM.cs" />
     <Compile Include="Product\ParmTemplet.cs" />

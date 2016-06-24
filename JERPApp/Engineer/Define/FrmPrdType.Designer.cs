@@ -62,8 +62,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgrdv);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(477, 474);
-            this.splitContainer1.SplitterDistance = 159;
+            this.splitContainer1.Size = new System.Drawing.Size(472, 467);
+            this.splitContainer1.SplitterDistance = 152;
             this.splitContainer1.TabIndex = 0;
             // 
             // ctrlParentID
@@ -72,7 +72,7 @@
             this.ctrlParentID.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlParentID.Location = new System.Drawing.Point(0, 0);
             this.ctrlParentID.Name = "ctrlParentID";
-            this.ctrlParentID.Size = new System.Drawing.Size(159, 474);
+            this.ctrlParentID.Size = new System.Drawing.Size(152, 467);
             this.ctrlParentID.TabIndex = 0;
             // 
             // dgrdv
@@ -103,7 +103,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgrdv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgrdv.RowTemplate.Height = 23;
-            this.dgrdv.Size = new System.Drawing.Size(314, 446);
+            this.dgrdv.Size = new System.Drawing.Size(316, 439);
             this.dgrdv.TabIndex = 1;
             // 
             // ColumnPrdTypeName
@@ -117,9 +117,9 @@
             // 
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 446);
+            this.panel1.Location = new System.Drawing.Point(0, 439);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 28);
+            this.panel1.Size = new System.Drawing.Size(316, 28);
             this.panel1.TabIndex = 0;
             // 
             // btnSave
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 474);
+            this.ClientSize = new System.Drawing.Size(472, 467);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmPrdType";
             this.Text = "产品类型";

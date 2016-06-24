@@ -62,6 +62,7 @@
             this.ColumnAssistantCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDWGNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ctrlQFind = new JCommon.CtrlGridFind();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
@@ -72,7 +73,6 @@
             this.mItemBuyer = new System.Windows.Forms.ToolStripMenuItem();
             this.mItemMaxPrdCode = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlPrdTypeTree();
-            this.ctrlQFind = new JCommon.CtrlGridFind();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -333,6 +333,14 @@
             this.panel2.Size = new System.Drawing.Size(809, 32);
             this.panel2.TabIndex = 5;
             // 
+            // ctrlQFind
+            // 
+            this.ctrlQFind.Location = new System.Drawing.Point(3, 8);
+            this.ctrlQFind.Name = "ctrlQFind";
+            this.ctrlQFind.SeachGridView = null;
+            this.ctrlQFind.Size = new System.Drawing.Size(331, 21);
+            this.ctrlQFind.TabIndex = 5;
+            // 
             // btnExport
             // 
             this.btnExport.Location = new System.Drawing.Point(607, 6);
@@ -409,14 +417,6 @@
             this.ctrlPrdTypeID.Name = "ctrlPrdTypeID";
             this.ctrlPrdTypeID.Size = new System.Drawing.Size(167, 600);
             this.ctrlPrdTypeID.TabIndex = 2;
-            // 
-            // ctrlQFind
-            // 
-            this.ctrlQFind.Location = new System.Drawing.Point(3, 8);
-            this.ctrlQFind.Name = "ctrlQFind";
-            this.ctrlQFind.SeachGridView = null;
-            this.ctrlQFind.Size = new System.Drawing.Size(331, 21);
-            this.ctrlQFind.TabIndex = 5;
             // 
             // FrmPrdDefine
             // 

@@ -41,14 +41,15 @@ namespace JERPApp.Define.Product
             this.cmbItem.Size = new System.Drawing.Size(195, 20);
             this.cmbItem.TabIndex = 0;
             // 
-            //CtrlPrdType
+            // CtrlManufPrdType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cmbItem);
-            this.Name = "CtrlPrdType";
+            this.Name = "CtrlManufPrdType";
             this.Size = new System.Drawing.Size(195, 23);
             this.ResumeLayout(false);
+
         }
         #endregion
         private System.Windows.Forms.ComboBox cmbItem;

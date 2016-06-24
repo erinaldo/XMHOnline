@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace JERPApp.Define.Product
 {
-    public partial class CtrlMenuTypeTree : UserControl
+    public partial class CtrlCommonTypeTree : UserControl
     {
-        public CtrlMenuTypeTree()
+        public CtrlCommonTypeTree()
         {
             InitializeComponent();
-            this.accPrdType = new JERPData.Product.PrdType();
+            this.accPrdType = new JERPData.Product.ManuPrdType();
             this.treePrdType.DrawMode = TreeViewDrawMode.OwnerDrawText;
             this.treePrdType.DrawNode += new DrawTreeNodeEventHandler(treePrdType_DrawNode);
             this.treePrdType.AfterSelect += new TreeViewEventHandler(treePrdType_AfterSelect);
@@ -57,9 +57,9 @@ namespace JERPApp.Define.Product
 
         }
 
-        private JERPData.Product.PrdType accPrdType;
+        private JERPData.Product.ManuPrdType accPrdType;
         private DataTable dtblPrdType;
-        private JERPApp.Engineer.Define.FrmPrdType frmPrdType;
+        private JERPApp.Engineer.Define.FrmManuPrdType frmPrdType;
         public void AllowDefine()
         {
             this.mItemDefine.Enabled = true;
@@ -68,7 +68,22 @@ namespace JERPApp.Define.Product
         {
             this.treePrdType.Nodes.Clear();
             this.dtblPrdType = this.accPrdType.GetDataPrdType ().Tables[0];
-            this.InitTree(this.treePrdType.Nodes, 0);
+
+            DataRow drow = this.dtblPrdType.NewRow();
+            drow["ManuPrdTypeID"] = 0;
+            drow["ParentID"] = -1;
+            drow["ManuPrdTypeCode"] = "0";
+            drow["ManuPrdTypeName"] = "类型分类";
+            if (this.dtblPrdType.Rows.Count == 0)
+            {
+                this.dtblPrdType.Rows.Add(drow);
+            }
+            else
+            {
+                this.dtblPrdType.Rows.InsertAt(drow, 0);
+            }
+
+            this.InitTree(this.treePrdType.Nodes, -1);
             if (this.treePrdType.Nodes.Count > 0)
             {
                 this.treePrdType.SelectedNode = this.treePrdType.Nodes[0];
@@ -79,7 +94,7 @@ namespace JERPApp.Define.Product
         {
             if (frmPrdType == null)
             {
-                frmPrdType = new JERPApp.Engineer.Define.FrmPrdType();
+                frmPrdType = new JERPApp.Engineer.Define.FrmManuPrdType();
                 new FrmStyle(frmPrdType).SetPopFrmStyle(this.ParentForm);                
             }
             frmPrdType.ShowDialog();
@@ -93,8 +108,8 @@ namespace JERPApp.Define.Product
             foreach (DataRow drow in this.dtblPrdType .Select("ParentID=" + parent_id.ToString(), "", DataViewRowState.CurrentRows))
             {
                 TreeNode tmpNd = new TreeNode();
-                tmpNd.Name = drow["PrdTypeID"].ToString();               
-                tmpNd.Text = drow["PrdTypeName"].ToString();
+                tmpNd.Name = drow["ManuPrdTypeID"].ToString();               
+                tmpNd.Text = drow["ManuPrdTypeName"].ToString();
                 Nds.Add(tmpNd);                
                 this.InitTree(tmpNd.Nodes, int.Parse(tmpNd.Name));
                 

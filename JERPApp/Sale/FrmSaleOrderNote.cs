@@ -19,7 +19,7 @@ namespace JERPApp.Sale
             this.SetPermit();
         }
         private JERPData.Product.SaleOrderNotes accNotes;
-        private JERPApp.Define.Product.FrmMySaleOrderNoteFreeSearch frmSearch;
+        //private JERPApp.Define.Product.FrmMySaleOrderNoteFreeSearch frmSearch;
         //private FrmSaleOrderNoteOper frmOper;
         private JERPBiz.Product.SaleOrderNotePrintHelper printer;
         private string whereclause = string.Empty;
@@ -83,13 +83,13 @@ namespace JERPApp.Sale
         }
         void lnkSearch_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (frmSearch == null)
-            {
-                frmSearch = new JERPApp.Define.Product.FrmMySaleOrderNoteFreeSearch();
-                new FrmStyle(frmSearch).SetPopFrmStyle(this);
-                frmSearch.AffterSearch += frmSearch_AffterSearch;
-            }
-            frmSearch.ShowDialog();
+            //if (frmSearch == null)
+            //{
+            //    frmSearch = new JERPApp.Define.Product.FrmMySaleOrderNoteFreeSearch();
+            //    new FrmStyle(frmSearch).SetPopFrmStyle(this);
+            //    frmSearch.AffterSearch += frmSearch_AffterSearch;
+            //}
+            //frmSearch.ShowDialog();
         }
 
         void frmSearch_AffterSearch(string whereclause)

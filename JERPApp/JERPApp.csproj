@@ -360,29 +360,35 @@
     <Compile Include="Define\Packing\FrmBoxFromBarcode.Designer.cs">
       <DependentUpon>FrmBoxFromBarcode.cs</DependentUpon>
     </Compile>
-    <Compile Include="Define\Product\CtrlMenuTypeTree.cs">
+    <Compile Include="Define\Product\CtrlCommonTypeTree.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Define\Product\CtrlMenuTypeTree.designer.cs">
-      <DependentUpon>CtrlMenuTypeTree.cs</DependentUpon>
+    <Compile Include="Define\Product\CtrlCommonTypeTree.designer.cs">
+      <DependentUpon>CtrlCommonTypeTree.cs</DependentUpon>
     </Compile>
-    <Compile Include="Define\Product\FrmSaleOrderItemSearch.cs">
+    <Compile Include="Define\Product\FrmManuPrdType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Define\Product\FrmSaleOrderItemSearch.designer.cs">
-      <DependentUpon>FrmSaleOrderItemSearch.cs</DependentUpon>
+    <Compile Include="Define\Product\FrmManuPrdType.Designer.cs">
+      <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Define\Product\FrmSaleOrderRequire.cs">
+    <Compile Include="Engineer\Define\FrmManuPrdType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Define\Product\FrmSaleOrderRequire.Designer.cs">
-      <DependentUpon>FrmSaleOrderRequire.cs</DependentUpon>
+    <Compile Include="Engineer\Define\FrmManuPrdType.Designer.cs">
+      <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\FrmManufProcessAppend.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Engineer\FrmManufProcessAppend.Designer.cs">
       <DependentUpon>FrmManufProcessAppend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\FrmManuPrdDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\FrmManuPrdDefine.Designer.cs">
+      <DependentUpon>FrmManuPrdDefine.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\Tool\Report\FrmOrderNote.cs">
       <SubType>Form</SubType>
@@ -1259,18 +1265,6 @@
     </Compile>
     <Compile Include="Define\Product\FrmProduct.designer.cs">
       <DependentUpon>FrmProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Define\Product\FrmMySaleOrderNoteFreeSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Define\Product\FrmMySaleOrderNoteFreeSearch.designer.cs">
-      <DependentUpon>FrmMySaleOrderNoteFreeSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Define\Product\FrmMySaleOrderItemSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Define\Product\FrmMySaleOrderItemSearch.designer.cs">
-      <DependentUpon>FrmMySaleOrderItemSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Define\Product\FrmMySalePriceElement.cs">
       <SubType>Form</SubType>
@@ -2430,17 +2424,20 @@
       <DependentUpon>FrmBoxFromBarcode.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Define\Product\CtrlMenuTypeTree.resx">
-      <DependentUpon>CtrlMenuTypeTree.cs</DependentUpon>
+    <EmbeddedResource Include="Define\Product\CtrlCommonTypeTree.resx">
+      <DependentUpon>CtrlCommonTypeTree.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Define\Product\FrmSaleOrderItemSearch.resx">
-      <DependentUpon>FrmSaleOrderItemSearch.cs</DependentUpon>
+    <EmbeddedResource Include="Define\Product\FrmManuPrdType.resx">
+      <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Define\Product\FrmSaleOrderRequire.resx">
-      <DependentUpon>FrmSaleOrderRequire.cs</DependentUpon>
+    <EmbeddedResource Include="Engineer\Define\FrmManuPrdType.resx">
+      <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmManufProcessAppend.resx">
       <DependentUpon>FrmManufProcessAppend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\FrmManuPrdDefine.resx">
+      <DependentUpon>FrmManuPrdDefine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Tool\Report\FrmOrderNote.resx">
       <DependentUpon>FrmOrderNote.cs</DependentUpon>
@@ -2985,14 +2982,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Define\Product\FrmProduct.resx">
       <DependentUpon>FrmProduct.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Define\Product\FrmMySaleOrderNoteFreeSearch.resx">
-      <DependentUpon>FrmMySaleOrderNoteFreeSearch.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Define\Product\FrmMySaleOrderItemSearch.resx">
-      <DependentUpon>FrmMySaleOrderItemSearch.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Define\Product\FrmMySalePriceElement.resx">

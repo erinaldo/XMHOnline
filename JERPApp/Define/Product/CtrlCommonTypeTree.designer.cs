@@ -1,6 +1,6 @@
 ﻿namespace JERPApp.Define.Product
 {
-    partial class CtrlMenuTypeTree
+    partial class CtrlCommonTypeTree
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.cMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.treePrdType = new System.Windows.Forms.TreeView();
             this.mItemDefine = new System.Windows.Forms.ToolStripMenuItem();
+            this.treePrdType = new System.Windows.Forms.TreeView();
             this.cMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,13 +42,19 @@
             this.mItemRefresh,
             this.mItemDefine});
             this.cMenu.Name = "cMenu";
-            this.cMenu.Size = new System.Drawing.Size(153, 70);
+            this.cMenu.Size = new System.Drawing.Size(101, 48);
             // 
             // mItemRefresh
             // 
             this.mItemRefresh.Name = "mItemRefresh";
-            this.mItemRefresh.Size = new System.Drawing.Size(152, 22);
+            this.mItemRefresh.Size = new System.Drawing.Size(100, 22);
             this.mItemRefresh.Text = "刷新";
+            // 
+            // mItemDefine
+            // 
+            this.mItemDefine.Name = "mItemDefine";
+            this.mItemDefine.Size = new System.Drawing.Size(100, 22);
+            this.mItemDefine.Text = "设置";
             // 
             // treePrdType
             // 
@@ -64,19 +70,13 @@
             this.treePrdType.Size = new System.Drawing.Size(209, 324);
             this.treePrdType.TabIndex = 17;
             // 
-            // mItemDefine
-            // 
-            this.mItemDefine.Name = "mItemDefine";
-            this.mItemDefine.Size = new System.Drawing.Size(152, 22);
-            this.mItemDefine.Text = "设置";
-            // 
-            // CtrlPrdTypeTree
+            // CtrlCommonTypeTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.treePrdType);
-            this.Name = "CtrlPrdTypeTree";
+            this.Name = "CtrlCommonTypeTree";
             this.Size = new System.Drawing.Size(209, 324);
             this.cMenu.ResumeLayout(false);
             this.ResumeLayout(false);
