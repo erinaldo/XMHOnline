@@ -22,8 +22,8 @@ namespace JERPApp.Define
         private bool enableSave = false;//±£´æ
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(3);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(4);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(5);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(6);
             if (this.enableBrowse)
             {
                 this.ctrlQFind.SetSearchElement(this.dgrdv);
