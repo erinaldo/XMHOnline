@@ -11,14 +11,14 @@
     <deploymentProvider codebase="http://192.168.1.88:8080/%E5%A4%A9%E8%A1%A3ERP.application" />
   </deployment>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="天衣ERP.exe.manifest" size="7014">
+    <dependentAssembly dependencyType="install" codebase="天衣ERP.exe.manifest" size="7404">
       <assemblyIdentity name="天衣ERP.exe" version="1.0.3.101" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>t5nxRVa/waW63XIp9gy/XDyGxi4=</dsig:DigestValue>
+        <dsig:DigestValue>0imj8btGOVi9MP5nI7mPRDh1WJg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

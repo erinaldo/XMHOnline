@@ -378,6 +378,12 @@
     <Compile Include="Engineer\Define\FrmManuPrdType.Designer.cs">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Engineer\Define\FrmManuPrdTypeRelation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmManuPrdTypeRelation.Designer.cs">
+      <DependentUpon>FrmManuPrdTypeRelation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engineer\FrmManufProcessAppend.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2433,6 +2439,9 @@
     <EmbeddedResource Include="Engineer\Define\FrmManuPrdType.resx">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmManuPrdTypeRelation.resx">
+      <DependentUpon>FrmManuPrdTypeRelation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmManufProcessAppend.resx">
       <DependentUpon>FrmManufProcessAppend.cs</DependentUpon>
     </EmbeddedResource>
@@ -3730,6 +3739,7 @@
     <None Include="Resources\plus.png" />
     <None Include="Resources\empty.png" />
     <None Include="Resources\logonbg.png" />
+    <Content Include="Properties\类别20160623.sql" />
     <Content Include="soft.ico" />
     <Content Include="TSCLIB.dll" />
   </ItemGroup>

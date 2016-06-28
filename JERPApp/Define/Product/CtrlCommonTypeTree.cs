@@ -164,9 +164,11 @@ namespace JERPApp.Define.Product
         {
             get
             {
-                string rut=string .Empty ;
-                this.accPrdType.GetParmPrdTypeTreePrdTypeName(this.PrdTypeID, ref rut);
-                return rut;
+                if (this.treePrdType.SelectedNode == null) return "";
+                return this.treePrdType.SelectedNode.Text;
+                //string rut=string .Empty ;
+                //this.accPrdType.GetParmPrdTypeTreePrdTypeName(this.PrdTypeID, ref rut);
+                //return rut;
             }
         }     
         public delegate void AffterSelectDelegate();

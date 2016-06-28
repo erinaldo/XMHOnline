@@ -300,6 +300,9 @@
     <Compile Include="Product\ExpressReconciliations.cs" />
     <Compile Include="Product\IntoStoreItemPlans.cs" />
     <Compile Include="Product\ManuPrdType.cs" />
+    <Compile Include="Product\ManuProduct.cs" />
+    <Compile Include="Product\ManuProductTypePro.cs" />
+    <Compile Include="Product\ManuProductTypeProRelation.cs" />
     <Compile Include="Product\PackingType.cs" />
     <Compile Include="Product\PackingBOM.cs" />
     <Compile Include="Product\ParmTemplet.cs" />
