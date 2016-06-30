@@ -28,25 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dgrdv = new JCommon.MyDataGridView();
-            this.ColumnbtnSelect = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnPrdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrdSpec = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnManufacturer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAssistantCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnlnkImgs = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lnkNew = new System.Windows.Forms.LinkLabel();
-            this.ctrlQFind = new JCommon.CtrlGridFind();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlPrdTypeTree();
+            this.lnkNew = new System.Windows.Forms.LinkLabel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.ckbManufacturer = new System.Windows.Forms.CheckBox();
             this.txtAssistantCode = new System.Windows.Forms.TextBox();
@@ -60,14 +49,25 @@
             this.ckbPrdName = new System.Windows.Forms.CheckBox();
             this.txtPrdCode = new System.Windows.Forms.TextBox();
             this.ckbPrdCode = new System.Windows.Forms.CheckBox();
+            this.dgrdv = new JCommon.MyDataGridView();
+            this.ColumnbtnSelect = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnPrdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrdSpec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnManufacturer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAssistantCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnlnkImgs = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlQFind = new JCommon.CtrlGridFind();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).BeginInit();
-            this.panel1.SuspendLayout();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -85,143 +85,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgrdv);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(854, 522);
+            this.splitContainer1.Size = new System.Drawing.Size(975, 522);
             this.splitContainer1.SplitterDistance = 174;
             this.splitContainer1.TabIndex = 12;
-            // 
-            // dgrdv
-            // 
-            this.dgrdv.AllowUserToAddRows = false;
-            this.dgrdv.AllowUserToDeleteRows = false;
-            this.dgrdv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrdv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnbtnSelect,
-            this.ColumnPrdCode,
-            this.ColumnPrdName,
-            this.ColumnPrdSpec,
-            this.ColumnModel,
-            this.ColumnManufacturer,
-            this.ColumnAssistantCode,
-            this.ColumnlnkImgs});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgrdv.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgrdv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgrdv.Location = new System.Drawing.Point(0, 0);
-            this.dgrdv.Name = "dgrdv";
-            this.dgrdv.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgrdv.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dgrdv.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgrdv.RowTemplate.Height = 23;
-            this.dgrdv.Size = new System.Drawing.Size(676, 493);
-            this.dgrdv.TabIndex = 8;
-            // 
-            // ColumnbtnSelect
-            // 
-            this.ColumnbtnSelect.HeaderText = "选择";
-            this.ColumnbtnSelect.Name = "ColumnbtnSelect";
-            this.ColumnbtnSelect.ReadOnly = true;
-            this.ColumnbtnSelect.Text = "选择";
-            this.ColumnbtnSelect.UseColumnTextForButtonValue = true;
-            this.ColumnbtnSelect.Width = 54;
-            // 
-            // ColumnPrdCode
-            // 
-            this.ColumnPrdCode.DataPropertyName = "PrdCode";
-            this.ColumnPrdCode.HeaderText = "产品编号";
-            this.ColumnPrdCode.Name = "ColumnPrdCode";
-            this.ColumnPrdCode.ReadOnly = true;
-            // 
-            // ColumnPrdName
-            // 
-            this.ColumnPrdName.DataPropertyName = "PrdName";
-            this.ColumnPrdName.HeaderText = "产品名称";
-            this.ColumnPrdName.Name = "ColumnPrdName";
-            this.ColumnPrdName.ReadOnly = true;
-            this.ColumnPrdName.Width = 130;
-            // 
-            // ColumnPrdSpec
-            // 
-            this.ColumnPrdSpec.DataPropertyName = "PrdSpec";
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnPrdSpec.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnPrdSpec.HeaderText = "产品规格";
-            this.ColumnPrdSpec.Name = "ColumnPrdSpec";
-            this.ColumnPrdSpec.ReadOnly = true;
-            // 
-            // ColumnModel
-            // 
-            this.ColumnModel.DataPropertyName = "Model";
-            this.ColumnModel.HeaderText = "机型";
-            this.ColumnModel.Name = "ColumnModel";
-            this.ColumnModel.ReadOnly = true;
-            this.ColumnModel.Width = 80;
-            // 
-            // ColumnManufacturer
-            // 
-            this.ColumnManufacturer.DataPropertyName = "Manufacturer";
-            this.ColumnManufacturer.HeaderText = "品牌";
-            this.ColumnManufacturer.Name = "ColumnManufacturer";
-            this.ColumnManufacturer.ReadOnly = true;
-            this.ColumnManufacturer.Width = 66;
-            // 
-            // ColumnAssistantCode
-            // 
-            this.ColumnAssistantCode.DataPropertyName = "AssistantCode";
-            this.ColumnAssistantCode.HeaderText = "助记码";
-            this.ColumnAssistantCode.Name = "ColumnAssistantCode";
-            this.ColumnAssistantCode.ReadOnly = true;
-            this.ColumnAssistantCode.Width = 66;
-            // 
-            // ColumnlnkImgs
-            // 
-            this.ColumnlnkImgs.DataPropertyName = "ImgCount";
-            this.ColumnlnkImgs.HeaderText = "图片";
-            this.ColumnlnkImgs.Name = "ColumnlnkImgs";
-            this.ColumnlnkImgs.ReadOnly = true;
-            this.ColumnlnkImgs.Text = "";
-            this.ColumnlnkImgs.Width = 54;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ctrlQFind);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 493);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(676, 29);
-            this.panel1.TabIndex = 9;
-            // 
-            // lnkNew
-            // 
-            this.lnkNew.AutoSize = true;
-            this.lnkNew.Location = new System.Drawing.Point(138, 224);
-            this.lnkNew.Name = "lnkNew";
-            this.lnkNew.Size = new System.Drawing.Size(29, 12);
-            this.lnkNew.TabIndex = 2;
-            this.lnkNew.TabStop = true;
-            this.lnkNew.Text = "新增";
-            // 
-            // ctrlQFind
-            // 
-            this.ctrlQFind.Location = new System.Drawing.Point(12, 5);
-            this.ctrlQFind.Name = "ctrlQFind";
-            this.ctrlQFind.SeachGridView = null;
-            this.ctrlQFind.Size = new System.Drawing.Size(331, 21);
-            this.ctrlQFind.TabIndex = 1;
             // 
             // splitContainer2
             // 
@@ -263,6 +129,16 @@
             this.ctrlPrdTypeID.Name = "ctrlPrdTypeID";
             this.ctrlPrdTypeID.Size = new System.Drawing.Size(174, 276);
             this.ctrlPrdTypeID.TabIndex = 1;
+            // 
+            // lnkNew
+            // 
+            this.lnkNew.AutoSize = true;
+            this.lnkNew.Location = new System.Drawing.Point(138, 224);
+            this.lnkNew.Name = "lnkNew";
+            this.lnkNew.Size = new System.Drawing.Size(29, 12);
+            this.lnkNew.TabIndex = 2;
+            this.lnkNew.TabStop = true;
+            this.lnkNew.Text = "新增";
             // 
             // btnSearch
             // 
@@ -375,24 +251,148 @@
             this.ckbPrdCode.Text = "物料编号";
             this.ckbPrdCode.UseVisualStyleBackColor = true;
             // 
+            // dgrdv
+            // 
+            this.dgrdv.AllowUserToAddRows = false;
+            this.dgrdv.AllowUserToDeleteRows = false;
+            this.dgrdv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrdv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnbtnSelect,
+            this.ColumnPrdCode,
+            this.ColumnPrdName,
+            this.ColumnPrdSpec,
+            this.ColumnModel,
+            this.ColumnManufacturer,
+            this.ColumnAssistantCode,
+            this.ColumnlnkImgs});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgrdv.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgrdv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrdv.Location = new System.Drawing.Point(0, 0);
+            this.dgrdv.Name = "dgrdv";
+            this.dgrdv.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgrdv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgrdv.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgrdv.RowTemplate.Height = 23;
+            this.dgrdv.Size = new System.Drawing.Size(797, 493);
+            this.dgrdv.TabIndex = 8;
+            // 
+            // ColumnbtnSelect
+            // 
+            this.ColumnbtnSelect.HeaderText = "选择";
+            this.ColumnbtnSelect.Name = "ColumnbtnSelect";
+            this.ColumnbtnSelect.ReadOnly = true;
+            this.ColumnbtnSelect.Text = "选择";
+            this.ColumnbtnSelect.UseColumnTextForButtonValue = true;
+            this.ColumnbtnSelect.Width = 54;
+            // 
+            // ColumnPrdCode
+            // 
+            this.ColumnPrdCode.DataPropertyName = "PrdCode";
+            this.ColumnPrdCode.HeaderText = "产品编号";
+            this.ColumnPrdCode.Name = "ColumnPrdCode";
+            this.ColumnPrdCode.ReadOnly = true;
+            // 
+            // ColumnPrdName
+            // 
+            this.ColumnPrdName.DataPropertyName = "PrdName";
+            this.ColumnPrdName.HeaderText = "产品名称";
+            this.ColumnPrdName.Name = "ColumnPrdName";
+            this.ColumnPrdName.ReadOnly = true;
+            this.ColumnPrdName.Width = 130;
+            // 
+            // ColumnPrdSpec
+            // 
+            this.ColumnPrdSpec.DataPropertyName = "PrdSpec";
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnPrdSpec.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnPrdSpec.HeaderText = "产品规格";
+            this.ColumnPrdSpec.Name = "ColumnPrdSpec";
+            this.ColumnPrdSpec.ReadOnly = true;
+            // 
+            // ColumnModel
+            // 
+            this.ColumnModel.DataPropertyName = "Model";
+            this.ColumnModel.HeaderText = "机型";
+            this.ColumnModel.Name = "ColumnModel";
+            this.ColumnModel.ReadOnly = true;
+            this.ColumnModel.Width = 80;
+            // 
+            // ColumnManufacturer
+            // 
+            this.ColumnManufacturer.DataPropertyName = "Manufacturer";
+            this.ColumnManufacturer.HeaderText = "品牌";
+            this.ColumnManufacturer.Name = "ColumnManufacturer";
+            this.ColumnManufacturer.ReadOnly = true;
+            this.ColumnManufacturer.Width = 66;
+            // 
+            // ColumnAssistantCode
+            // 
+            this.ColumnAssistantCode.DataPropertyName = "AssistantCode";
+            this.ColumnAssistantCode.HeaderText = "助记码";
+            this.ColumnAssistantCode.Name = "ColumnAssistantCode";
+            this.ColumnAssistantCode.ReadOnly = true;
+            this.ColumnAssistantCode.Width = 66;
+            // 
+            // ColumnlnkImgs
+            // 
+            this.ColumnlnkImgs.DataPropertyName = "ImgCount";
+            this.ColumnlnkImgs.HeaderText = "图片";
+            this.ColumnlnkImgs.Name = "ColumnlnkImgs";
+            this.ColumnlnkImgs.ReadOnly = true;
+            this.ColumnlnkImgs.Text = "";
+            this.ColumnlnkImgs.Width = 54;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ctrlQFind);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 493);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(797, 29);
+            this.panel1.TabIndex = 9;
+            // 
+            // ctrlQFind
+            // 
+            this.ctrlQFind.Location = new System.Drawing.Point(12, 5);
+            this.ctrlQFind.Name = "ctrlQFind";
+            this.ctrlQFind.SeachGridView = null;
+            this.ctrlQFind.Size = new System.Drawing.Size(331, 21);
+            this.ctrlQFind.TabIndex = 1;
+            // 
             // FrmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 522);
+            this.ClientSize = new System.Drawing.Size(975, 522);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmProduct";
             this.Text = "产品选择";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

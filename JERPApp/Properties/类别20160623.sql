@@ -244,6 +244,7 @@ CREATE TABLE [prd].[ManuProduct](
 	[StopFlag] [bit] NULL,
 	[URL] [varchar](50) NULL,
 	[Memo] [varchar](500) NULL,
+	[CustomFlag] [bit] NULL,
  CONSTRAINT [PK_ManuProduct_3] PRIMARY KEY CLUSTERED 
 (
 	[PrdID] ASC
@@ -338,6 +339,7 @@ GO
 
 ALTER TABLE [prd].[ManuProduct] ADD  CONSTRAINT [DF_ManuProduct_StopFlag]  DEFAULT ((0)) FOR [StopFlag]
 GO
+
 
 
 
@@ -585,6 +587,7 @@ CREATE PROCEDURE prd.InsertManuProduct
 	@MinPackingQty numeric(18,4), 
 	@URL varchar(500),
 	@Memo varchar(500),
+	@CustomFlag bit,
 	@StopFlag bit
 )
 AS
@@ -616,6 +619,7 @@ BEGIN
 		MinPackingQty, 
 		URL,
 		Memo,
+		CustomFlag,
 		StopFlag
 	)
 	Values
@@ -644,12 +648,12 @@ BEGIN
 		@MinPackingQty, 
 		@URL,
 		@Memo,
+		@CustomFlag,
 		@StopFlag
 	)
 	Set @PrdID=SCOPE_IDENTITY()--返回标识值
 END
 GO
-
 
 
 
@@ -684,6 +688,7 @@ CREATE PROCEDURE prd.InsertManuProductForImport
 	@MinPackingQty numeric(18,4), 
 	@URL varchar(500),
 	@Memo varchar(500),
+	@CustomFlag bit,
 	@StopFlag bit
 )
 AS
@@ -709,6 +714,7 @@ BEGIN
 		MinPackingQty, 
 		URL,
 		Memo,
+		CustomFlag,
 		StopFlag
 	)
 	Values
@@ -731,19 +737,13 @@ BEGIN
 		@MinPackingQty, 
 		@URL,
 		@Memo,
+		@CustomFlag,
 		@StopFlag
 	)
 	Set @PrdID=SCOPE_IDENTITY()--返回标识值
 END
 
 GO
-
-
-
-
-
-
-
 
 
 
@@ -787,6 +787,7 @@ CREATE PROCEDURE prd.UpdateManuProduct
 	@MinPackingQty numeric(18,4), 
 	@URL varchar(500),
 	@Memo varchar(500),
+	@CustomFlag bit,
 	@StopFlag bit
 
 )
@@ -819,6 +820,7 @@ BEGIN
 		MinPackingQty=@MinPackingQty, 
 		URL=@URL,
 		Memo=@Memo,
+		CustomFlag=@CustomFlag,
 		StopFlag=@StopFlag
 	Where  (PrdID=@PrdID) 
 	
@@ -827,6 +829,27 @@ END
 
 GO
 
+---- select * from prd.ManuProduct
+
+/*
+数据表 [prd.ManuProduct]  更新
+*/
+--=====================================================================
+-- drop PROCEDURE prd.UpdateManuProductForPrdTypeID
+CREATE PROCEDURE prd.UpdateManuProductForPrdTypeID
+(
+	@PrdID int  , 
+	@PrdTypeID int   
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE prd.ManuProduct
+	SET
+		PrdTypeID=@PrdTypeID
+	where PrdID=@PrdID
+END
+--- select * from prd.ManuProduct
 
 
 --=====================================================================
@@ -859,6 +882,7 @@ CREATE PROCEDURE prd.UpdateManuProductForImport
 	@MinPackingQty numeric(18,4), 
 	@URL varchar(500),
 	@Memo varchar(500),
+	@CustomFlag bit,
 	@StopFlag bit
 )
 AS
@@ -884,6 +908,7 @@ BEGIN
 		MinPackingQty=@MinPackingQty, 
 		URL=@URL,
 		Memo=@Memo,
+		CustomFlag=@CustomFlag,
 		StopFlag=@StopFlag
 	Where  (PrdID=@PrdID) 
 END 
@@ -1199,22 +1224,67 @@ END
 
 -----------------
 -----------------
+-- DROP table prd.ManuProductTypeProTable
 create table prd.ManuProductTypeProTable(
 	Fid int IDENTITY(1,1) NOT NULL,
 	FFieldName varchar(100) ,
 	FType varchar(100) ,
+	FFieldType varchar(100) ,
 	FFieldText varchar(100) ,
-	FieldText varchar(100) ,
 	FTypeParentID varchar(100) 
 )ON [PRIMARY] 
 GO 
 /**
+DELETE FROM  prd.ManuProductTypeProTable
 insert into prd.ManuProductTypeProTable values('PrdID','0', 'int', '产品编码','')
-insert into prd.ManuProductTypeProTable values('ProType1','0', 'int', '刀杠类型','')
-insert into prd.ManuProductTypeProTable values('ProType2','1', 'int', '刀片R角','71')
-insert into prd.ManuProductTypeProTable values('ProType3','1', 'int', '加工材质','72')
-insert into prd.ManuProductTypeProTable values('ProType4','0', 'int', '刀具尺寸','')
+insert into prd.ManuProductTypeProTable values('ProType1','1', 'int', '刀片R角','71')
+insert into prd.ManuProductTypeProTable values('ProType2','1', 'int', '刀片左右手','114')
+insert into prd.ManuProductTypeProTable values('ProType3','1', 'int', '排屑槽','73')
+insert into prd.ManuProductTypeProTable values('ProType4','1', 'int', '被加工材料/刀片材质','72')
 insert into prd.ManuProductTypeProTable values('ProType5','0', 'int', '','')
 insert into prd.ManuProductTypeProTable values('ProType6','0', 'int', '','')
 insert into prd.ManuProductTypeProTable values('ProType7','0', 'int', '','')
 **/
+
+/*
+数据表 [prd.ManuProductTypeProTable]  按选择条件查询
+*/
+--=====================================================================
+-- DROP PROCEDURE prd.GetDataManuProductTypeProTable
+CREATE PROCEDURE prd.GetDataManuProductTypeProTable
+AS
+BEGIN
+	SELECT 
+		Fid,
+		FFieldName,
+		FType,
+		FFieldType,
+		FFieldText,
+		FTypeParentID
+	FROM prd.ManuProductTypeProTable
+END
+
+
+
+/*
+数据表 [prd.ManuPrdType]  按选择条件查询
+*/
+--=====================================================================
+
+CREATE PROCEDURE prd.GetDataManuPrdTypeByManuPrdTypeNameAndParentID
+(
+	@ManuPrdTypeName varchar (50)  ,
+	@ParentID int   
+)
+AS
+BEGIN
+	SELECT 
+		ManuPrdTypeID,
+		ManuPrdTypeCode,
+		ManuPrdTypeName,
+		ParentID
+	FROM prd.ManuPrdType
+	WHERE 
+		(ManuPrdTypeName=@ManuPrdTypeName) and 
+		(ParentID=@ParentID)
+END

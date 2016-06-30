@@ -121,79 +121,6 @@ namespace JERPData.Product
             return ds;
         }
 
-        //public DataSet GetDataProductPrdSet()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductPrdSet");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductPurchaseFinishedPrd()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductPurchaseFinishedPrd");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-
-        //public DataSet GetDataProductForBuyerSetting()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductForBuyerSetting");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductForSupplierSetting()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductForSupplierSetting");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
         public bool GetParmProductMaxPrdCode(string PrdName, ref string PrdCode)
         {
             bool flag = false;
@@ -244,127 +171,7 @@ namespace JERPData.Product
             }
             return ds;
         }
-        //public DataSet GetDataProductForManufPrd()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductForManufPrd");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductForFinishedPrd()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductForFinishedPrd");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductForMaterial()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductForMaterial");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
 
-        //public DataSet GetDataProductForFinishedPrdByAssistantCode(string AssistantCode)
-        //{
-        //    DataSet ds = null;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@AssistantCode", SqlDbType.VarChar);
-        //    arParams[0].Size = 50;
-        //    arParams[0].Value = AssistantCode;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataProductForFinishedPrdByAssistantCode", arParams);
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductForMaterialByAssistantCode(string AssistantCode)
-        //{
-        //    DataSet ds = null;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@AssistantCode", SqlDbType.VarChar);
-        //    arParams[0].Size = 50;
-        //    arParams[0].Value = AssistantCode;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataProductForMaterialByAssistantCode", arParams);
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductForManufPrdByAssistantCode(string AssistantCode)
-        //{
-        //    DataSet ds = null;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@AssistantCode", SqlDbType.VarChar);
-        //    arParams[0].Size = 50;
-        //    arParams[0].Value = AssistantCode;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataProductForManufPrdByAssistantCode", arParams);
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
         public DataSet GetDataProductByAssistantCode(string AssistantCode)
         {
             DataSet ds = null;
@@ -387,118 +194,7 @@ namespace JERPData.Product
             }
             return ds;
         }
-        //public bool GetParmProductMinPackingQty(int PrdID, ref decimal MinPackingQty)
-        //{
-        //    bool flag = false;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@MinPackingQty", SqlDbType.Decimal);
-        //    arParams[1].Precision = 18;
-        //    arParams[1].Scale = 4;
-        //    arParams[1].Direction = ParameterDirection.InputOutput;
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = MinPackingQty;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        SqlHelper.ExecuteNonQuery(this.sqlConn, CommandType.StoredProcedure, "prd.GetParmProductMinPackingQty", arParams);
-        //        MinPackingQty = (decimal)arParams[1].Value;
-        //        flag = true;
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        flag = false;
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool GetParmProductBuyer(int PrdID, ref string Buyer)
-        //{
-        //    bool flag = false;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@Buyer", SqlDbType.VarChar);
-        //    arParams[1].Size = 200;
-        //    arParams[1].Direction = ParameterDirection.InputOutput;
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = Buyer;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        SqlHelper.ExecuteNonQuery(this.sqlConn, CommandType.StoredProcedure, "prd.GetParmProductBuyer", arParams);
-        //        Buyer = (string)arParams[1].Value;
-        //        flag = true;
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        flag = false;
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public DataSet GetDataProductForMtrOutSrcCheckStore(int SupplierID)
-        //{
-        //    DataSet ds = null;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@SupplierID", SqlDbType.Int);
-        //    arParams[0].Value = SupplierID;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataProductForMtrOutSrcCheckStore", arParams);
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductModel()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductModel");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
-        //public DataSet GetDataProductPrdName()
-        //{
-        //    DataSet ds = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataProductPrdName");
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        // ex.Message --这里作调试用
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return ds;
-        //}
+
   
         public DataSet GetDataProductPagesFreeSearch(int PageIndex, int PageSize, ref int RecordCount, string WhereClause)
         {
@@ -744,31 +440,7 @@ namespace JERPData.Product
             }
             return flag;
         }
-        //public bool GetParmProductCostPrice(int PrdID, ref decimal CostPrice)
-        //{
-        //    bool flag = false;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@CostPrice", SqlDbType.Money);
-        //    arParams[1].Direction = ParameterDirection.InputOutput;
-        //    arParams[0].Value = PrdID;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        SqlHelper.ExecuteNonQuery(this.sqlConn, CommandType.StoredProcedure, "prd.GetParmProductCostPrice", arParams);
-        //        CostPrice = (decimal)arParams[1].Value;
-        //        flag = true;
-        //    }
-        //    catch//(SqlException ex)
-        //    {
-        //        flag = false;
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
+
         public bool GetParmProductPrdID(string PrdCode, ref int PrdID)
         {
             bool flag = false;
@@ -1151,11 +823,11 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool InsertProductForImport(ref string ErrorMsg, ref object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID, object MinPackingQty, object URL, object Memo, object StopFlag)
+        public bool InsertProductForImport(ref string ErrorMsg, ref object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID, object MinPackingQty, object URL, object Memo,object CustomFlag,object StopFlag)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
-            SqlParameter[] arParams = new SqlParameter[20];
+            SqlParameter[] arParams = new SqlParameter[21];
             arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
             arParams[0].Direction = ParameterDirection.InputOutput;
             arParams[1] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
@@ -1190,7 +862,9 @@ namespace JERPData.Product
             arParams[17].Size = 500;
             arParams[18] = new SqlParameter("@Memo", SqlDbType.VarChar);
             arParams[18].Size = 500;
-            arParams[19] = new SqlParameter("@StopFlag", SqlDbType.Bit);
+            arParams[19] = new SqlParameter("@CustomFlag", SqlDbType.Bit);
+            arParams[20] = new SqlParameter("@StopFlag", SqlDbType.Bit);
+
             arParams[0].Value = PrdID;
             arParams[1].Value = PrdTypeID;
             arParams[2].Value = PrdCode;
@@ -1210,7 +884,8 @@ namespace JERPData.Product
             arParams[16].Value = MinPackingQty;
             arParams[17].Value = URL;
             arParams[18].Value = Memo;
-            arParams[19].Value = StopFlag;
+            arParams[19].Value =CustomFlag;
+            arParams[20].Value = StopFlag;
             SqlTransaction DBTransaction = null;
             try
             {
@@ -1234,11 +909,11 @@ namespace JERPData.Product
             return flag;
         }
 
-        public bool UpdateProduct(ref string ErrorMsg, object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object ICSolution, object PrdWeight, object SaleFlag, object UnitID, object DateRegister, object FileCode, object RegisterPsn, object VersionCode, object VersionRecord, object MinPackingQty, object URL, object Memo, object StopFlag)
+        public bool UpdateProduct(ref string ErrorMsg, object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object ICSolution, object PrdWeight, object SaleFlag, object UnitID, object DateRegister, object FileCode, object RegisterPsn, object VersionCode, object VersionRecord, object MinPackingQty, object URL, object Memo, object CustomFlag, object StopFlag)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
-            SqlParameter[] arParams = new SqlParameter[26];
+            SqlParameter[] arParams = new SqlParameter[27];
             arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
             arParams[1] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
             arParams[2] = new SqlParameter("@PrdCode", SqlDbType.VarChar);
@@ -1283,7 +958,8 @@ namespace JERPData.Product
             arParams[23].Size = 500;
             arParams[24] = new SqlParameter("@Memo", SqlDbType.VarChar);
             arParams[24].Size = 500;
-            arParams[25] = new SqlParameter("@StopFlag", SqlDbType.Bit);
+            arParams[25] = new SqlParameter("@CustomFlag", SqlDbType.Bit);
+            arParams[26] = new SqlParameter("@StopFlag", SqlDbType.Bit);
             arParams[0].Value = PrdID;
             arParams[1].Value = PrdTypeID;
             arParams[2].Value = PrdCode;
@@ -1309,7 +985,8 @@ namespace JERPData.Product
             arParams[22].Value = MinPackingQty;
             arParams[23].Value = URL;
             arParams[24].Value = Memo;
-            arParams[25].Value = StopFlag;
+            arParams[25].Value = CustomFlag;
+            arParams[26].Value = StopFlag;
             SqlTransaction DBTransaction = null;
             try
             {
@@ -1331,11 +1008,11 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool UpdateProductForImport(ref string ErrorMsg, object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID, object MinPackingQty, object URL, object Memo, object StopFlag)
+        public bool UpdateProductForImport(ref string ErrorMsg, object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID, object MinPackingQty, object URL, object Memo,object CustomFlag, object StopFlag)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
-            SqlParameter[] arParams = new SqlParameter[20];
+            SqlParameter[] arParams = new SqlParameter[21];
             arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
             arParams[1] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
             arParams[2] = new SqlParameter("@PrdCode", SqlDbType.VarChar);
@@ -1369,7 +1046,8 @@ namespace JERPData.Product
             arParams[17].Size = 500;
             arParams[18] = new SqlParameter("@Memo", SqlDbType.VarChar);
             arParams[18].Size = 500;
-            arParams[19] = new SqlParameter("@StopFlag", SqlDbType.Bit);
+            arParams[19] = new SqlParameter("@CustomFlag", SqlDbType.Bit);
+            arParams[20] = new SqlParameter("@StopFlag", SqlDbType.Bit);
             arParams[0].Value = PrdID;
             arParams[1].Value = PrdTypeID;
             arParams[2].Value = PrdCode;
@@ -1389,7 +1067,9 @@ namespace JERPData.Product
             arParams[16].Value = MinPackingQty;
             arParams[17].Value = URL;
             arParams[18].Value = Memo;
-            arParams[19].Value = StopFlag;
+            arParams[19].Value = CustomFlag;
+            arParams[20].Value = StopFlag;
+            
             SqlTransaction DBTransaction = null;
             try
             {
@@ -1411,185 +1091,7 @@ namespace JERPData.Product
             }
             return flag;
         }
-        //public bool UpdateProductForMinPackingQty(ref string ErrorMsg, object PrdID, object MinPackingQty)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@MinPackingQty", SqlDbType.Decimal);
-        //    arParams[1].Precision = 18;
-        //    arParams[1].Scale = 4;
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = MinPackingQty;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForMinPackingQty", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForSupplierPrdCode(ref string ErrorMsg, object PrdID)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForSupplierPrdCode", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-  
-        //public bool UpdateProductForSalePrice(ref string ErrorMsg, object PrdID, object SalePrice)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@SalePrice", SqlDbType.Money);
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = SalePrice;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForSalePrice", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForCostPrice(ref string ErrorMsg, object PrdID, object CostPrice)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@CostPrice", SqlDbType.Money);
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = CostPrice;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForCostPrice", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForManufProcessList(ref string ErrorMsg, object PrdID)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForManufProcessList", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForManufDays(ref string ErrorMsg, object PrdID, object ManufDays)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@ManufDays", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = ManufDays;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForManufDays", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
+ 
 
         public bool UpdateProductForAssistantCode(ref string ErrorMsg, object PrdID, object AssistantCode)
         {
@@ -1622,182 +1124,7 @@ namespace JERPData.Product
             }
             return flag;
         }
-        //public bool UpdateProductForBuyer(ref string ErrorMsg, object PrdID)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForBuyer", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForPrdSetCount(ref string ErrorMsg, object PrdID)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[1];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForPrdSetCount", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForFileCount(ref string ErrorMsg, object PrdID, object FileCount)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@FileCount", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = FileCount;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForFileCount", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForImgCount(ref string ErrorMsg, object PrdID, object ImgCount)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@ImgCount", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = ImgCount;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForImgCount", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForManufImgCount(ref string ErrorMsg, object PrdID, object ManufImgCount)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@ManufImgCount", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = ManufImgCount;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForManufImgCount", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
-        //public bool UpdateProductForSalePriceFileCount(ref string ErrorMsg, object PrdID, object SalePriceFileCount)
-        //{
-        //    bool flag = false;
-        //    ErrorMsg = string.Empty;
-        //    SqlParameter[] arParams = new SqlParameter[2];
-        //    arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
-        //    arParams[1] = new SqlParameter("@SalePriceFileCount", SqlDbType.Int);
-        //    arParams[0].Value = PrdID;
-        //    arParams[1].Value = SalePriceFileCount;
-        //    SqlTransaction DBTransaction = null;
-        //    try
-        //    {
-        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-        //        DBTransaction = this.sqlConn.BeginTransaction();
-        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForSalePriceFileCount", arParams);
-        //        DBTransaction.Commit();
-        //        flag = true;
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        ErrorMsg = ex.Message; //返回错误信息
-        //        flag = false;
-        //        DBTransaction.Rollback();//--回退事务
-        //    }
-        //    finally
-        //    {
-        //        this.sqlConn.Close();
-        //    }
-        //    return flag;
-        //}
+ 
 
         public bool InsertProductForPrdSet(ref string ErrorMsg, ref object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object AssistantCode, object UnitID)
         {
@@ -1935,6 +1262,56 @@ namespace JERPData.Product
             }
 
             return ds;
+        }
+        public DataSet GetDataManuProductTypeProTable()
+        {
+            DataSet ds = null;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataManuProductTypeProTable");
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+
+
+        public bool UpdateManuProductForPrdTypeID(ref string ErrorMsg, object PrdID, object PrdTypeID)
+        {
+            bool flag = false;
+            ErrorMsg = string.Empty;
+            SqlParameter[] arParams = new SqlParameter[2];
+            arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
+            arParams[1] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+            arParams[0].Value = PrdID;
+            arParams[1].Value = PrdTypeID;
+            SqlTransaction DBTransaction = null;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                DBTransaction = this.sqlConn.BeginTransaction();
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateManuProductForPrdTypeID", arParams);
+                DBTransaction.Commit();
+                flag = true;
+            }
+            catch (SqlException ex)
+            {
+                ErrorMsg = ex.Message; //返回错误信息
+                flag = false;
+                DBTransaction.Rollback();//--回退事务
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return flag;
         }
     }
 }

@@ -89,6 +89,7 @@
     <Compile Include="General\Message.cs" />
     <Compile Include="General\Parms.cs" />
     <Compile Include="General\PotentialCustomer.cs" />
+    <Compile Include="General\PrdProType.cs" />
     <Compile Include="General\ReturnHandleType.cs" />
     <Compile Include="General\WorkingReports.cs" />
     <Compile Include="Hr\Personnel.cs" />

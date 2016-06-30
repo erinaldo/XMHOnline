@@ -33,27 +33,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgrdv = new JCommon.MyDataGridView();
-            this.ColumnPrdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrdSpec = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrdType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnitID = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ColumnAssistantCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrdCodeSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ctrlQFind = new JCommon.CtrlGridFind();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
-            this.lnkNew = new System.Windows.Forms.LinkLabel();
             this.cMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.mItemPrdType = new System.Windows.Forms.ToolStripMenuItem();
             this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlCommonTypeTree();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ColumnPrdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrdSpec = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnitID = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ColumnAssistantCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrdCodeSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCustomFlag = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).BeginInit();
             this.panel2.SuspendLayout();
             this.cMenu.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgrdv
@@ -63,10 +64,10 @@
             this.ColumnPrdCode,
             this.ColumnPrdName,
             this.ColumnPrdSpec,
-            this.ColumnPrdType,
             this.ColumnUnitID,
             this.ColumnAssistantCode,
             this.ColumnPrdCodeSrc,
+            this.ColumnCustomFlag,
             this.ColumnMemo});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -76,7 +77,8 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgrdv.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgrdv.Location = new System.Drawing.Point(182, 27);
+            this.dgrdv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrdv.Location = new System.Drawing.Point(176, 0);
             this.dgrdv.Name = "dgrdv";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -90,61 +92,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgrdv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgrdv.RowTemplate.Height = 23;
-            this.dgrdv.Size = new System.Drawing.Size(987, 582);
+            this.dgrdv.Size = new System.Drawing.Size(1018, 624);
             this.dgrdv.TabIndex = 1;
-            // 
-            // ColumnPrdCode
-            // 
-            this.ColumnPrdCode.DataPropertyName = "PrdCode";
-            this.ColumnPrdCode.Frozen = true;
-            this.ColumnPrdCode.HeaderText = "产品编号";
-            this.ColumnPrdCode.Name = "ColumnPrdCode";
-            // 
-            // ColumnPrdName
-            // 
-            this.ColumnPrdName.DataPropertyName = "PrdName";
-            this.ColumnPrdName.Frozen = true;
-            this.ColumnPrdName.HeaderText = "产品名称";
-            this.ColumnPrdName.Name = "ColumnPrdName";
-            // 
-            // ColumnPrdSpec
-            // 
-            this.ColumnPrdSpec.DataPropertyName = "PrdSpec";
-            this.ColumnPrdSpec.Frozen = true;
-            this.ColumnPrdSpec.HeaderText = "产品规格";
-            this.ColumnPrdSpec.Name = "ColumnPrdSpec";
-            // 
-            // ColumnPrdType
-            // 
-            this.ColumnPrdType.HeaderText = "类型详情";
-            this.ColumnPrdType.Name = "ColumnPrdType";
-            // 
-            // ColumnUnitID
-            // 
-            this.ColumnUnitID.DataPropertyName = "UnitID";
-            this.ColumnUnitID.HeaderText = "单位";
-            this.ColumnUnitID.Name = "ColumnUnitID";
-            this.ColumnUnitID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnUnitID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnAssistantCode
-            // 
-            this.ColumnAssistantCode.DataPropertyName = "AssistantCode";
-            this.ColumnAssistantCode.HeaderText = "助记码";
-            this.ColumnAssistantCode.Name = "ColumnAssistantCode";
-            // 
-            // ColumnPrdCodeSrc
-            // 
-            this.ColumnPrdCodeSrc.DataPropertyName = "PrdCodeSrc";
-            this.ColumnPrdCodeSrc.HeaderText = "对应产品编号";
-            this.ColumnPrdCodeSrc.Name = "ColumnPrdCodeSrc";
-            this.ColumnPrdCodeSrc.Visible = false;
-            // 
-            // ColumnMemo
-            // 
-            this.ColumnMemo.DataPropertyName = "Memo";
-            this.ColumnMemo.HeaderText = "备注";
-            this.ColumnMemo.Name = "ColumnMemo";
             // 
             // panel2
             // 
@@ -152,9 +101,10 @@
             this.panel2.Controls.Add(this.btnExport);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnImport);
-            this.panel2.Location = new System.Drawing.Point(182, 615);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(176, 624);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(854, 35);
+            this.panel2.Size = new System.Drawing.Size(1018, 35);
             this.panel2.TabIndex = 6;
             // 
             // ctrlQFind
@@ -192,16 +142,6 @@
             this.btnImport.Text = "Excel导入";
             this.btnImport.UseVisualStyleBackColor = true;
             // 
-            // lnkNew
-            // 
-            this.lnkNew.AutoSize = true;
-            this.lnkNew.Location = new System.Drawing.Point(182, 9);
-            this.lnkNew.Name = "lnkNew";
-            this.lnkNew.Size = new System.Drawing.Size(53, 12);
-            this.lnkNew.TabIndex = 12;
-            this.lnkNew.TabStop = true;
-            this.lnkNew.Text = "新建物料";
-            // 
             // cMenu
             // 
             this.cMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -225,27 +165,96 @@
             // ctrlPrdTypeID
             // 
             this.ctrlPrdTypeID.AutoSize = true;
-            this.ctrlPrdTypeID.Location = new System.Drawing.Point(-1, 9);
+            this.ctrlPrdTypeID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlPrdTypeID.Location = new System.Drawing.Point(0, 0);
             this.ctrlPrdTypeID.Name = "ctrlPrdTypeID";
-            this.ctrlPrdTypeID.Size = new System.Drawing.Size(177, 641);
+            this.ctrlPrdTypeID.Size = new System.Drawing.Size(176, 659);
             this.ctrlPrdTypeID.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ctrlPrdTypeID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(176, 659);
+            this.panel1.TabIndex = 14;
+            // 
+            // ColumnPrdCode
+            // 
+            this.ColumnPrdCode.DataPropertyName = "PrdCode";
+            this.ColumnPrdCode.Frozen = true;
+            this.ColumnPrdCode.HeaderText = "产品编号";
+            this.ColumnPrdCode.Name = "ColumnPrdCode";
+            // 
+            // ColumnPrdName
+            // 
+            this.ColumnPrdName.DataPropertyName = "PrdName";
+            this.ColumnPrdName.Frozen = true;
+            this.ColumnPrdName.HeaderText = "产品名称";
+            this.ColumnPrdName.Name = "ColumnPrdName";
+            // 
+            // ColumnPrdSpec
+            // 
+            this.ColumnPrdSpec.DataPropertyName = "PrdSpec";
+            this.ColumnPrdSpec.Frozen = true;
+            this.ColumnPrdSpec.HeaderText = "产品规格";
+            this.ColumnPrdSpec.Name = "ColumnPrdSpec";
+            // 
+            // ColumnUnitID
+            // 
+            this.ColumnUnitID.DataPropertyName = "UnitID";
+            this.ColumnUnitID.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ColumnUnitID.HeaderText = "单位";
+            this.ColumnUnitID.Name = "ColumnUnitID";
+            this.ColumnUnitID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUnitID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUnitID.Width = 54;
+            // 
+            // ColumnAssistantCode
+            // 
+            this.ColumnAssistantCode.DataPropertyName = "AssistantCode";
+            this.ColumnAssistantCode.HeaderText = "助记码";
+            this.ColumnAssistantCode.Name = "ColumnAssistantCode";
+            // 
+            // ColumnPrdCodeSrc
+            // 
+            this.ColumnPrdCodeSrc.DataPropertyName = "PrdCodeSrc";
+            this.ColumnPrdCodeSrc.HeaderText = "对应产品编号";
+            this.ColumnPrdCodeSrc.Name = "ColumnPrdCodeSrc";
+            this.ColumnPrdCodeSrc.Visible = false;
+            // 
+            // ColumnCustomFlag
+            // 
+            this.ColumnCustomFlag.DataPropertyName = "CustomFlag";
+            this.ColumnCustomFlag.HeaderText = "客户产品";
+            this.ColumnCustomFlag.Name = "ColumnCustomFlag";
+            this.ColumnCustomFlag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnCustomFlag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColumnMemo
+            // 
+            this.ColumnMemo.DataPropertyName = "Memo";
+            this.ColumnMemo.HeaderText = "备注";
+            this.ColumnMemo.Name = "ColumnMemo";
+            this.ColumnMemo.Width = 180;
             // 
             // FrmManuPrdDefine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 659);
-            this.Controls.Add(this.ctrlPrdTypeID);
-            this.Controls.Add(this.lnkNew);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgrdv);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "FrmManuPrdDefine";
             this.Text = "FrmManuPrdDefine";
             ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).EndInit();
             this.panel2.ResumeLayout(false);
             this.cMenu.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -257,18 +266,18 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.LinkLabel lnkNew;
         private System.Windows.Forms.ContextMenuStrip cMenu;
         private System.Windows.Forms.ToolStripMenuItem mItemRefresh;
         private System.Windows.Forms.ToolStripMenuItem mItemPrdType;
+        private JERPApp.Define.Product.CtrlCommonTypeTree ctrlPrdTypeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrdCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrdName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrdSpec;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrdType;
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnUnitID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAssistantCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrdCodeSrc;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnCustomFlag;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMemo;
-        private JERPApp.Define.Product.CtrlCommonTypeTree ctrlPrdTypeID;
+        private System.Windows.Forms.Panel panel1;
     }
 }

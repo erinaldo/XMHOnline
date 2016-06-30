@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace JERPApp.Engineer
             this.accUnits = new JERPData.General.Unit();
             this.accManuPrdType = new JERPData.Product.ManuPrdType();
             this.accProductTypePro = new JERPData.Product.ManuProductTypePro();
+            this.accProType = new JERPData.General.PrdProType();
             this.SetPermit();
         }
 
@@ -28,6 +30,8 @@ namespace JERPApp.Engineer
 
         private JERPData.Product.ManuProduct accPrds;
         private JERPData.General.Unit accUnits;
+        private JERPData.General.PrdProType accProType;
+
         private DataTable dtbliniProduct, dtblProduct, dtblUnits;
 
         //类型
@@ -79,15 +83,15 @@ namespace JERPApp.Engineer
 
         //初始化dgrdv控件，增加列
         private void initDgrdv(String name) {
-            DataSet ds = accPrds.GetTypePro();
+            DataSet ds = accPrds.GetDataManuProductTypeProTable();
             //String[] FieldNames = new String[] { "FieldName","Type" ,"FieldType" ,"FieldText"};
             for(int row= 0;row < ds.Tables[0].Rows.Count;row ++){
                 DataGridViewComboBoxColumn colbox = new DataGridViewComboBoxColumn();
                 DataRow datarow=  ds.Tables[0].Rows[row];
-                String fieldName = (String) datarow["FieldName"];
-                String fieldText = (String) datarow["FieldText"];
-                String type = (String) datarow["Type"];
-                String TypeParentID = (String)datarow["TypeParentID"];
+                String fieldName = (String) datarow["FFieldName"];
+                String fieldText = (String) datarow["FFieldText"];
+                String type = (String) datarow["FType"];
+                String TypeParentID = (String)datarow["FTypeParentID"];
                 if (type.Equals("1")){
                     colbox.HeaderText = fieldText ;
                     colbox.Name  = fieldName;  
@@ -185,15 +189,29 @@ namespace JERPApp.Engineer
         void frmPrdType_AffterSelected()
         {
             int PrdTypeID = this.frmPrdType.PrdTypeID;
+            DataGridViewCell cuCell = this.dgrdv.CurrentCell;
+            //if(cuCell != null && cuCell.RowIndex >=0 && cuCell.ColumnIndex >=0 )
+            //{
+            //    Debug.WriteLine(cuCell.RowIndex + ":" + cuCell.ColumnIndex );
+            //}
+            bool flag = false;
+            String errormsg = String.Empty; 
             for (int irow = 0; irow < this.dgrdv.Rows.Count - 1; irow++)
             {
                 if (this.dgrdv.Rows[irow].Selected)
                 {
-                    this.SaveRow(PrdTypeID, this.dtblProduct.DefaultView[irow].Row);
+                    this.ChangeManuPrdType(ref flag, ref errormsg , PrdTypeID, this.dtblProduct.DefaultView[irow].Row["PrdID"]);
                 }
             }
-            MessageBox.Show("成功变换当前选中行的类别");
-            this.LoadData();
+            if (flag)
+            {
+
+                MessageBox.Show("成功变换当前选中行的类别");
+                this.LoadData();
+            }
+            else {
+                MessageBox.Show("变换类别失败:" + errormsg);
+            }
             frmPrdType.Close();
         }
 
@@ -260,22 +278,6 @@ namespace JERPApp.Engineer
 
         }
 
-        ////增加类型的
-        //private void AddOtherCol(DataTable dt) {
-        //    DataSet ds = accPrds.GetTypePro();
-        //    //String[] FieldNames = new String[] { "FieldName","Type" ,"FieldType" ,"FieldText"};
-        //    for (int row = 0; row < ds.Tables[0].Rows.Count; row++)
-        //    {
-        //        DataRow datarow = ds.Tables[0].Rows[row];
-        //        String fieldName = (String)datarow["FieldName"];
-        //        String type = (String)datarow["Type"];
-        //        if (type.Equals("1"))
-        //        {
-        //            dt.Columns.Add(fieldName, typeof(int));
-        //        }
-        //    }
-        //}
-
         void dgrdv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int irow = e.RowIndex;
@@ -294,9 +296,8 @@ namespace JERPApp.Engineer
                 if (drow.RowState == DataRowState.Deleted) continue;
                 if (drow.RowState == DataRowState.Unchanged) continue;
                 this.SaveRow(this.ctrlPrdTypeID.PrdTypeID, drow);
-                drow.AcceptChanges();
             }
-            MessageBox.Show("成功保存了产品定义");
+            MessageBox.Show("成保存了产品定义");
         }
 
         private bool ValidateData()
@@ -315,6 +316,11 @@ namespace JERPApp.Engineer
             return true;
         }
 
+        private void ChangeManuPrdType(ref bool flag,ref String errormsg, int PrdTypeID, Object PrdID)
+        {
+            if (PrdID == DBNull.Value) return;
+            flag = this.accPrds.UpdateManuProductForPrdTypeID(ref errormsg, PrdID, PrdTypeID);
+        }
 
         private void SaveRow(int PrdTypeID, DataRow drow)
         {
@@ -350,6 +356,7 @@ namespace JERPApp.Engineer
                         0,//drow["MinPackingQty"],
                         drow["URL"],
                         drow["Memo"],
+                        drow["CustomFlag"],
                         0//drow["StopFlag"]
                         );
                 if (flag)
@@ -360,17 +367,16 @@ namespace JERPApp.Engineer
                     this.accProductTypePro.InsertManuProductTypePro(
                          ref errormsg,
                          drow["PrdID"],
-                         -1,
+                         drow["ProType1"],
                          drow["ProType2"],
                          drow["ProType3"],
-                         -1,
+                         drow["ProType4"],
                          -1,
                          -1,
                          -1
                         );
                     return;
                 }
-
             }
             else
             {
@@ -401,30 +407,26 @@ namespace JERPApp.Engineer
                         0,//drow["MinPackingQty"],
                         drow["URL"],
                         drow["Memo"],
+                        drow["CustomFlag"],
                         0//drow["StopFlag"]
                         );
+                if (flag)
+                {
+                    drow.AcceptChanges();
+                    //增加属性
+                    this.accProductTypePro.UpdateManuProductTypePro(
+                         ref errormsg,
+                         drow["PrdID"],
+                         drow["ProType1"],
+                         drow["ProType2"],
+                         drow["ProType3"],
+                         drow["ProType4"],
+                         -1,
+                         -1,
+                         -1
+                        );
+                }
             }
-            if (flag)
-            {
-                drow.AcceptChanges();
-                //增加属性
-                this.accProductTypePro.UpdateManuProductTypePro(
-                     ref errormsg,
-                     drow["PrdID"],
-                     -1,
-                     drow["ProType2"],
-                     drow["ProType3"],
-                     -1,
-                     -1,
-                     -1,
-                     -1
-                    );
-            }
-            else
-            {
-                MessageBox.Show(errormsg);
-            }
-
         }
 
         private int GetPrdID(string PrdCode)
@@ -448,23 +450,17 @@ namespace JERPApp.Engineer
                     new DataColumn ("产品编号",typeof (string)),
                     new DataColumn ("产品名称",typeof (string)),              
                     new DataColumn ("产品规格",typeof (string)),                 
-                    new DataColumn ("型号",typeof (string)),                     
-                    new DataColumn ("封装/表面处理",typeof (string)),                     
-                    new DataColumn ("品牌",typeof (string)),    
                     new DataColumn ("单位",typeof (string)),            
-                    new DataColumn ("销售",typeof (string)),                    
                     new DataColumn ("助记码",typeof (string)),                     
-                    new DataColumn ("图号",typeof (string)),   
-                    new DataColumn ("最小包装",typeof (decimal)),
-                    new DataColumn ("网址",typeof (string)),
+                    new DataColumn ("客户产品",typeof (string)),   
                     new DataColumn ("备注",typeof (string)),
-                    new DataColumn ("停用",typeof (string)),                                
-                    new DataColumn ("保税料",typeof (string)),    
-                    new DataColumn ("Rohs合格",typeof (string)),    
-                    new DataColumn ("Rohs要求",typeof (string)),   
-                    new DataColumn ("单重",typeof (decimal))      
+
+                    new DataColumn ("刀片R角",typeof (string)),                                
+                    new DataColumn ("刀片左右手",typeof (string)),    
+                    new DataColumn ("排屑槽",typeof (string)),    
+                    new DataColumn ("被加工材料/刀片材质",typeof (string))
                 };
-                this.frmImport.SetImportColumn(columns, "产品编号不能为空，单位不填默认为PCS,保税料,Rohs填是或不填");
+                this.frmImport.SetImportColumn(columns, "产品编号不能为空，单位不填默认为PCS");
             }
             this.frmImport.ShowDialog();
 
@@ -491,30 +487,23 @@ namespace JERPApp.Engineer
                 msg = "已存在此编号";
                 return;
             }
-            bool SaleFlag = this.GetBool(drow["销售"].ToString());
-            bool TaxfreeFlag = this.GetBool(drow["保税料"].ToString());
-            bool RohsFlag = this.GetBool(drow["Rohs合格"].ToString());
-            bool RohsRequireFlag = this.GetBool(drow["Rohs要求"].ToString());
-            bool StopFlag = this.GetBool(drow["停用"].ToString());
+            bool CustomFlag = this.GetBool(drow["客户产品"].ToString());
+            //bool StopFlag = this.GetBool(drow["停用"].ToString());
             DataRow drowNew = this.dtblProduct.NewRow();
             drowNew["PrdCode"] = drow["产品编号"];
             drowNew["PrdName"] = drow["产品名称"];
             drowNew["PrdSpec"] = drow["产品规格"];
-            drowNew["Model"] = drow["型号"];
-            drowNew["Surface"] = drow["封装/表面处理"];
-            drowNew["Manufacturer"] = drow["品牌"];
-            drowNew["DWGNo"] = drow["图号"];
-            drowNew["AssistantCode"] = drow["助记码"];
-            drowNew["MinPackingQty"] = drow["最小包装"];
-            drowNew["PrdWeight"] = drow["单重"];
-            drowNew["SaleFlag"] = SaleFlag;
-            drowNew["TaxfreeFlag"] = TaxfreeFlag;
-            drowNew["RohsFlag"] = RohsFlag;
-            drowNew["RohsRequireFlag"] = RohsRequireFlag;
             drowNew["UnitID"] = this.GetUnitID(UnitName);
-            drowNew["URL"] = drow["网址"];
+            drowNew["AssistantCode"] = drow["助记码"];
             drowNew["Memo"] = drow["备注"];
-            drowNew["StopFlag"] = StopFlag;
+            drowNew["CustomFlag"] = CustomFlag;
+
+            drowNew["ProType1"] = GetPrdTypeID(drow["刀片R角"].ToString(), 71);
+            drowNew["ProType2"] = GetPrdTypeID(drow["刀片左右手"].ToString(),114);
+            drowNew["ProType3"] = GetPrdTypeID(drow["排屑槽"].ToString(), 73);
+            drowNew["ProType4"] = GetPrdTypeID(drow["被加工材料/刀片材质"].ToString(), 72);
+
+            //drowNew["StopFlag"] = StopFlag;
             this.dtblProduct.Rows.Add(drowNew);
         }
 
@@ -528,6 +517,19 @@ namespace JERPApp.Engineer
             int UnitID = 1;
             this.accUnits.GetParmUnitUnitID(ref UnitID, UnitName);
             return UnitID;
-        }    
+        }
+
+        int GetPrdTypeID(string TypeName ,int patentID)
+        {
+            int PrdTypeID = -1;
+            DataSet data =  this.accProType.GetDataManuPrdTypeByManuPrdTypeNameAndParentID(TypeName,patentID);
+            if (data.Tables[0] != null && data.Tables[0].Rows.Count > 0)
+            { 
+                foreach (DataRow  datarow in data.Tables[0].Rows ){
+                    PrdTypeID = (Int32)datarow[0];
+                }
+            }
+            return PrdTypeID;
+        }      
     }
 }
