@@ -1288,3 +1288,57 @@ BEGIN
 		(ManuPrdTypeName=@ManuPrdTypeName) and 
 		(ParentID=@ParentID)
 END
+
+
+/*
+数据表 [prd.ManuPrdType]  按选择条件查询
+*/
+--=====================================================================
+
+CREATE PROCEDURE prd.GetDataManuPrdTypeByParentID
+(
+	@ParentID int   
+)
+AS
+BEGIN
+	SELECT 
+		*
+	FROM prd.ManuPrdType
+	WHERE 
+		(ParentID=@ParentID)
+END
+
+
+
+
+--=====================================================================
+--作者:金优富
+--时间:2013-9-21 17:06:46
+--描述
+/*
+数据表 [prd.Product]  按选择条件查询
+*/
+--=====================================================================
+-- drop PROCEDURE [prd].[GetDataAllManuProductByPrdTypeID]
+CREATE PROCEDURE [prd].[GetDataAllManuProductByPrdTypeID]
+(
+	@PrdTypeID int
+)
+AS
+BEGIN
+	SELECT 
+		a1.*, 
+		general.F_GetUnitUnitName(UnitID) as UnitName,a2.ProType1,a2.ProType2,a2.ProType3,a2.ProType4,a2.ProType5,a2.ProType6,a2.ProType7
+	FROM prd.ManuProduct a1 left join prd.ManuProductTypePro a2 on a1.PrdID = a2.PrdID
+	where PrdTypeID =@PrdTypeID
+	union all
+	SELECT 
+		a1.*, 
+		general.F_GetUnitUnitName(UnitID) as UnitName,a2.ProType1,a2.ProType2,a2.ProType3,a2.ProType4,a2.ProType5,a2.ProType6,a2.ProType7
+	FROM prd.ManuProduct a1 left join prd.ManuProductTypePro a2 on a1.PrdID = a2.PrdID
+	where  PrdTypeID in (select PrdIDDesc from prd.ManuProductTypeProRelation where PrdIDSrc =  @PrdTypeID)
+	 
+END
+
+GO
+

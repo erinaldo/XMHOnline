@@ -290,14 +290,22 @@ namespace JERPApp.Engineer
 
         void btnSave_Click(object sender, EventArgs e)
         {
+            bool isSvae = false;
             if (ValidateData() == false) return;
             foreach (DataRow drow in this.dtblProduct.Rows)
             {
                 if (drow.RowState == DataRowState.Deleted) continue;
                 if (drow.RowState == DataRowState.Unchanged) continue;
                 this.SaveRow(this.ctrlPrdTypeID.PrdTypeID, drow);
+                isSvae = true;
             }
-            MessageBox.Show("成保存了产品定义");
+            if (isSvae)
+            {
+                MessageBox.Show("成保存了产品定义");
+            }
+            else {
+                MessageBox.Show("产品定义未变更，不需要保存");
+            }
         }
 
         private bool ValidateData()
@@ -530,6 +538,14 @@ namespace JERPApp.Engineer
                 }
             }
             return PrdTypeID;
-        }      
+        }
+
+        private void dgrdv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            //String columnName = this.dgrdv.Columns[e.ColumnIndex].HeaderText;
+            this.dgrdv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Red;
+            //MessageBox.Show("第" + e.RowIndex + "行，列" + columnName +"错误，请重新选择");
+        }
+
     }
 }

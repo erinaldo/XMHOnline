@@ -172,6 +172,28 @@ namespace JERPData.Product
             return ds;
         }
 
+        public DataSet GetDataAllManuProductByPrdTypeID(int PrdTypeID)
+        {
+            DataSet ds = null;
+            SqlParameter[] arParams = new SqlParameter[1];
+            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+            arParams[0].Value = PrdTypeID;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataAllManuProductByPrdTypeID", arParams);
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+
         public DataSet GetDataProductByAssistantCode(string AssistantCode)
         {
             DataSet ds = null;

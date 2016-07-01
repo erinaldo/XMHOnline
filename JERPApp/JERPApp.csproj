@@ -39,10 +39,12 @@
     <InstallUrl>http://192.168.1.88:8080/</InstallUrl>
     <ProductName>天衣ERP</ProductName>
     <PublisherName>天衣ERP</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>101</ApplicationRevision>
+    <ApplicationRevision>102</ApplicationRevision>
     <ApplicationVersion>1.0.3.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
@@ -395,6 +397,12 @@
     </Compile>
     <Compile Include="Engineer\FrmManuPrdDefine.Designer.cs">
       <DependentUpon>FrmManuPrdDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\FrmManuPrdSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\FrmManuPrdSel.Designer.cs">
+      <DependentUpon>FrmManuPrdSel.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\Tool\Report\FrmOrderNote.cs">
       <SubType>Form</SubType>
@@ -2447,6 +2455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmManuPrdDefine.resx">
       <DependentUpon>FrmManuPrdDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\FrmManuPrdSel.resx">
+      <DependentUpon>FrmManuPrdSel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Tool\Report\FrmOrderNote.resx">
       <DependentUpon>FrmOrderNote.cs</DependentUpon>

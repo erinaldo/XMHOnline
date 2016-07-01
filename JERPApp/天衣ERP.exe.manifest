@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="天衣ERP.exe" version="1.0.3.101" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="天衣ERP.exe" version="1.0.3.102" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="soft.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -62,19 +62,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Su8iyr7ajJEu5PPBmCXj3QBeAzQ=</dsig:DigestValue>
+        <dsig:DigestValue>OIeGJZp3HG6IYyWvPD1/+5O1btc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JERPData.dll" size="1131520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JERPData.dll" size="1132032">
       <assemblyIdentity name="JERPData" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Dwto+vJHMhsQa20wvKHFypIuTC4=</dsig:DigestValue>
+        <dsig:DigestValue>929UFm+tiv9elm12TiuOvTxVqgU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,24 +103,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="天衣ERP.exe" size="3192832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="天衣ERP.exe" size="3200512">
       <assemblyIdentity name="天衣ERP" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LiTUiNgtL3cVAMVIo+ufHKK3dd4=</dsig:DigestValue>
+        <dsig:DigestValue>PUjdPi8RUgJmLjudC5Zn/IiGkEA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Properties\类别20160623.sql" size="30714">
+  <file name="Properties\类别20160623.sql" size="32021">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>kh2z9bNcGQSHQH7JrxVK16qPAts=</dsig:DigestValue>
+      <dsig:DigestValue>nFcyF5u0RD9WqHTRL/KWiynCEtE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="soft.ico" size="25214">
