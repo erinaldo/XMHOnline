@@ -62,19 +62,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OIeGJZp3HG6IYyWvPD1/+5O1btc=</dsig:DigestValue>
+        <dsig:DigestValue>ssi5Y3FYoG+mo/XuqBJYYPgg8bY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JERPData.dll" size="1132032">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JERPData.dll" size="1149440">
       <assemblyIdentity name="JERPData" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>929UFm+tiv9elm12TiuOvTxVqgU=</dsig:DigestValue>
+        <dsig:DigestValue>R1zRNQfHbZk8AdaWMtpuhjMn9AY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,24 +103,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="天衣ERP.exe" size="3200512">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="天衣ERP.exe" size="3238400">
       <assemblyIdentity name="天衣ERP" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>PUjdPi8RUgJmLjudC5Zn/IiGkEA=</dsig:DigestValue>
+        <dsig:DigestValue>AT0gt5sIJws4yWOOldo8yutclEc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Properties\类别20160623.sql" size="32021">
+  <file name="Properties\类别20160623.sql" size="39263">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>nFcyF5u0RD9WqHTRL/KWiynCEtE=</dsig:DigestValue>
+      <dsig:DigestValue>3zKJj7fc2AQiDW4mK8GdzQa96YI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="soft.ico" size="25214">

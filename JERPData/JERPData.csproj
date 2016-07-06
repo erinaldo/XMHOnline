@@ -76,6 +76,7 @@
     <Compile Include="Finance\WageNotes.cs" />
     <Compile Include="Finance\WageOtherItems.cs" />
     <Compile Include="General\Area.cs" />
+    <Compile Include="General\ComPrdType.cs" />
     <Compile Include="General\CustomerProcessType.cs" />
     <Compile Include="General\CustomerSourceType.cs" />
     <Compile Include="General\CustomerType.cs" />
@@ -83,13 +84,13 @@
     <Compile Include="General\DeliverType.cs" />
     <Compile Include="General\Diary.cs" />
     <Compile Include="General\DiaryType.cs" />
+    <Compile Include="General\DPPJPrdTyprPro.cs" />
     <Compile Include="General\Express.cs" />
     <Compile Include="General\FinanceAddress.cs" />
     <Compile Include="General\Meeting.cs" />
     <Compile Include="General\Message.cs" />
     <Compile Include="General\Parms.cs" />
     <Compile Include="General\PotentialCustomer.cs" />
-    <Compile Include="General\PrdProType.cs" />
     <Compile Include="General\ReturnHandleType.cs" />
     <Compile Include="General\WorkingReports.cs" />
     <Compile Include="Hr\Personnel.cs" />
@@ -292,6 +293,8 @@
     <Compile Include="Product\BuyReturnItems.cs" />
     <Compile Include="Product\BuyReturnNotes.cs" />
     <Compile Include="Manufacture\OutSrcOrderType.cs" />
+    <Compile Include="Product\ComProduct.cs" />
+    <Compile Include="Product\DPPrdTyprPro.cs" />
     <Compile Include="Product\ExpressReceiptFormat.cs" />
     <Compile Include="Product\ExpressReceiptNotes.cs" />
     <Compile Include="Product\ExpressReconciliationField.cs" />

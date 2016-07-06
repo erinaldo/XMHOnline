@@ -8,17 +8,16 @@ using System.Windows.Forms;
 
 namespace JERPApp.Engineer
 {
-    public partial class FrmManuPrdSel : Form
+    public partial class FrmDGDPPrdSel : Form
     {
-        public FrmManuPrdSel()
+        public FrmDGDPPrdSel()
         {
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
-            this.accPrds = new JERPData.Product.ManuProduct();
+            this.accPrds = new JERPData.Product.ComProduct();
             this.accUnits = new JERPData.General.Unit();
-            this.accManuPrdType = new JERPData.Product.ManuPrdType();
-            this.accProductTypePro = new JERPData.Product.ManuProductTypePro();
-            this.accProType = new JERPData.General.ComPrdType();
+            this.accProductTypePro = new JERPData.Product.DPPrdTypePro();
+            this.accDPPrdType = new JERPData.Product.DPPrdTypePro();
             this.SetPermit();
         }
 
@@ -28,26 +27,24 @@ namespace JERPApp.Engineer
         private bool enableSave = false;//保存
 
 
-        private JERPData.Product.ManuProduct accPrds;
+        private JERPData.Product.ComProduct accPrds;
         private JERPData.General.Unit accUnits;
-        private JERPData.General.ComPrdType accProType;
 
         private DataTable dtbliniProduct, dtblProduct, dtblUnits, dtbManuPrdType1, dtbManuPrdType2, dtbManuPrdType3, dtbManuPrdType4;
 
         //类型
-        private JERPData.Product.ManuPrdType accManuPrdType;
+        private JERPData.Product.DPPrdTypePro accDPPrdType;
         //属性
-        private JERPData.Product.ManuProductTypePro accProductTypePro;
+        private JERPData.Product.DPPrdTypePro accProductTypePro;
 
         //private DataTable dtblPrdType;
 
-        private JERPApp.Define.Product.FrmManuPrdType frmPrdType;
-        private JCommon.FrmExcelImport frmImport;
+
 
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(18);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(19);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(28);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(29);
             if (this.enableBrowse)
             {
                 this.SetColumnSrc();
@@ -82,22 +79,6 @@ namespace JERPApp.Engineer
 
             for (int row = 0; row < ds.Tables[0].Rows.Count; row++)
             {
-                //DataGridViewTextBoxColumn txtcol = new DataGridViewTextBoxColumn();
-                //DataRow datarow = ds.Tables[0].Rows[row];
-                //String fieldName = (String)datarow["FFieldName"];
-                //String fieldText = (String)datarow["FFieldText"];
-                //String type = (String)datarow["FType"];
-                //String TypeParentID = (String)datarow["FTypeParentID"];
-                //if (type.Equals("1"))
-                //{
-                //    txtcol.HeaderText = fieldText;
-                //    txtcol.Visible = true;
-                //    txtcol.DataPropertyName = fieldName;
-
-                //    int TParentID = Int32.Parse(TypeParentID);
-                //    txtcol.DataSource = this.accManuPrdType.GetDataPrdTypeByParentID(TParentID).Tables[0];
-                //    txtcol.
-                //}
 
                 DataGridViewComboBoxColumn colbox = new DataGridViewComboBoxColumn();
                 DataRow datarow = ds.Tables[0].Rows[row];
@@ -114,9 +95,9 @@ namespace JERPApp.Engineer
                     colbox.DisplayIndex = dgrdv.Columns.Count + row + 1;
 
                     int TParentID = Int32.Parse(TypeParentID);
-                    colbox.DataSource = this.accManuPrdType.GetDataPrdTypeByParentID(TParentID).Tables[0];
-                    colbox.ValueMember = "ManuPrdTypeID";
-                    colbox.DisplayMember = "ManuPrdTypeName";
+                    colbox.DataSource = this.accDPPrdType.GetDataDPPrdTypeProByParentID(TParentID).Tables[0];
+                    colbox.ValueMember = "PrdTypeID";
+                    colbox.DisplayMember = "PrdTypeName";
                     dgrdv.Columns.Add(colbox);
                 }
              
@@ -191,37 +172,37 @@ namespace JERPApp.Engineer
         {
             if (name.Equals("") || parentID < 0) return ;
 
-            this.dtbManuPrdType1 = this.accProType.GetDataManuPrdTypeByManuPrdTypeNameAndParentID(name, parentID).Tables[0];
+            this.dtbManuPrdType1 = this.accPrds.GetDataComPrdTypeByManuPrdTypeNameAndParentID(name, parentID).Tables[0];
             this.cmbMenuPrdType1.DataSource = this.dtbManuPrdType1;
-            this.cmbMenuPrdType1.ValueMember = "ManuPrdTypeID";
-            this.cmbMenuPrdType1.DisplayMember = "ManuPrdTypeName";
+            this.cmbMenuPrdType1.ValueMember = "PrdTypeID";
+            this.cmbMenuPrdType1.DisplayMember = "PrdTypeName";
 
         }
 
         private void SetManuPrdType2Src(String name, int parentID)
         {
             if (name.Equals("") || parentID < 0) return;
-            this.dtbManuPrdType2 = this.accProType.GetDataManuPrdTypeByParentID( parentID).Tables[0];
+            this.dtbManuPrdType2 = this.accPrds.GetDataComPrdTypeByParentID(parentID).Tables[0];
             this.cmbMenuPrdType2.DataSource = this.dtbManuPrdType2;
-            this.cmbMenuPrdType2.ValueMember = "ManuPrdTypeID";
-            this.cmbMenuPrdType2.DisplayMember = "ManuPrdTypeName";
+            this.cmbMenuPrdType2.ValueMember = "PrdTypeID";
+            this.cmbMenuPrdType2.DisplayMember = "PrdTypeName";
 
         }
         private void SetManuPrdType3Src(String name, int parentID)
         {
             if (name.Equals("") || parentID < 0) return;
-            this.dtbManuPrdType3 = this.accProType.GetDataManuPrdTypeByParentID(parentID).Tables[0];
+            this.dtbManuPrdType3 = this.accPrds.GetDataComPrdTypeByParentID(parentID).Tables[0];
             this.cmbMenuPrdType3.DataSource = this.dtbManuPrdType3;
-            this.cmbMenuPrdType3.ValueMember = "ManuPrdTypeID";
-            this.cmbMenuPrdType3.DisplayMember = "ManuPrdTypeName";
+            this.cmbMenuPrdType3.ValueMember = "PrdTypeID";
+            this.cmbMenuPrdType3.DisplayMember = "PrdTypeName";
         }
         private void SetManuPrdType4Src(String name, int parentID)
         {
             if (name.Equals("") || parentID < 0) return;
-            this.dtbManuPrdType4 = this.accProType.GetDataManuPrdTypeByParentID(parentID).Tables[0];
+            this.dtbManuPrdType4 = this.accPrds.GetDataProductByPrdTypeID(parentID).Tables[0];
             this.cmbMenuPrdType4.DataSource = this.dtbManuPrdType4;
-            this.cmbMenuPrdType4.ValueMember = "ManuPrdTypeID";
-            this.cmbMenuPrdType4.DisplayMember = "ManuPrdTypeName";
+            this.cmbMenuPrdType4.ValueMember = "PrdTypeID";
+            this.cmbMenuPrdType4.DisplayMember = "PrdTypeName";
         }
 
 
@@ -240,28 +221,22 @@ namespace JERPApp.Engineer
 
             if (chkGetTypePro.Checked)
             {
-                this.dtbliniProduct = this.accPrds.GetDataAllManuProductByPrdTypeID(PrdTypeID).Tables[0];   
+                this.dtbliniProduct = this.accPrds.GetDataAllDGDPProductByPrdTypeID(PrdTypeID).Tables[0];   
             }
             else
             {
-                this.dtbliniProduct = this.accPrds.GetDataProductByPrdTypeID(PrdTypeID).Tables[0];
+                this.dtbliniProduct = this.accPrds.GetDataDGProductByPrdTypeID(PrdTypeID).Tables[0];
             }
             //AddOtherCol(this.dtbliniProduct);//增加属性列
 
-            this.dtbliniProduct.Columns["PrdCode"].Unique = true;
-            this.dtbliniProduct.Columns["PrdCode"].AllowDBNull = false;
+            //this.dtbliniProduct.Columns["PrdCode"].Unique = true;
+            //this.dtbliniProduct.Columns["PrdCode"].AllowDBNull = false;
             this.dtbliniProduct.Columns["UnitID"].AllowDBNull = false;
             this.dtbliniProduct.Columns["UnitID"].DefaultValue = 1;// 
 
             this.dtblProduct = this.dtbliniProduct.Copy();
             this.dgrdv.DataSource = this.dtblProduct;
 
-        }
-
-        private void ChangeManuPrdType(ref bool flag, ref String errormsg, int PrdTypeID, Object PrdID)
-        {
-            if (PrdID == DBNull.Value) return;
-            flag = this.accPrds.UpdateManuProductForPrdTypeID(ref errormsg, PrdID, PrdTypeID);
         }
 
 

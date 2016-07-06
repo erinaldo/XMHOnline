@@ -845,11 +845,15 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool InsertProductForImport(ref string ErrorMsg, ref object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID, object MinPackingQty, object URL, object Memo,object CustomFlag,object StopFlag)
+        public bool InsertProductForImport(ref string ErrorMsg, ref object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, 
+            object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag,
+            object RohsFlag, object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID, 
+            object DPType, object JMPrice, object PFPrice, object HYPrice, object LSPrice,object CustomCode,Object Brand,
+            object MinPackingQty, object URL, object Memo,object CustomFlag,object StopFlag)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
-            SqlParameter[] arParams = new SqlParameter[21];
+            SqlParameter[] arParams = new SqlParameter[28];
             arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
             arParams[0].Direction = ParameterDirection.InputOutput;
             arParams[1] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
@@ -877,15 +881,34 @@ namespace JERPData.Product
             arParams[13].Scale = 6;
             arParams[14] = new SqlParameter("@SaleFlag", SqlDbType.Bit);
             arParams[15] = new SqlParameter("@UnitID", SqlDbType.Int);
-            arParams[16] = new SqlParameter("@MinPackingQty", SqlDbType.Decimal);
-            arParams[16].Precision = 18;
-            arParams[16].Scale = 4;
-            arParams[17] = new SqlParameter("@URL", SqlDbType.VarChar);
-            arParams[17].Size = 500;
-            arParams[18] = new SqlParameter("@Memo", SqlDbType.VarChar);
-            arParams[18].Size = 500;
-            arParams[19] = new SqlParameter("@CustomFlag", SqlDbType.Bit);
-            arParams[20] = new SqlParameter("@StopFlag", SqlDbType.Bit);
+
+            arParams[16] = new SqlParameter("@DPType", SqlDbType.Int);
+            arParams[17] = new SqlParameter("@JMPrice", SqlDbType.Decimal);
+            arParams[17].Precision = 18;
+            arParams[17].Scale = 4;
+            arParams[18] = new SqlParameter("@PFPrice", SqlDbType.Decimal);
+            arParams[18].Precision = 18;
+            arParams[18].Scale = 4;
+            arParams[19] = new SqlParameter("@HYPrice", SqlDbType.Decimal);
+            arParams[19].Precision = 18;
+            arParams[19].Scale = 4;
+            arParams[20] = new SqlParameter("@LSPrice", SqlDbType.Decimal);
+            arParams[20].Precision = 18;
+            arParams[20].Scale = 4;
+            arParams[21] = new SqlParameter("@CustomCode", SqlDbType.VarChar);
+            arParams[21].Size = 50;
+            arParams[22] = new SqlParameter("@Brand", SqlDbType.VarChar);
+            arParams[22].Size = 50;
+
+            arParams[23] = new SqlParameter("@MinPackingQty", SqlDbType.Decimal);
+            arParams[23].Precision = 18;
+            arParams[23].Scale = 4;
+            arParams[24] = new SqlParameter("@URL", SqlDbType.VarChar);
+            arParams[24].Size = 500;
+            arParams[25] = new SqlParameter("@Memo", SqlDbType.VarChar);
+            arParams[25].Size = 500;
+            arParams[26] = new SqlParameter("@CustomFlag", SqlDbType.Bit);
+            arParams[27] = new SqlParameter("@StopFlag", SqlDbType.Bit);
 
             arParams[0].Value = PrdID;
             arParams[1].Value = PrdTypeID;
@@ -903,11 +926,20 @@ namespace JERPData.Product
             arParams[13].Value = PrdWeight;
             arParams[14].Value = SaleFlag;
             arParams[15].Value = UnitID;
-            arParams[16].Value = MinPackingQty;
-            arParams[17].Value = URL;
-            arParams[18].Value = Memo;
-            arParams[19].Value =CustomFlag;
-            arParams[20].Value = StopFlag;
+
+            arParams[16].Value = DPType;
+            arParams[17].Value = JMPrice;
+            arParams[18].Value = PFPrice;
+            arParams[19].Value = HYPrice;
+            arParams[20].Value = LSPrice;
+            arParams[21].Value = CustomCode;
+            arParams[22].Value = Brand;
+
+            arParams[23].Value = MinPackingQty;
+            arParams[24].Value = URL;
+            arParams[25].Value = Memo;
+            arParams[26].Value =CustomFlag;
+            arParams[27].Value = StopFlag;
             SqlTransaction DBTransaction = null;
             try
             {
@@ -1030,7 +1062,11 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool UpdateProductForImport(ref string ErrorMsg, object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID, object MinPackingQty, object URL, object Memo,object CustomFlag, object StopFlag)
+        public bool UpdateProductForImport(ref string ErrorMsg, object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, 
+            object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, 
+            object RohsRequireFlag, object PrdWeight, object SaleFlag, object UnitID,
+            object DPType, object JMPrice, object PFPrice, object HYPrice, object LSPrice, object CustomCode, Object Brand,
+            object MinPackingQty, object URL, object Memo,object CustomFlag, object StopFlag)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -1061,15 +1097,20 @@ namespace JERPData.Product
             arParams[13].Scale = 6;
             arParams[14] = new SqlParameter("@SaleFlag", SqlDbType.Bit);
             arParams[15] = new SqlParameter("@UnitID", SqlDbType.Int);
-            arParams[16] = new SqlParameter("@MinPackingQty", SqlDbType.Decimal);
-            arParams[16].Precision = 18;
-            arParams[16].Scale = 4;
-            arParams[17] = new SqlParameter("@URL", SqlDbType.VarChar);
-            arParams[17].Size = 500;
-            arParams[18] = new SqlParameter("@Memo", SqlDbType.VarChar);
-            arParams[18].Size = 500;
-            arParams[19] = new SqlParameter("@CustomFlag", SqlDbType.Bit);
-            arParams[20] = new SqlParameter("@StopFlag", SqlDbType.Bit);
+            arParams[16].Value = DPType;
+            arParams[17].Value = JMPrice;
+            arParams[18].Value = PFPrice;
+            arParams[19].Value = HYPrice;
+            arParams[20].Value = LSPrice;
+            arParams[21].Value = CustomCode;
+            arParams[22].Value = Brand;
+
+            arParams[23].Value = MinPackingQty;
+            arParams[24].Value = URL;
+            arParams[25].Value = Memo;
+            arParams[26].Value = CustomFlag;
+            arParams[27].Value = StopFlag;
+
             arParams[0].Value = PrdID;
             arParams[1].Value = PrdTypeID;
             arParams[2].Value = PrdCode;
@@ -1086,11 +1127,21 @@ namespace JERPData.Product
             arParams[13].Value = PrdWeight;
             arParams[14].Value = SaleFlag;
             arParams[15].Value = UnitID;
-            arParams[16].Value = MinPackingQty;
-            arParams[17].Value = URL;
-            arParams[18].Value = Memo;
-            arParams[19].Value = CustomFlag;
-            arParams[20].Value = StopFlag;
+
+
+            arParams[16].Value = DPType;
+            arParams[17].Value = JMPrice;
+            arParams[18].Value = PFPrice;
+            arParams[19].Value = HYPrice;
+            arParams[20].Value = LSPrice;
+            arParams[21].Value = CustomCode;
+            arParams[22].Value = Brand;
+
+            arParams[23].Value = MinPackingQty;
+            arParams[24].Value = URL;
+            arParams[25].Value = Memo;
+            arParams[26].Value = CustomFlag;
+            arParams[27].Value = StopFlag;
             
             SqlTransaction DBTransaction = null;
             try
@@ -1320,6 +1371,37 @@ namespace JERPData.Product
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
                 SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateManuProductForPrdTypeID", arParams);
+                DBTransaction.Commit();
+                flag = true;
+            }
+            catch (SqlException ex)
+            {
+                ErrorMsg = ex.Message; //返回错误信息
+                flag = false;
+                DBTransaction.Rollback();//--回退事务
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return flag;
+        }
+
+        public bool UpdateProductForImgCount(ref string ErrorMsg, object PrdID, object ImgCount)
+        {
+            bool flag = false;
+            ErrorMsg = string.Empty;
+            SqlParameter[] arParams = new SqlParameter[2];
+            arParams[0] = new SqlParameter("@PrdID", SqlDbType.Int);
+            arParams[1] = new SqlParameter("@ImgCount", SqlDbType.Int);
+            arParams[0].Value = PrdID;
+            arParams[1].Value = ImgCount;
+            SqlTransaction DBTransaction = null;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                DBTransaction = this.sqlConn.BeginTransaction();
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateProductForImgCount", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }

@@ -9,30 +9,32 @@ using System.Windows.Forms;
 
 namespace JERPApp.Engineer
 {
-    public partial class FrmManuPrdDefine : Form
+    public partial class FrmDGPrdDefine : Form
     {
-        public FrmManuPrdDefine()
+        private static int m_flag = 1;
+        public FrmDGPrdDefine()
         {
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
-            this.accPrds = new JERPData.Product.ManuProduct();
+            this.accPrds = new JERPData.Product.ComProduct();
             this.accUnits = new JERPData.General.Unit();
             this.accManuPrdType = new JERPData.Product.ManuPrdType();
             this.accProductTypePro = new JERPData.Product.ManuProductTypePro();
-            this.accProType = new JERPData.General.PrdProType();
+            this.accProType = new JERPData.General.ComPrdType();
+            this.ctrlPrdTypeID.InitiaParam(m_flag);
             this.SetPermit();
         }
 
-        //权限码
+        //权限码_
         private bool enableBrowse = false;//浏览
         private bool enableSave = false;//保存
 
 
-        private JERPData.Product.ManuProduct accPrds;
+        private JERPData.Product.ComProduct accPrds;
         private JERPData.General.Unit accUnits;
-        private JERPData.General.PrdProType accProType;
+        private JERPData.General.ComPrdType accProType;
 
-        private DataTable dtbliniProduct, dtblProduct, dtblUnits;
+        private DataTable dtbliniProduct, dtblProduct, dtblUnits, dtblDPType;
 
         //类型
         private JERPData.Product.ManuPrdType accManuPrdType;
@@ -43,6 +45,7 @@ namespace JERPApp.Engineer
 
         private JERPApp.Define.Product.FrmManuPrdType frmPrdType;
         private JCommon.FrmExcelImport frmImport;
+        private JCommon.FrmImgBrowse frmImgBrowse;
 
         private void SetPermit()
         {
@@ -77,7 +80,7 @@ namespace JERPApp.Engineer
 
             }
 
-            initDgrdv("FrmManuPrdDefine");
+            //initDgrdv("FrmManuPrdDefine");
 
         }
 
@@ -224,6 +227,13 @@ namespace JERPApp.Engineer
             this.ColumnUnitID.ValueMember = "UnitID";
             this.ColumnUnitID.DisplayMember = "UnitName";
 
+
+            this.dtblDPType = this.accPrds.GetDataComPrdTypeDPType().Tables[0];
+            this.ColumnDPType.DataSource = this.dtblDPType;
+            this.ColumnDPType.ValueMember = "PrdTypeID";
+            this.ColumnDPType.DisplayMember = "PrdTypeName";
+
+
         }
 
         void ctrlQFind_BeforeFilter()
@@ -286,6 +296,21 @@ namespace JERPApp.Engineer
             object objPrdID = this.dtblProduct.DefaultView[irow]["PrdID"];
             if ((objPrdID == null) || (objPrdID == DBNull.Value)) return;
             string errormsg = string.Empty;
+            if (this.dgrdv.Columns[icol].Name == this.ColumnImgCount.Name)
+            {
+                if (frmImgBrowse == null)
+                {
+                    frmImgBrowse = new JCommon.FrmImgBrowse();
+                    frmImgBrowse.ReadOnly = !this.enableSave;
+                    new FrmStyle(frmImgBrowse).SetPopFrmStyle(this);
+                }
+                frmImgBrowse.Browse(JERPData.ServerParameter.ERPFileFolder + @"\Product\PrdImg\" + objPrdID.ToString());
+                frmImgBrowse.ShowDialog();
+                this.dgrdv[icol, irow].Value = frmImgBrowse.Count;
+                this.accPrds.UpdateProductForImgCount(ref errormsg,
+                    objPrdID,
+                    frmImgBrowse.Count);
+            }
         }
 
         void btnSave_Click(object sender, EventArgs e)
@@ -327,7 +352,7 @@ namespace JERPApp.Engineer
         private void ChangeManuPrdType(ref bool flag,ref String errormsg, int PrdTypeID, Object PrdID)
         {
             if (PrdID == DBNull.Value) return;
-            flag = this.accPrds.UpdateManuProductForPrdTypeID(ref errormsg, PrdID, PrdTypeID);
+            flag = this.accPrds.UpdateComProductForPrdTypeID(ref errormsg, PrdID, PrdTypeID);
         }
 
         private void SaveRow(int PrdTypeID, DataRow drow)
@@ -354,13 +379,20 @@ namespace JERPApp.Engineer
                         "",//drow["Surface"],
                         "",//drow["Manufacturer"],
                         drow["AssistantCode"],
-                        0,//drow["DWGNo"],
+                        drow["DWGNo"],
                         0,//drow["TaxfreeFlag"],
                         0,//drow["RohsFlag"],
                         0,//drow["RohsRequireFlag"],
                         0,//drow["PrdWeight"],
                         0,//drow["SaleFlag"],
                         drow["UnitID"],
+                        drow["DPType"],
+                        drow["JMPrice"],
+                        drow["PFPrice"],
+                        drow["HYPrice"],
+                        drow["LSPrice"],
+                        drow["CustomCode"],
+                        drow["Brand"],
                         0,//drow["MinPackingQty"],
                         drow["URL"],
                         drow["Memo"],
@@ -371,18 +403,18 @@ namespace JERPApp.Engineer
                 {
                     drow["PrdID"] = objPrdID;
                     drow.AcceptChanges();
-                    //增加属性
-                    this.accProductTypePro.InsertManuProductTypePro(
-                         ref errormsg,
-                         drow["PrdID"],
-                         drow["ProType1"],
-                         drow["ProType2"],
-                         drow["ProType3"],
-                         drow["ProType4"],
-                         -1,
-                         -1,
-                         -1
-                        );
+                    ////增加属性
+                    //this.accProductTypePro.InsertManuProductTypePro(
+                    //     ref errormsg,
+                    //     drow["PrdID"],
+                    //     drow["ProType1"],
+                    //     drow["ProType2"],
+                    //     drow["ProType3"],
+                    //     drow["ProType4"],
+                    //     -1,
+                    //     -1,
+                    //     -1
+                    //    );
                     return;
                 }
             }
@@ -412,6 +444,13 @@ namespace JERPApp.Engineer
                         0,//drow["PrdWeight"],
                         0,//drow["SaleFlag"],
                         drow["UnitID"],
+                        drow["DPType"],
+                        drow["JMPrice"],
+                        drow["PFPrice"],
+                        drow["HYPrice"],
+                        drow["LSPrice"],
+                        drow["CustomCode"],
+                        drow["Brand"],
                         0,//drow["MinPackingQty"],
                         drow["URL"],
                         drow["Memo"],
@@ -421,18 +460,18 @@ namespace JERPApp.Engineer
                 if (flag)
                 {
                     drow.AcceptChanges();
-                    //增加属性
-                    this.accProductTypePro.UpdateManuProductTypePro(
-                         ref errormsg,
-                         drow["PrdID"],
-                         drow["ProType1"],
-                         drow["ProType2"],
-                         drow["ProType3"],
-                         drow["ProType4"],
-                         -1,
-                         -1,
-                         -1
-                        );
+                    ////增加属性
+                    //this.accProductTypePro.UpdateManuProductTypePro(
+                    //     ref errormsg,
+                    //     drow["PrdID"],
+                    //     drow["ProType1"],
+                    //     drow["ProType2"],
+                    //     drow["ProType3"],
+                    //     drow["ProType4"],
+                    //     -1,
+                    //     -1,
+                    //     -1
+                    //    );
                 }
             }
         }

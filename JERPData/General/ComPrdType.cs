@@ -10,10 +10,10 @@ namespace JERPData.General
 	///<时间> 
 	/// 2016/6/29 18:47:55
 	///</时间>  
-	public class PrdProType
+    public class ComPrdType
 	{
 		private SqlConnection sqlConn;
-		public PrdProType()
+        public ComPrdType()
 		{
 			this.sqlConn=DBConnection.JSqlDBConn;
 		}

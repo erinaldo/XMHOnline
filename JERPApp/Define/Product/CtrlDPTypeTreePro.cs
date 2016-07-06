@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -8,13 +8,14 @@ using System.Windows.Forms;
 
 namespace JERPApp.Define.Product
 {
-    public partial class CtrlCommonTypeTree : UserControl
+    public partial class CtrlDPTypeTreePro : UserControl
     {
-        private int m_flag = 0;
-        public CtrlCommonTypeTree()
+        private static int m_flag = 0;
+
+        public CtrlDPTypeTreePro()
         {
             InitializeComponent();
-            this.accPrdType = new JERPData.Product.ManuPrdType();
+            this.accPrdType = new JERPData.Product.DPPrdTypePro();
             this.treePrdType.DrawMode = TreeViewDrawMode.OwnerDrawText;
             this.treePrdType.DrawNode += new DrawTreeNodeEventHandler(treePrdType_DrawNode);
             this.treePrdType.AfterSelect += new TreeViewEventHandler(treePrdType_AfterSelect);
@@ -24,8 +25,6 @@ namespace JERPApp.Define.Product
             this.treePrdType .ContextMenuStrip = this.cMenu;
             this.mItemRefresh.Click += new EventHandler(mItemRefresh_Click);
             this.mItemDefine.Click += new EventHandler(mItemDefine_Click);
-
-          
         }
 
         public void InitiaParam(int type) 
@@ -37,10 +36,10 @@ namespace JERPApp.Define.Product
         void treePrdType_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             if (e.Node == null) return;
-           // e.DrawDefault = true; //ÎÒÕâÀïÓÃÄ¬ÈÏÑÕÉ«¼´¿É£¬Ö»ĞèÒªÔÚTreeViewÊ§È¥½¹µãÊ±Ñ¡ÖĞ½ÚµãÈÔÈ»Í»ÏÔ  
+           // e.DrawDefault = true; //æˆ‘è¿™é‡Œç”¨é»˜è®¤é¢œè‰²å³å¯ï¼Œåªéœ€è¦åœ¨TreeViewå¤±å»ç„¦ç‚¹æ—¶é€‰ä¸­èŠ‚ç‚¹ä»ç„¶çªæ˜¾  
             if ((e.State & TreeNodeStates.Selected) != 0)  
             {  
-                //ÑİÊ¾ÎªÂÌµ×°××Ö  
+                //æ¼”ç¤ºä¸ºç»¿åº•ç™½å­—  
                 e.Graphics.FillRectangle(Brushes.Blue, e.Node.Bounds);  
                 Font nodeFont = e.Node.NodeFont;  
                 if (nodeFont == null) nodeFont = ((TreeView)sender).Font;  
@@ -65,7 +64,7 @@ namespace JERPApp.Define.Product
 
         }
 
-        private JERPData.Product.ManuPrdType accPrdType;
+        private JERPData.Product.DPPrdTypePro accPrdType;
         private DataTable dtblPrdType;
         private JERPApp.Engineer.Define.FrmManuPrdType frmPrdType;
         public void AllowDefine()
@@ -84,17 +83,17 @@ namespace JERPApp.Define.Product
             this.treePrdType.Nodes.Clear();
             if (type == 0)
             {
-                this.dtblPrdType = this.accPrdType.GetDataPrdTypeAll().Tables[0];
+                this.dtblPrdType = this.accPrdType.GetDataDPPrdTypePro().Tables[0];
             }
             else {
-                this.dtblPrdType = this.accPrdType.GetDataPrdTypeByType(type).Tables[0];
+                this.dtblPrdType = this.accPrdType.GetDataDPPrdTypeProByType(type).Tables[0];
             } 
 
             DataRow drow = this.dtblPrdType.NewRow();
             drow["PrdTypeID"] = 0;
             drow["ParentID"] = -1;
             drow["PrdTypeCode"] = "0";
-            drow["PrdTypeName"] = "ÀàĞÍ·ÖÀà";
+            drow["PrdTypeName"] = "ç±»å‹åˆ†ç±»";
             if (this.dtblPrdType.Rows.Count == 0)
             {
                 this.dtblPrdType.Rows.Add(drow);
@@ -124,8 +123,8 @@ namespace JERPApp.Define.Product
 
       
 
-        //½¨Ê÷µÄ»ù±¾Ë¼Â·ÊÇ£º´Ó¸ù½Úµã¿ªÊ¼µİ¹éµ÷ÓÃÏÔÊ¾×ÓÊ÷
-        private void InitTree(TreeNodeCollection Nds, int parent_id)//½¨Ê÷µÄ»ù±¾Ë¼Â·ÊÇ£º´Ó¸ù½Úµã¿ªÊ¼µİ¹éµ÷ÓÃÏÔÊ¾×ÓÊ÷
+        //å»ºæ ‘çš„åŸºæœ¬æ€è·¯æ˜¯ï¼šä»æ ¹èŠ‚ç‚¹å¼€å§‹é€’å½’è°ƒç”¨æ˜¾ç¤ºå­æ ‘
+        private void InitTree(TreeNodeCollection Nds, int parent_id)//å»ºæ ‘çš„åŸºæœ¬æ€è·¯æ˜¯ï¼šä»æ ¹èŠ‚ç‚¹å¼€å§‹é€’å½’è°ƒç”¨æ˜¾ç¤ºå­æ ‘
         {
             foreach (DataRow drow in this.dtblPrdType .Select("ParentID=" + parent_id.ToString(), "", DataViewRowState.CurrentRows))
             {
@@ -171,7 +170,7 @@ namespace JERPApp.Define.Product
             
         }
 
-        //È¡µÃµ±Ç°        
+        //å–å¾—å½“å‰        
         public int PrdTypeID
         {
             get
@@ -222,6 +221,5 @@ namespace JERPApp.Define.Product
             }
 
         }
-       
     }
 }

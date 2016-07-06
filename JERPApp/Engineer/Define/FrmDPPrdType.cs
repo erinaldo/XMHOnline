@@ -8,13 +8,15 @@ using System.Windows.Forms;
 
 namespace JERPApp.Engineer.Define
 {
-    public partial class FrmManuPrdType : Form
+    public partial class FrmDPPrdType : Form
     {
-        public FrmManuPrdType()
+        private static int m_Type = 2;
+        public FrmDPPrdType()
         {
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
             this.accManuPrdType = new JERPData.Product.ManuPrdType();
+            this.ctrlParentID.InitiaParam(m_Type);
             this.SetPermit();
         }
 
@@ -28,8 +30,8 @@ namespace JERPApp.Engineer.Define
 
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(11);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(12);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(24);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(25);
             if (this.enableBrowse)
             {
                 this.LoadData();
@@ -54,7 +56,7 @@ namespace JERPApp.Engineer.Define
   
         private void LoadData()
         {
-            this.dtblPrdType = this.accManuPrdType.GetDataPrdTypeByParentID(this.ctrlParentID.PrdTypeID).Tables[0];
+            this.dtblPrdType = this.accManuPrdType.GetDataPrdTypeByParentID(this.ctrlParentID.PrdTypeID, m_Type).Tables[0];
             this.dgrdv.DataSource = this.dtblPrdType;
         }
 
@@ -99,18 +101,19 @@ namespace JERPApp.Engineer.Define
             {
                 if (drow.RowState == DataRowState.Deleted) continue;
                 if (drow.RowState == DataRowState.Unchanged) continue;
-                if (drow["ManuPrdTypeID"] == DBNull.Value)
+                if (drow["PrdTypeID"] == DBNull.Value)
                 {
                     objPrdTypeID = DBNull.Value;
-                     //flag= this.accManuPrdType.InsertPrdType(
-                     //ref errormsg,
-                     //ref objPrdTypeID,
-                     //drow["ManuPrdTypeCode"],
-                     //drow["ManuPrdTypeName"],
-                     //ParentID);
+                     flag= this.accManuPrdType.InsertPrdType(
+                     ref errormsg,
+                     ref objPrdTypeID,
+                     drow["PrdTypeCode"],
+                     drow["PrdTypeName"],
+                     ParentID,
+                     m_Type);
                     if (flag)
                     {
-                        drow["ManuPrdTypeID"] = objPrdTypeID;
+                        drow["PrdTypeID"] = objPrdTypeID;
                     }else{
                         MessageBox.Show(errormsg);
                         return;
@@ -121,9 +124,9 @@ namespace JERPApp.Engineer.Define
                 {
                     flag= this.accManuPrdType.UpdatePrdType(
                         ref errormsg,
-                        drow["ManuPrdTypeID"],
-                        drow["ManuPrdTypeCode"],
-                        drow["ManuPrdTypeName"],
+                        drow["PrdTypeID"],
+                        drow["PrdTypeCode"],
+                        drow["PrdTypeName"],
                         ParentID);
                     if (!flag)
                     {
@@ -154,23 +157,24 @@ namespace JERPApp.Engineer.Define
                     this.LoadData();
                     return;
                 }
-                if (drow["ManuPrdTypeID"] == DBNull.Value)
+                if (drow["PrdTypeID"] == DBNull.Value)
                 {
-                    //object objPrdTypeID = DBNull.Value;
-                    //this.accManuPrdType.InsertPrdType(
-                    // ref errormsg,
-                    // ref objPrdTypeID,
-                    // drow["ManuPrdTypeCode"],
-                    // drow["ManuPrdTypeName"],
-                    // ParentID);
+                    object objPrdTypeID = DBNull.Value;
+                    this.accManuPrdType.InsertPrdType(
+                     ref errormsg,
+                     ref objPrdTypeID,
+                     drow["PrdTypeCode"],
+                     drow["PrdTypeName"],
+                     ParentID,
+                     m_Type);
                 }
                 else
                 {
                     this.accManuPrdType.UpdatePrdType(
                         ref errormsg,
-                        drow["ManuPrdTypeID"],
-                         drow["ManuPrdTypeCode"],
-                        drow["ManuPrdTypeName"],
+                        drow["PrdTypeID"],
+                         drow["PrdTypeCode"],
+                        drow["PrdTypeName"],
                         ParentID);
                 }
 
@@ -183,9 +187,9 @@ namespace JERPApp.Engineer.Define
 
         private bool GetAllowAlterFlag(DataRow drow, int ParentID)
         {
-            if (drow["ManuPrdTypeID"] == DBNull.Value) return true;
+            if (drow["PrdTypeID"] == DBNull.Value) return true;
             bool flag = false;
-            this.accManuPrdType.GetParmPrdTypeIsChildTree(ParentID, (int)drow["ManuPrdTypeID"], ref flag);
+            this.accManuPrdType.GetParmPrdTypeIsChildTree(ParentID, (int)drow["PrdTypeID"], ref flag);
             return !flag;
         }
 
@@ -195,7 +199,7 @@ namespace JERPApp.Engineer.Define
             bool flag = false;
             DataRow drow = this.dtblPrdType.DefaultView[irow].Row;
             string ErrorMsg = string.Empty;
-            if (drow["ManuPrdTypeID"] == DBNull.Value)
+            if (drow["PrdTypeID"] == DBNull.Value)
             {
                 e.Cancel = true;
                 return;
@@ -204,7 +208,7 @@ namespace JERPApp.Engineer.Define
             if (rul == DialogResult.Yes)
             {
                 flag = this.accManuPrdType.DeletePrdType(ref ErrorMsg,
-                    drow["ManuPrdTypeID"]);
+                    drow["PrdTypeID"]);
                 if (!flag)
                 {
 

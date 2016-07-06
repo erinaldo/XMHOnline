@@ -13,6 +13,7 @@ namespace JERPApp.Define.Product
         public FrmManuPrdType()
         {
             InitializeComponent();
+            this.ctrlCommonTypeTree.InitiaParam(0);
             this.btnConfirm.Click += new EventHandler(btnConfirm_Click);
         }
 

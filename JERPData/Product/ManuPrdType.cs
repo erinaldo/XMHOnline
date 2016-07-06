@@ -22,14 +22,14 @@ namespace JERPData.Product
             bool flag = false;
             ErrorMsg = string.Empty;
             SqlParameter[] arParams = new SqlParameter[1];
-            arParams[0] = new SqlParameter("@ManuPrdTypeID", System.Data.SqlDbType.Int);
+            arParams[0] = new SqlParameter("@PrdTypeID", System.Data.SqlDbType.Int);
             arParams[0].Value = PrdTypeID;
             SqlTransaction DBTransaction = null;
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, System.Data.CommandType.StoredProcedure, "prd.DeleteManuPrdType", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, System.Data.CommandType.StoredProcedure, "prd.DeleteComPrdType", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }
@@ -45,13 +45,34 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public DataSet GetDataPrdType()
+        public DataSet GetDataPrdTypeAll()
         {
             DataSet ds = null;
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataManuPrdType");
+                ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataComPrdTypeAll");
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+        public DataSet GetDataPrdTypeByType(int type)
+        {
+            DataSet ds = null;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                SqlParameter[] arParams = new SqlParameter[1];
+                arParams[0] = new SqlParameter("@Type", System.Data.SqlDbType.Int);
+                arParams[0].Value = type;
+                ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataComPrdTypeByType", arParams);
             }
             catch//(SqlException ex)
             {
@@ -67,8 +88,8 @@ namespace JERPData.Product
         {
             bool flag = false;
             SqlParameter[] arParams = new SqlParameter[2];
-            arParams[0] = new SqlParameter("@ManuPrdTypeID", SqlDbType.Int);
-            arParams[1] = new SqlParameter("@ManuPrdTypeName", SqlDbType.VarChar);
+            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+            arParams[1] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
             arParams[1].Size = 500;
             arParams[1].Direction = ParameterDirection.InputOutput;
             arParams[0].Value = PrdTypeID;
@@ -108,7 +129,7 @@ namespace JERPData.Product
             }
             return ds;
         }
-        public DataSet GetDataPrdTypeForManufPrd()
+        public DataSet GetDataPrdTypeForComfPrd()
         {
             DataSet ds = null;
             try
@@ -153,7 +174,30 @@ namespace JERPData.Product
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataManuPrdTypeByParentID", arParams);
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComPrdTypeByParentID", arParams);
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+        public DataSet GetDataPrdTypeByParentID(int ParentID,int Type)
+        {
+            DataSet ds = null;
+            SqlParameter[] arParams = new SqlParameter[2];
+            arParams[0] = new SqlParameter("@ParentID", SqlDbType.Int);
+            arParams[0].Value = ParentID;
+            arParams[1] = new SqlParameter("@Type", SqlDbType.Int);
+            arParams[1].Value = Type;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComPrdTypeByParentIDType", arParams);
             }
             catch//(SqlException ex)
             {
@@ -196,9 +240,9 @@ namespace JERPData.Product
         {
             bool flag = false;
             SqlParameter[] arParams = new SqlParameter[2];
-            arParams[0] = new SqlParameter("@ManuPrdTypeName", SqlDbType.VarChar);
+            arParams[0] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
             arParams[0].Size = 50;
-            arParams[1] = new SqlParameter("@ManuPrdTypeID", SqlDbType.Int);
+            arParams[1] = new SqlParameter("@MPrdTypeID", SqlDbType.Int);
             arParams[1].Direction = ParameterDirection.InputOutput;
             arParams[0].Value = PrdTypeName;
             arParams[1].Value = PrdTypeID;
@@ -223,8 +267,8 @@ namespace JERPData.Product
         {
             bool flag = false;
             SqlParameter[] arParams = new SqlParameter[3];
-            arParams[0] = new SqlParameter("@ManuPrdTypeID", SqlDbType.Int);
-            arParams[1] = new SqlParameter("@Manu", SqlDbType.Int);
+            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+            arParams[1] = new SqlParameter("@ParentID", SqlDbType.Int);
             arParams[2] = new SqlParameter("@IsChildTreeFlag", SqlDbType.Bit);
             arParams[2].Direction = ParameterDirection.InputOutput;
             arParams[0].Value = PrdTypeID;
@@ -247,28 +291,32 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool InsertPrdType(ref string ErrorMsg, ref object ManuPrdTypeID, object ManuPrdTypeCode, object MabnuPrdTypeName, object ParentID)
+        public bool InsertPrdType(ref string ErrorMsg, ref object ManuPrdTypeID, object ManuPrdTypeCode, object MabnuPrdTypeName, object ParentID, object Type)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
-            SqlParameter[] arParams = new SqlParameter[4];
-            arParams[0] = new SqlParameter("@ManuPrdTypeID", SqlDbType.Int);
+            SqlParameter[] arParams = new SqlParameter[5];
+            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
             arParams[0].Direction = ParameterDirection.InputOutput;
-            arParams[1] = new SqlParameter("@ManuPrdTypeCode", SqlDbType.VarChar);
+            arParams[1] = new SqlParameter("@PrdTypeCode", SqlDbType.VarChar);
             arParams[1].Size = 50;
-            arParams[2] = new SqlParameter("@ManuPrdTypeName", SqlDbType.VarChar);
+            arParams[2] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
             arParams[2].Size = 50;
             arParams[3] = new SqlParameter("@ParentID", SqlDbType.Int);
+            arParams[4] = new SqlParameter("@Type", SqlDbType.Int);
+
+            
             arParams[0].Value = ManuPrdTypeID;
             arParams[1].Value = ManuPrdTypeCode;
             arParams[2].Value = MabnuPrdTypeName;
             arParams[3].Value = ParentID;
+            arParams[4].Value = Type;
             SqlTransaction DBTransaction = null;
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.InsertManuPrdType", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.InsertComPrdType", arParams);
                 ManuPrdTypeID = arParams[0].Value;
                 DBTransaction.Commit();
                 flag = true;
@@ -285,16 +333,16 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool UpdatePrdType(ref string ErrorMsg,object ManuPrdTypeID, object ManuPrdTypeCode, object ManuPrdTypeName, object ParentID)
+        public bool UpdatePrdType(ref string ErrorMsg, object ManuPrdTypeID, object ManuPrdTypeCode, object ManuPrdTypeName, object ParentID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
             SqlParameter[] arParams = new SqlParameter[4];
-            arParams[0] = new SqlParameter("@ManuPrdTypeID", SqlDbType.Int);
+            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
 
-            arParams[1] = new SqlParameter("@ManuPrdTypeCode", SqlDbType.VarChar);
+            arParams[1] = new SqlParameter("@PrdTypeCode", SqlDbType.VarChar);
             arParams[1].Size = 50;
-            arParams[2] = new SqlParameter("@ManuPrdTypeName", SqlDbType.VarChar);
+            arParams[2] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
             arParams[2].Size = 50;
             arParams[3] = new SqlParameter("@ParentID", SqlDbType.Int);
             arParams[0].Value = ManuPrdTypeID;
@@ -306,7 +354,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateManuPrdType", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateComPrdType", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }

@@ -368,11 +368,29 @@
     <Compile Include="Define\Product\CtrlCommonTypeTree.designer.cs">
       <DependentUpon>CtrlCommonTypeTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="Define\Product\CtrlDPTypeTreePro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Product\CtrlDPTypeTreePro.Designer.cs">
+      <DependentUpon>CtrlDPTypeTreePro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Define\Product\FrmManuPrdType.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Define\Product\FrmManuPrdType.Designer.cs">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Define\Product\CtrlDGPJTypeTreePro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Product\CtrlDGPJTypeTreePro.Designer.cs">
+      <DependentUpon>CtrlDGPJTypeTreePro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmDPPrdTypePro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmDPPrdTypePro.Designer.cs">
+      <DependentUpon>FrmDPPrdTypePro.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\Define\FrmManuPrdType.cs">
       <SubType>Form</SubType>
@@ -386,17 +404,35 @@
     <Compile Include="Engineer\Define\FrmManuPrdTypeRelation.Designer.cs">
       <DependentUpon>FrmManuPrdTypeRelation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Engineer\Define\FrmDGPrdType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmDGPrdType.Designer.cs">
+      <DependentUpon>FrmDGPrdType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmDPPrdType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmDPPrdType.Designer.cs">
+      <DependentUpon>FrmDPPrdType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\FrmDGPrdType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\FrmDGPrdType.Designer.cs">
+      <DependentUpon>FrmDGPrdType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engineer\FrmManufProcessAppend.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Engineer\FrmManufProcessAppend.Designer.cs">
       <DependentUpon>FrmManufProcessAppend.cs</DependentUpon>
     </Compile>
-    <Compile Include="Engineer\FrmManuPrdDefine.cs">
+    <Compile Include="Engineer\FrmDGPrdDefine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Engineer\FrmManuPrdDefine.Designer.cs">
-      <DependentUpon>FrmManuPrdDefine.cs</DependentUpon>
+    <Compile Include="Engineer\FrmDGPrdDefine.Designer.cs">
+      <DependentUpon>FrmDGPrdDefine.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\FrmManuPrdSel.cs">
       <SubType>Form</SubType>
@@ -415,6 +451,18 @@
     </Compile>
     <Compile Include="Engineer\CtrlBOMOper.Designer.cs">
       <DependentUpon>CtrlBOMOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\FrmDPPrdDefine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\FrmDPPrdDefine.Designer.cs">
+      <DependentUpon>FrmDPPrdDefine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\FrmDGDPPrdSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\FrmDGDPPrdSel.Designer.cs">
+      <DependentUpon>FrmDGDPPrdSel.cs</DependentUpon>
     </Compile>
     <Compile Include="Finance\Define\FrmBank.cs">
       <SubType>Form</SubType>
@@ -2441,8 +2489,17 @@
     <EmbeddedResource Include="Define\Product\CtrlCommonTypeTree.resx">
       <DependentUpon>CtrlCommonTypeTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Define\Product\CtrlDPTypeTreePro.resx">
+      <DependentUpon>CtrlDPTypeTreePro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Define\Product\FrmManuPrdType.resx">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Define\Product\CtrlDGPJTypeTreePro.resx">
+      <DependentUpon>CtrlDGPJTypeTreePro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmDPPrdTypePro.resx">
+      <DependentUpon>FrmDPPrdTypePro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmManuPrdType.resx">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
@@ -2450,11 +2507,20 @@
     <EmbeddedResource Include="Engineer\Define\FrmManuPrdTypeRelation.resx">
       <DependentUpon>FrmManuPrdTypeRelation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmDGPrdType.resx">
+      <DependentUpon>FrmDGPrdType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmDPPrdType.resx">
+      <DependentUpon>FrmDPPrdType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\FrmDGPrdType.resx">
+      <DependentUpon>FrmDGPrdType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmManufProcessAppend.resx">
       <DependentUpon>FrmManufProcessAppend.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Engineer\FrmManuPrdDefine.resx">
-      <DependentUpon>FrmManuPrdDefine.cs</DependentUpon>
+    <EmbeddedResource Include="Engineer\FrmDGPrdDefine.resx">
+      <DependentUpon>FrmDGPrdDefine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmManuPrdSel.resx">
       <DependentUpon>FrmManuPrdSel.cs</DependentUpon>
@@ -2466,6 +2532,12 @@
     <EmbeddedResource Include="Engineer\CtrlBOMOper.resx">
       <DependentUpon>CtrlBOMOper.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\FrmDPPrdDefine.resx">
+      <DependentUpon>FrmDPPrdDefine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\FrmDGDPPrdSel.resx">
+      <DependentUpon>FrmDGDPPrdSel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Finance\Define\FrmBank.resx">
       <DependentUpon>FrmBank.cs</DependentUpon>
