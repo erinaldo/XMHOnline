@@ -135,7 +135,7 @@ namespace JERPData.Product
             return flag;
         }
       
-        public DataSet GetDataProductByPrdTypeID(int PrdTypeID)
+        public DataSet GetDataDPProductByPrdTypeID(int PrdTypeID)
         {
             DataSet ds = null;
             SqlParameter[] arParams = new SqlParameter[1];
@@ -144,7 +144,7 @@ namespace JERPData.Product
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDGProductByPrdTypeID", arParams);
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDPProductByPrdTypeID", arParams);
             }
             catch//(SqlException ex)
             {
@@ -156,6 +156,7 @@ namespace JERPData.Product
             }
             return ds;
         }
+
 
         public DataSet GetDataAllManuProductByPrdTypeID(int PrdTypeID)
         {
@@ -930,44 +931,6 @@ namespace JERPData.Product
         //}
 
 
-        //增加的自定义属性的保存
-        public DataSet GetTypePro()
-        {
-            DataSet ds = new DataSet();
-
-            DataTable dt = new DataTable("ManuProductTypeProTable");
-
-            String[] FieldNames = new String[] { "FieldName","Type" ,"FieldType" ,"FieldText","TypeParentID"};
-            String[,] FieldValues = new String[,] {
-            { "PrdID", "0", "int", "产品编码","" },
-            { "ProType1", "0", "int", "刀杠类型","4" }, 
-            { "ProType2", "1", "int", "刀片R角" ,"71"}, 
-            { "ProType3", "1", "int", "刀片加工材质","72" }, 
-            { "ProType4", "0", "int", "刀具尺寸","13" },
-            { "ProType5", "0", "int","无","" }, 
-            { "ProType6", "0", "int", "无" ,""},
-            { "ProType7", "0", "int", "无" ,""} 
-            };
-
-            foreach(String fieldanme in FieldNames){
-                dt.Columns.Add(fieldanme, typeof(string));
-            }
-            ds.Tables.Add(dt);
-            
-           for (int i = 0; i < FieldValues.GetLength(0) ;  i++) //行数
-           {
-               DataRow newRow = dt.NewRow();
-               //String[] values = new String[FieldValues.GetLength(0)];
-               for (int j = 0; j < FieldValues.GetLength(1) ;  j++) //列数
-               {
-                   newRow[j] = FieldValues[i, j];
-               }
-
-               dt.Rows.Add(newRow);
-            }
-
-            return ds;
-        }
         public DataSet GetDataManuProductTypeProTable()
         {
             DataSet ds = null;

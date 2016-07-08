@@ -13,7 +13,7 @@ using Microsoft.ApplicationBlocks.Data;
 namespace JERPData.Product
 {  
 	/// <描述>
-	/// 表[prd.DPPrdTypePro]数据访问类
+	/// 表[prd.ComTypePro]数据访问类
 	///</描述> 
 	///<作者> 
 	/// 金优富
@@ -21,15 +21,15 @@ namespace JERPData.Product
 	///<时间> 
 	/// 2016/7/5 14:26:12
 	///</时间>  
-    public class DPPJPrdTyprPro
+    public class DGPJPrdTyprPro
 	{
 		private SqlConnection sqlConn;
-        public DPPJPrdTyprPro()
+        public DGPJPrdTyprPro()
 		{
 			this.sqlConn=DBConnection.JSqlDBConn;
 		}
 
-        public DataSet GetDataDPPrdTypeProByPrdTypeID(int PrdTypeID)
+        public DataSet GetDataComTypeProByPrdTypeID(int PrdTypeID)
         {
             DataSet ds = null;
             SqlParameter[] arParams = new SqlParameter[1];
@@ -38,7 +38,7 @@ namespace JERPData.Product
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDPPrdTypeProByPrdTypeID", arParams);
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypeProByPrdTypeID", arParams);
             }
             catch//(SqlException ex)
             {
@@ -50,7 +50,7 @@ namespace JERPData.Product
             }
             return ds;
         }
-        public DataSet GetDataDPPrdTypeProByType(int Type)
+        public DataSet GetDataComTypeProByType(int Type)
         {
             DataSet ds = null;
             SqlParameter[] arParams = new SqlParameter[1];
@@ -59,7 +59,7 @@ namespace JERPData.Product
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDPPrdTypeProByType",arParams);
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypeProByType",arParams);
             }
             catch//(SqlException ex)
             {
@@ -71,13 +71,13 @@ namespace JERPData.Product
             }
             return ds;
         }
-        public DataSet GetDataDPPrdTypePro()
+        public DataSet GetDataComTypePro()
         {
             DataSet ds = null;
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDPPrdTypePro");
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypePro");
             }
             catch//(SqlException ex)
             {
@@ -91,7 +91,7 @@ namespace JERPData.Product
         }
 
 
-        public DataSet GetDataDPPrdTypeProByParentID(int ParentID)
+        public DataSet GetDataComTypeProByParentID(int ParentID)
         {
             DataSet ds = null;
             SqlParameter[] arParams = new SqlParameter[1];
@@ -100,7 +100,7 @@ namespace JERPData.Product
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDPPrdTypeProByParentID", arParams);
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypeProByParentID", arParams);
             }
             catch//(SqlException ex)
             {
@@ -112,7 +112,30 @@ namespace JERPData.Product
             }
             return ds;
         }
-        public bool InsertDPPrdTypePro(ref string ErrorMsg, ref object PrdTypeID, object PrdTypeCode, object PrdTypeName, object Type, object ParentID, object RootID)
+
+        public DataSet GetDataProductByPrdTypeID(int PrdTypeID)
+        {
+            DataSet ds = null;
+            SqlParameter[] arParams = new SqlParameter[1];
+            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+            arParams[0].Value = PrdTypeID;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataProductByPrdTypeID", arParams);
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+
+        public bool InsertComTypePro(ref string ErrorMsg, ref object PrdTypeID, object PrdTypeCode, object PrdTypeName, object Type, object ParentID, object RootID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -137,7 +160,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.InsertDPPrdTypePro", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.InsertComTypePro", arParams);
                 PrdTypeID = arParams[0].Value;
                 DBTransaction.Commit();
                 flag = true;
@@ -155,7 +178,7 @@ namespace JERPData.Product
             return flag;
         }
 
-        public bool UpdateDPPrdTypePro(ref string ErrorMsg, object PrdTypeID, object PrdTypeCode, object PrdTypeName)
+        public bool UpdateComTypePro(ref string ErrorMsg, object PrdTypeID, object PrdTypeCode, object PrdTypeName)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -173,7 +196,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateDPPrdTypePro", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateComTypePro", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }
@@ -190,7 +213,7 @@ namespace JERPData.Product
             return flag;
         }
 
-        public bool UpdateDPPrdTypeProForParentID(ref string ErrorMsg, object ParentID)
+        public bool UpdateComTypeProForParentID(ref string ErrorMsg, object ParentID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -202,7 +225,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateDPPrdTypeProForParentID", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateComTypeProForParentID", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }
@@ -220,7 +243,7 @@ namespace JERPData.Product
         }
 
 
-        public bool DeleteDPPrdTypePro(ref string ErrorMsg, object PrdTypeID)
+        public bool DeleteComTypePro(ref string ErrorMsg, object PrdTypeID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -232,7 +255,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.DeleteDPPrdTypePro", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.DeleteComTypePro", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }

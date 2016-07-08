@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset\ProductEntity.cs" />
+    <Compile Include="Base\TableDesignEntity.cs" />
     <Compile Include="Config\ConfigInfo.cs" />
     <Compile Include="General\DeliverAddressEntity.cs" />
     <Compile Include="General\DiaryEntity.cs" />

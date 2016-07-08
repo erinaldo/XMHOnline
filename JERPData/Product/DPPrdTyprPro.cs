@@ -250,6 +250,30 @@ namespace JERPData.Product
         }
 
 
+        public DataSet GetDataDPPrdTypeProByPrdTypeNameAndParentID(string PrdTypeName, int ParentID)
+        {
+            DataSet ds = null;
+            SqlParameter[] arParams = new SqlParameter[2];
+            arParams[0] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
+            arParams[0].Size = 50;
+            arParams[1] = new SqlParameter("@ParentID", SqlDbType.Int);
+            arParams[0].Value = PrdTypeName;
+            arParams[1].Value = ParentID;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDPPrdTypeProByPrdTypeNameAndParentID", arParams);
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
 	}
 }
 

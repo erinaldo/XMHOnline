@@ -198,11 +198,11 @@ namespace JERPApp.Engineer
         }
         private void SetManuPrdType4Src(String name, int parentID)
         {
-            if (name.Equals("") || parentID < 0) return;
-            this.dtbManuPrdType4 = this.accPrds.GetDataProductByPrdTypeID(parentID).Tables[0];
-            this.cmbMenuPrdType4.DataSource = this.dtbManuPrdType4;
-            this.cmbMenuPrdType4.ValueMember = "PrdTypeID";
-            this.cmbMenuPrdType4.DisplayMember = "PrdTypeName";
+            //if (name.Equals("") || parentID < 0) return;
+            //this.dtbManuPrdType4 = this.accPrds.GetDataDGProductByPrdTypeID(parentID).Tables[0];
+            //this.cmbMenuPrdType4.DataSource = this.dtbManuPrdType4;
+            //this.cmbMenuPrdType4.ValueMember = "PrdTypeID";
+            //this.cmbMenuPrdType4.DisplayMember = "PrdTypeName";
         }
 
 

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Asset\PrdRepairRecord.cs" />
     <Compile Include="Asset\Product.cs" />
+    <Compile Include="Base\TableDesign.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="Finance\AccountBook.cs" />
     <Compile Include="Finance\AdvancePayingAccount.cs" />
@@ -84,7 +85,7 @@
     <Compile Include="General\DeliverType.cs" />
     <Compile Include="General\Diary.cs" />
     <Compile Include="General\DiaryType.cs" />
-    <Compile Include="General\DPPJPrdTyprPro.cs" />
+    <Compile Include="General\DGPJPrdTyprPro.cs" />
     <Compile Include="General\Express.cs" />
     <Compile Include="General\FinanceAddress.cs" />
     <Compile Include="General\Meeting.cs" />
@@ -307,6 +308,7 @@
     <Compile Include="Product\ManuProduct.cs" />
     <Compile Include="Product\ManuProductTypePro.cs" />
     <Compile Include="Product\ManuProductTypeProRelation.cs" />
+    <Compile Include="Product\OtherProducePro.cs" />
     <Compile Include="Product\PackingType.cs" />
     <Compile Include="Product\PackingBOM.cs" />
     <Compile Include="Product\ParmTemplet.cs" />
@@ -422,6 +424,7 @@
     <Compile Include="Product\RepairInvoiceFormat.cs" />
     <Compile Include="Product\RepairInvoiceFormatXCustomer.cs" />
     <Compile Include="Product\RepairInvoices.cs" />
+    <Compile Include="Product\DGPrdTyprPro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Product\BuyOrderItems.cs" />
     <Compile Include="Product\BuyOrderNotes.cs" />

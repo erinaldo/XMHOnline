@@ -1050,6 +1050,32 @@ namespace JERPData.Product
             return flag;
         }
 
+        public DataSet GetDataProductByPrdTypeIDAndPrdName(int PrdTypeID, string PrdName)
+        {
+            DataSet ds = null;
+            SqlParameter[] arParams = new SqlParameter[2];
+            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+            arParams[1] = new SqlParameter("@PrdName", SqlDbType.VarChar);
+            arParams[1].Size = 100;
+            arParams[0].Value = PrdTypeID;
+            arParams[1].Value = PrdName;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataProductByPrdTypeIDAndPrdName", arParams);
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+
+
         public bool InsertProduct(ref string ErrorMsg, ref object PrdID, object PrdTypeID, object PrdCode, object PrdName, object PrdSpec, object Model, object Surface, object Manufacturer, object AssistantCode, object DWGNo, object TaxfreeFlag, object RohsFlag, object RohsRequireFlag, object ICSolution, object PrdWeight, object SaleFlag, object UnitID, object DateRegister, object FileCode, object RegisterPsn, object VersionCode, object VersionRecord, object MinPackingQty, object URL, object Memo, object StopFlag)
         {
             bool flag = false;

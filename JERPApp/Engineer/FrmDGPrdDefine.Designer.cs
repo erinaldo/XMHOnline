@@ -33,16 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgrdv = new JCommon.MyDataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ctrlQFind = new JCommon.CtrlGridFind();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.cMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.mItemPrdType = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlCommonTypeTree();
             this.ColumnPrdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrdSpec = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +50,16 @@
             this.ColumnAssistantCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrdCodeSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ctrlQFind = new JCommon.CtrlGridFind();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.cMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mItemPrdType = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlCommonTypeTree();
             ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).BeginInit();
             this.panel2.SuspendLayout();
             this.cMenu.SuspendLayout();
@@ -114,90 +114,6 @@
             this.dgrdv.TabIndex = 1;
             this.dgrdv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgrdv_DataError);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.ctrlQFind);
-            this.panel2.Controls.Add(this.btnExport);
-            this.panel2.Controls.Add(this.btnSave);
-            this.panel2.Controls.Add(this.btnImport);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(176, 624);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1018, 35);
-            this.panel2.TabIndex = 6;
-            // 
-            // ctrlQFind
-            // 
-            this.ctrlQFind.Location = new System.Drawing.Point(20, 8);
-            this.ctrlQFind.Name = "ctrlQFind";
-            this.ctrlQFind.SeachGridView = null;
-            this.ctrlQFind.Size = new System.Drawing.Size(296, 21);
-            this.ctrlQFind.TabIndex = 5;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(692, 8);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 4;
-            this.btnExport.Text = "输出Excel";
-            this.btnExport.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(408, 9);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(82, 23);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(582, 8);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(75, 23);
-            this.btnImport.TabIndex = 1;
-            this.btnImport.Text = "Excel导入";
-            this.btnImport.UseVisualStyleBackColor = true;
-            // 
-            // cMenu
-            // 
-            this.cMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mItemRefresh,
-            this.mItemPrdType});
-            this.cMenu.Name = "cMenu";
-            this.cMenu.Size = new System.Drawing.Size(125, 48);
-            // 
-            // mItemRefresh
-            // 
-            this.mItemRefresh.Name = "mItemRefresh";
-            this.mItemRefresh.Size = new System.Drawing.Size(124, 22);
-            this.mItemRefresh.Text = "刷新";
-            // 
-            // mItemPrdType
-            // 
-            this.mItemPrdType.Name = "mItemPrdType";
-            this.mItemPrdType.Size = new System.Drawing.Size(124, 22);
-            this.mItemPrdType.Text = "变更类型";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ctrlPrdTypeID);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(176, 659);
-            this.panel1.TabIndex = 14;
-            // 
-            // ctrlPrdTypeID
-            // 
-            this.ctrlPrdTypeID.AutoSize = true;
-            this.ctrlPrdTypeID.Location = new System.Drawing.Point(3, 0);
-            this.ctrlPrdTypeID.Name = "ctrlPrdTypeID";
-            this.ctrlPrdTypeID.Size = new System.Drawing.Size(170, 659);
-            this.ctrlPrdTypeID.TabIndex = 1;
-            // 
             // ColumnPrdCode
             // 
             this.ColumnPrdCode.DataPropertyName = "PrdCode";
@@ -222,6 +138,7 @@
             // ColumnDPType
             // 
             this.ColumnDPType.DataPropertyName = "DPType";
+            this.ColumnDPType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnDPType.HeaderText = "刀片类别";
             this.ColumnDPType.Name = "ColumnDPType";
             this.ColumnDPType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -321,6 +238,91 @@
             this.ColumnMemo.HeaderText = "备注";
             this.ColumnMemo.Name = "ColumnMemo";
             this.ColumnMemo.Width = 180;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.ctrlQFind);
+            this.panel2.Controls.Add(this.btnExport);
+            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.btnImport);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(176, 624);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1018, 35);
+            this.panel2.TabIndex = 6;
+            // 
+            // ctrlQFind
+            // 
+            this.ctrlQFind.Location = new System.Drawing.Point(20, 8);
+            this.ctrlQFind.Name = "ctrlQFind";
+            this.ctrlQFind.SeachGridView = null;
+            this.ctrlQFind.Size = new System.Drawing.Size(296, 21);
+            this.ctrlQFind.TabIndex = 5;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(692, 8);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "输出Excel";
+            this.btnExport.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(408, 9);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(82, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "保存";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(582, 8);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 1;
+            this.btnImport.Text = "Excel导入";
+            this.btnImport.UseVisualStyleBackColor = true;
+            // 
+            // cMenu
+            // 
+            this.cMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mItemRefresh,
+            this.mItemPrdType});
+            this.cMenu.Name = "cMenu";
+            this.cMenu.Size = new System.Drawing.Size(125, 48);
+            // 
+            // mItemRefresh
+            // 
+            this.mItemRefresh.Name = "mItemRefresh";
+            this.mItemRefresh.Size = new System.Drawing.Size(124, 22);
+            this.mItemRefresh.Text = "刷新";
+            // 
+            // mItemPrdType
+            // 
+            this.mItemPrdType.Name = "mItemPrdType";
+            this.mItemPrdType.Size = new System.Drawing.Size(124, 22);
+            this.mItemPrdType.Text = "变更类型";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ctrlPrdTypeID);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(176, 659);
+            this.panel1.TabIndex = 14;
+            // 
+            // ctrlPrdTypeID
+            // 
+            this.ctrlPrdTypeID.AutoSize = true;
+            this.ctrlPrdTypeID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlPrdTypeID.Location = new System.Drawing.Point(0, 0);
+            this.ctrlPrdTypeID.Name = "ctrlPrdTypeID";
+            this.ctrlPrdTypeID.Size = new System.Drawing.Size(176, 659);
+            this.ctrlPrdTypeID.TabIndex = 1;
             // 
             // FrmDGPrdDefine
             // 

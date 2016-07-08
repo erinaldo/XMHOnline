@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\TableDesignServer.cs" />
     <Compile Include="Common\FrmDiary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +416,12 @@
     </Compile>
     <Compile Include="Engineer\Define\FrmDPPrdType.Designer.cs">
       <DependentUpon>FrmDPPrdType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmDGPrdTypePro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmDGPrdTypePro.Designer.cs">
+      <DependentUpon>FrmDGPrdTypePro.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\FrmDGPrdType.cs">
       <SubType>Form</SubType>
@@ -2512,6 +2519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmDPPrdType.resx">
       <DependentUpon>FrmDPPrdType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmDGPrdTypePro.resx">
+      <DependentUpon>FrmDGPrdTypePro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmDGPrdType.resx">
       <DependentUpon>FrmDGPrdType.cs</DependentUpon>

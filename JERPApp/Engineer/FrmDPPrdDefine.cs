@@ -267,7 +267,7 @@ namespace JERPApp.Engineer
         private void LoadData()
         {
 
-            this.dtbliniProduct = this.accPrds.GetDataProductByPrdTypeID(this.ctrlPrdTypeID.PrdTypeID).Tables[0];
+            this.dtbliniProduct = this.accPrds.GetDataDPProductByPrdTypeID(this.ctrlPrdTypeID.PrdTypeID).Tables[0];
 
             //AddOtherCol(this.dtbliniProduct);//增加属性列
 
@@ -486,20 +486,33 @@ namespace JERPApp.Engineer
                 new FrmStyle(frmImport).SetPopFrmStyle(this);
                 this.frmImport.AffterSave += new JCommon.FrmExcelImport.AffterSaveDelegate(frmImport_AffterSave);
                 this.frmImport.ImportHandle += new JCommon.FrmExcelImport.ImportDelegate(frmImport_ImportHandle);
-                DataColumn[] columns = new DataColumn[] {      
-                    new DataColumn ("产品编号",typeof (string)),
-                    new DataColumn ("产品名称",typeof (string)),              
-                    new DataColumn ("产品规格",typeof (string)),                 
-                    new DataColumn ("单位",typeof (string)),            
-                    new DataColumn ("助记码",typeof (string)),                     
-                    new DataColumn ("客户产品",typeof (string)),   
-                    new DataColumn ("备注",typeof (string)),
 
-                    new DataColumn ("刀片R角",typeof (string)),                                
-                    new DataColumn ("刀片左右手",typeof (string)),    
-                    new DataColumn ("排屑槽",typeof (string)),    
-                    new DataColumn ("被加工材料/刀片材质",typeof (string))
-                };
+
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                dic = getColumns();
+                int count = dic.Count;
+                DataColumn[] columns = new DataColumn[count];
+                int i = 0;
+                foreach (KeyValuePair<string, string> kv in dic)
+                {
+                    columns[i] = new DataColumn(kv.Value, typeof(string));
+                    i++;
+                }
+
+                //DataColumn[] columns = new DataColumn[] {      
+                //    new DataColumn ("产品编号",typeof (string)),
+                //    new DataColumn ("产品名称",typeof (string)),              
+                //    new DataColumn ("产品规格",typeof (string)),                 
+                //    new DataColumn ("单位",typeof (string)),            
+                //    new DataColumn ("助记码",typeof (string)),                     
+                //    new DataColumn ("客户产品",typeof (string)),   
+                //    new DataColumn ("备注",typeof (string)),
+
+                //    new DataColumn ("刀片R角",typeof (string)),                                
+                //    new DataColumn ("刀片左右手",typeof (string)),    
+                //    new DataColumn ("排屑槽",typeof (string)),    
+                //    new DataColumn ("被加工材料/刀片材质",typeof (string))
+                //};
                 this.frmImport.SetImportColumn(columns, "产品编号不能为空，单位不填默认为PCS");
             }
             this.frmImport.ShowDialog();
@@ -530,19 +543,54 @@ namespace JERPApp.Engineer
             bool CustomFlag = this.GetBool(drow["客户产品"].ToString());
             //bool StopFlag = this.GetBool(drow["停用"].ToString());
             DataRow drowNew = this.dtblProduct.NewRow();
-            drowNew["PrdCode"] = drow["产品编号"];
-            drowNew["PrdName"] = drow["产品名称"];
-            drowNew["PrdSpec"] = drow["产品规格"];
-            drowNew["UnitID"] = this.GetUnitID(UnitName);
-            drowNew["AssistantCode"] = drow["助记码"];
-            drowNew["Memo"] = drow["备注"];
-            drowNew["CustomFlag"] = CustomFlag;
 
-            drowNew["ProType1"] = GetPrdTypeID(drow["刀片R角"].ToString(), 71);
-            drowNew["ProType2"] = GetPrdTypeID(drow["刀片左右手"].ToString(),114);
-            drowNew["ProType3"] = GetPrdTypeID(drow["排屑槽"].ToString(), 73);
-            drowNew["ProType4"] = GetPrdTypeID(drow["被加工材料/刀片材质"].ToString(), 72);
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            dic = getColumns();
+            int count = dic.Count;
+            foreach (KeyValuePair<string, string> kv in dic)
+            {
 
+                if (kv.Key.Equals("UnitID"))
+                {
+                    drowNew[kv.Key] = this.GetUnitID(UnitName);
+                }
+                else if (kv.Key.Equals("CustomFlag"))
+                {
+                    drowNew[kv.Key] = CustomFlag;
+                }
+                else if (kv.Key.Equals("ProType1"))
+                {
+                    drowNew[kv.Key] = GetPrdTypeID(drow[kv.Value].ToString(), 3); ;
+                }
+                else if (kv.Key.Equals("ProType2"))
+                {
+                    drowNew[kv.Key] = GetPrdTypeID(drow[kv.Value].ToString(), 4); ;
+                }
+                else if (kv.Key.Equals("ProType3"))
+                {
+                    drowNew[kv.Key] = GetPrdTypeID(drow[kv.Value].ToString(), 7); ;
+                }
+                else if (kv.Key.Equals("ProType4"))
+                {
+                    drowNew[kv.Key] = GetPrdTypeID(drow[kv.Value].ToString(), 8); ;
+                }
+                else
+                {
+                    drowNew[kv.Key] = drow[kv.Value];
+                }
+            }
+            //drowNew["PrdCode"] = drow["产品编号"];
+            //drowNew["PrdName"] = drow["产品名称"];
+            //drowNew["PrdSpec"] = drow["产品规格"];
+            //drowNew["UnitID"] = this.GetUnitID(UnitName);
+            //drowNew["AssistantCode"] = drow["助记码"];
+            //drowNew["Memo"] = drow["备注"];
+            //drowNew["CustomFlag"] = CustomFlag;
+
+            //drowNew["ProType1"] = GetPrdTypeID(drow["刀片R角"].ToString(), 71);
+            //drowNew["ProType2"] = GetPrdTypeID(drow["刀片左右手"].ToString(),114);
+            //drowNew["ProType3"] = GetPrdTypeID(drow["排屑槽"].ToString(), 73);
+            //drowNew["ProType4"] = GetPrdTypeID(drow["被加工材料/刀片材质"].ToString(), 72);
             //drowNew["StopFlag"] = StopFlag;
             this.dtblProduct.Rows.Add(drowNew);
         }
@@ -559,10 +607,26 @@ namespace JERPApp.Engineer
             return UnitID;
         }
 
+                //列字段机对应的列名
+        private Dictionary<string, string> getColumns()
+        {
+            int count = dgrdv.ColumnCount;
+            Dictionary<string, string> dic = new Dictionary<string, string>();
+            for (int i = 0; i < count; i++)
+            {
+                DataGridViewColumn col = dgrdv.Columns[i];
+                if (col.Visible)
+                {
+                    dic.Add(col.DataPropertyName, col.HeaderText);
+                }
+            }
+            return dic;
+        }
+
         int GetPrdTypeID(string TypeName ,int patentID)
         {
             int PrdTypeID = -1;
-            DataSet data =  this.accProType.GetDataManuPrdTypeByManuPrdTypeNameAndParentID(TypeName,patentID);
+            DataSet data = this.accDPPrdType.GetDataDPPrdTypeProByPrdTypeNameAndParentID(TypeName, patentID);
             if (data.Tables[0] != null && data.Tables[0].Rows.Count > 0)
             { 
                 foreach (DataRow  datarow in data.Tables[0].Rows ){
@@ -575,7 +639,7 @@ namespace JERPApp.Engineer
         private void dgrdv_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             //String columnName = this.dgrdv.Columns[e.ColumnIndex].HeaderText;
-            this.dgrdv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Red;
+            //this.dgrdv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Red;
             //MessageBox.Show("第" + e.RowIndex + "行，列" + columnName +"错误，请重新选择");
         }
 

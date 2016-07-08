@@ -15,7 +15,7 @@ namespace JERPApp.Define.Product
         public CtrlDGPJTypeTreePro()
         {
             InitializeComponent();
-            this.accPrdType = new JERPData.Product.DPPrdTypePro();
+            this.accPrdType = new JERPData.Product.DGPJPrdTyprPro();
             this.treePrdType.DrawMode = TreeViewDrawMode.OwnerDrawText;
             this.treePrdType.DrawNode += new DrawTreeNodeEventHandler(treePrdType_DrawNode);
             this.treePrdType.AfterSelect += new TreeViewEventHandler(treePrdType_AfterSelect);
@@ -64,7 +64,7 @@ namespace JERPApp.Define.Product
 
         }
 
-        private JERPData.Product.DPPrdTypePro accPrdType;
+        private JERPData.Product.DGPJPrdTyprPro accPrdType;
         private DataTable dtblPrdType;
         private JERPApp.Engineer.Define.FrmManuPrdType frmPrdType;
         public void AllowDefine()
@@ -83,10 +83,10 @@ namespace JERPApp.Define.Product
             this.treePrdType.Nodes.Clear();
             if (type == 0)
             {
-                this.dtblPrdType = this.accPrdType.GetDataDPPrdTypePro().Tables[0];
+                this.dtblPrdType = this.accPrdType.GetDataComTypePro().Tables[0];
             }
             else {
-                this.dtblPrdType = this.accPrdType.GetDataDPPrdTypeProByType(type).Tables[0];
+                this.dtblPrdType = this.accPrdType.GetDataComTypeProByType(type).Tables[0];
             } 
 
             DataRow drow = this.dtblPrdType.NewRow();

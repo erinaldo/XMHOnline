@@ -535,7 +535,26 @@ END
 */
 --=====================================================================
 -- drop PROCEDURE [prd].[GetDataDGProductByPrdTypeID]
+----- 刀杆
 CREATE PROCEDURE [prd].[GetDataDGProductByPrdTypeID]
+(
+	@PrdTypeID int
+)
+AS
+BEGIN
+	SELECT 
+		a1.*, 
+		general.F_GetUnitUnitName(UnitID) as UnitName,a2.ProType1,a2.ProType2,a2.ProType3,a2.ProType4,a2.ProType5,a2.ProType6,a2.ProType7
+		,a2.ProType8,a2.ProType9,a2.ProType10,a2.ProType11,a2.ProType12,a2.ProType13,a2.ProType14,a2.ProType15
+	FROM prd.DGProduct a1 left join prd.DGProductPro a2 on a1.PrdID = a2.PrdID
+	where PrdTypeID =@PrdTypeID 
+END
+
+GO
+
+-- drop PROCEDURE [prd].[GetDataDGProductByPrdTypeID]
+--刀片
+CREATE PROCEDURE [prd].[GetDataDPProductByPrdTypeID]
 (
 	@PrdTypeID int
 )
@@ -1831,4 +1850,333 @@ BEGIN
 		RootID
 	FROM prd.ComTypePro
 	where (Type=@Type)
+END
+
+--------------------------------------------自定义属性配置
+--------------------------------------------
+create table prd.OtherProductPro(
+	Fid int IDENTITY(1,1) NOT NULL,
+	FFieldName varchar(100) , --字段名称
+	Fvisable varchar(100) ,   --是否可见
+	FType  int null,          --类型（大类） 
+	FFieldType varchar(100) , --字段类型
+	FFieldText varchar(100) , --列名
+	FTypeSrcID varchar(100), --取数
+	FSrcTable varchar(100)
+)ON [PRIMARY] 
+GO 
+
+/**
+insert into prd.OtherProductPro values('PrdID','0','10','int', 'PrdID','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType1','1','10','int', '属性1','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType2','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType3','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType4','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType5','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType6','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType7','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType8','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType9','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType10','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType11','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType12','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType13','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType14','0','10','int', '属性2','0','prd.DGProductPro')
+insert into prd.OtherProductPro values('ProType15','0','10','int', '属性2','0','prd.DGProductPro')
+**/
+
+
+--- 查询
+CREATE PROCEDURE prd.GetDataOtherProductProByFType
+(
+	@FType int   
+)
+AS
+BEGIN
+	SELECT 
+		Fid,
+		FFieldName,
+		Fvisable,
+		FType,
+		FFieldType,
+		FFieldText,
+		FTypeSrcID,
+		FSrcTable
+	FROM prd.OtherProductPro
+	WHERE 
+		(FType=@FType)
+END
+
+------- 增加
+--=====================================================================
+
+CREATE PROCEDURE prd.InsertOtherProductPro
+(
+	@Fid int   out,
+	@FFieldName varchar (100)  ,
+	@Fvisable varchar (100)  ,
+	@FType int   ,
+	@FFieldType varchar (100)  ,
+	@FFieldText varchar (100)  ,
+	@FTypeSrcID varchar (100)  ,
+	@FSrcTable varchar (100)  
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	INSERT prd.OtherProductPro
+	(
+		FFieldName,
+		Fvisable,
+		FType,
+		FFieldType,
+		FFieldText,
+		FTypeSrcID,
+		FSrcTable
+	)
+	Values
+	(
+		@FFieldName,
+		@Fvisable,
+		@FType,
+		@FFieldType,
+		@FFieldText,
+		@FTypeSrcID,
+		@FSrcTable
+	)
+	Set @Fid=SCOPE_IDENTITY()--返回标识值
+END
+
+/*
+数据表 [prd.OtherProductPro]  删除
+*/
+--=====================================================================
+
+CREATE PROCEDURE prd.DeleteOtherProductPro
+(
+	@Fid int   
+)
+AS
+BEGIN
+	Delete from  prd.OtherProductPro
+	Where
+	(Fid=@Fid)
+END
+
+================== 刀杆其它属性表
+CREATE TABLE [prd].[DGProductPro](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[PrdID] int default(-1),
+	[ProType1] int default(-1),
+	[ProType2] int  default(-1),
+	[ProType3] int  default(-1),
+	[ProType4] int  default(-1),
+	[ProType5] int  default(-1),
+	[ProType6] int  default(-1),
+	[ProType7] int  default(-1),
+	[ProType8] int  default(-1),
+	[ProType9] int  default(-1),
+	[ProType10] int  default(-1),
+	[ProType11] int  default(-1),
+	[ProType12] int  default(-1),
+	[ProType13] int  default(-1),
+	[ProType14] int  default(-1),
+	[ProType15] int  default(-1)
+		CONSTRAINT [PK_DGProductPro_PrdID] PRIMARY KEY CLUSTERED 
+	(
+	[PrdID] ASC
+	)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] 
+
+GO
+/*
+数据表 [prd.DGProductPro]  按选择条件查询
+*/
+--=====================================================================
+CREATE PROCEDURE prd.GetDataDGProductProByPrdID
+(										
+	@PrdID int   
+)
+AS
+BEGIN
+	SELECT 
+		ID,
+		PrdID,
+		ProType1,
+		ProType2,
+		ProType3,
+		ProType4,
+		ProType5,
+		ProType6,
+		ProType7,
+		ProType8,
+		ProType9,
+		ProType10,
+		ProType11,
+		ProType12,
+		ProType13,
+		ProType14,
+		ProType15
+	FROM prd.DGProductPro
+	WHERE 
+		(PrdID=@PrdID)
+END
+
+
+/*
+数据表 [prd.DGProductPro]  添加
+*/
+--=====================================================================
+-- drop PROCEDURE prd.InsertDGProductPro
+CREATE PROCEDURE prd.InsertDGProductPro
+(
+	@ID int   out,
+	@PrdID int   ,
+	@ProType1 int   ,
+	@ProType2 int   ,
+	@ProType3 int   ,
+	@ProType4 int   ,
+	@ProType5 int   ,
+	@ProType6 int   ,
+	@ProType7 int   ,
+	@ProType8 int   ,
+	@ProType9 int   ,
+	@ProType10 int   ,
+	@ProType11 int   ,
+	@ProType12 int   ,
+	@ProType13 int   ,
+	@ProType14 int   ,
+	@ProType15 int   
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	declare @prd_id bigint
+	select @prd_id = PrdID from prd.DGProductPro where PrdID = @PrdID;
+	if (@prd_id > 0)
+		BEGIN
+			EXEC prd.UpdateDGProductPro @PrdID ,@ProType1,@ProType2,@ProType3,@ProType4,@ProType5,@ProType6,@ProType7
+			,@ProType8,@ProType9,@ProType10,@ProType11,@ProType12,@ProType13,@ProType14,@ProType15
+		END
+	ELSE
+	INSERT prd.DGProductPro
+	(
+		PrdID,
+		ProType1,
+		ProType2,
+		ProType3,
+		ProType4,
+		ProType5,
+		ProType6,
+		ProType7,
+		ProType8,
+		ProType9,
+		ProType10,
+		ProType11,
+		ProType12,
+		ProType13,
+		ProType14,
+		ProType15
+	)
+	Values
+	(
+		@PrdID,
+		@ProType1,
+		@ProType2,
+		@ProType3,
+		@ProType4,
+		@ProType5,
+		@ProType6,
+		@ProType7,
+		@ProType8,
+		@ProType9,
+		@ProType10,
+		@ProType11,
+		@ProType12,
+		@ProType13,
+		@ProType14,
+		@ProType15
+	)
+	Set @ID=SCOPE_IDENTITY()--返回标识值
+END
+
+/*
+数据表 [prd.DGProductPro]  更新
+*/
+--=====================================================================
+-- drop  PROCEDURE prd.UpdateDGProductPro
+CREATE PROCEDURE prd.UpdateDGProductPro
+(
+	@PrdID int   ,
+	@ProType1 int   ,
+	@ProType2 int   ,
+	@ProType3 int   ,
+	@ProType4 int   ,
+	@ProType5 int   ,
+	@ProType6 int   ,
+	@ProType7 int   ,
+	@ProType8 int   ,
+	@ProType9 int   ,
+	@ProType10 int   ,
+	@ProType11 int   ,
+	@ProType12 int   ,
+	@ProType13 int   ,
+	@ProType14 int   ,
+	@ProType15 int   
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE prd.DGProductPro
+	SET
+		ProType1=@ProType1,
+		ProType2=@ProType2,
+		ProType3=@ProType3,
+		ProType4=@ProType4,
+		ProType5=@ProType5,
+		ProType6=@ProType6,
+		ProType7=@ProType7,
+		ProType8=@ProType8,
+		ProType9=@ProType9,
+		ProType10=@ProType10,
+		ProType11=@ProType11,
+		ProType12=@ProType12,
+		ProType13=@ProType13,
+		ProType14=@ProType14,
+		ProType15=@ProType15
+	Where  (PrdID=@PrdID) 
+END
+
+/*
+数据表 [prd.DGProductPro]  删除
+*/
+--=====================================================================
+
+CREATE PROCEDURE prd.DeleteDGProductPro
+(
+	@PrdID int   
+)
+AS
+BEGIN
+	Delete from  prd.DGProductPro
+	Where
+	(PrdID=@PrdID)
+END
+
+
+/*
+工程产品资料类别查询
+*/
+--=====================================================================
+CREATE PROCEDURE prd.GetDataDGPJTypeProByParentID
+(
+	@ParentID int   
+)
+AS
+BEGIN
+	SELECT 
+		*
+	FROM prd.PrdType
+	WHERE 
+		(ParentID=@ParentID)
 END
