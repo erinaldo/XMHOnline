@@ -44,12 +44,12 @@
             this.cmbItem.TabIndex = 0;
             this.cmbItem.SelectedIndexChanged += new System.EventHandler(this.cmbItem_SelectedIndexChanged);
             // 
-            // CtrlCustomerForOrder
+            // CtrlCustomerForSaler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cmbItem);
-            this.Name = "CtrlCustomerForOrder";
+            this.Name = "CtrlCustomerForSaler";
             this.Size = new System.Drawing.Size(195, 23);
             this.ResumeLayout(false);
 

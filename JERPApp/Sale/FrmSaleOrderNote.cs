@@ -20,7 +20,7 @@ namespace JERPApp.Sale
         }
         private JERPData.Product.SaleOrderNotes accNotes;
         //private JERPApp.Define.Product.FrmMySaleOrderNoteFreeSearch frmSearch;
-        //private FrmSaleOrderNoteOper frmOper;
+        private FrmSaleOrderNoteOper frmOper;
         private JERPBiz.Product.SaleOrderNotePrintHelper printer;
         private string whereclause = string.Empty;
         private string initwhareclause = string.Empty;
@@ -30,8 +30,8 @@ namespace JERPApp.Sale
         private bool enableSave = false;//±£´æ
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(27);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(28);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(54);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(55);
             if (this.enableBrowse)
             {
                 this.initwhareclause = " and ((MakerPsnID=" + JERPBiz.Frame.UserBiz.PsnID.ToString() 
@@ -71,6 +71,10 @@ namespace JERPApp.Sale
             if (this.radNonConfirm.Checked)
             {
                 this.whereclause += " and (exists(select NoteID from prd.SaleOrderItems where NoteID=a.NoteID and ConfirmPsnID is null))";
+            }
+            if (this.radConfirm.Checked)
+            {
+                this.whereclause += " and (exists(select NoteID from prd.SaleOrderItems where NoteID=a.NoteID and ConfirmPsnID is not null))";
             }
             if (this.radNonDeliver.Checked)
             {
@@ -135,14 +139,14 @@ namespace JERPApp.Sale
 
         void lnkNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //if (this.frmOper == null)
-            //{
-            //    this.frmOper = new FrmSaleOrderNoteOper();
-            //    new FrmStyle(frmOper).SetPopFrmStyle(this);
-            //    frmOper.AffterSave += new FrmSaleOrderNoteOper.AffterSaveDelegate(frmOper_AffterSave);
-            //}
-            //frmOper.NewNote();
-            //frmOper.ShowDialog();
+            if (this.frmOper == null)
+            {
+                this.frmOper = new FrmSaleOrderNoteOper();
+                new FrmStyle(frmOper).SetPopFrmStyle(this);
+                frmOper.AffterSave += new FrmSaleOrderNoteOper.AffterSaveDelegate(frmOper_AffterSave);
+            }
+            frmOper.NewNote();
+            frmOper.ShowDialog();
         }
 
         void mItemRefresh_Click(object sender, EventArgs e)

@@ -33,9 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgrdv = new JCommon.MyDataGridView();
-            this.ColumnSourceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ctrlGridQFind = new JCommon.CtrlGridQuickFind();
+            this.ColumnSourceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -73,13 +73,6 @@
             this.dgrdv.Size = new System.Drawing.Size(287, 309);
             this.dgrdv.TabIndex = 1;
             // 
-            // ColumnSourceTypeName
-            // 
-            this.ColumnSourceTypeName.DataPropertyName = "SourceTypeName";
-            this.ColumnSourceTypeName.HeaderText = "类图号称";
-            this.ColumnSourceTypeName.Name = "ColumnSourceTypeName";
-            this.ColumnSourceTypeName.Width = 120;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.ctrlGridQFind);
@@ -96,6 +89,13 @@
             this.ctrlGridQFind.SeachGridView = null;
             this.ctrlGridQFind.Size = new System.Drawing.Size(244, 21);
             this.ctrlGridQFind.TabIndex = 0;
+            // 
+            // ColumnSourceTypeName
+            // 
+            this.ColumnSourceTypeName.DataPropertyName = "SourceTypeName";
+            this.ColumnSourceTypeName.HeaderText = "来源类别";
+            this.ColumnSourceTypeName.Name = "ColumnSourceTypeName";
+            this.ColumnSourceTypeName.Width = 120;
             // 
             // FrmSourceType
             // 

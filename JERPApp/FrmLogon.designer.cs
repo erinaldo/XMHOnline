@@ -40,18 +40,18 @@
             // 
             this.pnlCancel.BackColor = System.Drawing.Color.Transparent;
             this.pnlCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlCancel.Location = new System.Drawing.Point(232, 5);
+            this.pnlCancel.Location = new System.Drawing.Point(313, 250);
             this.pnlCancel.Name = "pnlCancel";
-            this.pnlCancel.Size = new System.Drawing.Size(24, 20);
+            this.pnlCancel.Size = new System.Drawing.Size(33, 20);
             this.pnlCancel.TabIndex = 12;
             // 
             // plLogon
             // 
             this.plLogon.BackColor = System.Drawing.Color.Transparent;
             this.plLogon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.plLogon.Location = new System.Drawing.Point(38, 323);
+            this.plLogon.Location = new System.Drawing.Point(204, 237);
             this.plLogon.Name = "plLogon";
-            this.plLogon.Size = new System.Drawing.Size(207, 40);
+            this.plLogon.Size = new System.Drawing.Size(101, 33);
             this.plLogon.TabIndex = 11;
             // 
             // lblInfo
@@ -59,8 +59,8 @@
             this.lblInfo.AutoSize = true;
             this.lblInfo.BackColor = System.Drawing.Color.Transparent;
             this.lblInfo.Font = new System.Drawing.Font("宋体", 9F);
-            this.lblInfo.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblInfo.Location = new System.Drawing.Point(66, 227);
+            this.lblInfo.ForeColor = System.Drawing.Color.Black;
+            this.lblInfo.Location = new System.Drawing.Point(181, 132);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(101, 12);
             this.lblInfo.TabIndex = 10;
@@ -74,10 +74,10 @@
             this.txtPassword.Font = new System.Drawing.Font("宋体", 13F);
             this.txtPassword.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtPassword.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtPassword.Location = new System.Drawing.Point(82, 282);
+            this.txtPassword.Location = new System.Drawing.Point(217, 194);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 3, 3);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(146, 20);
+            this.txtPassword.Size = new System.Drawing.Size(120, 20);
             this.txtPassword.TabIndex = 9;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -88,10 +88,10 @@
             this.txtUserName.Font = new System.Drawing.Font("宋体", 13F);
             this.txtUserName.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtUserName.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtUserName.Location = new System.Drawing.Point(82, 253);
+            this.txtUserName.Location = new System.Drawing.Point(217, 156);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 3, 3, 3);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(146, 20);
+            this.txtUserName.Size = new System.Drawing.Size(120, 20);
             this.txtUserName.TabIndex = 8;
             // 
             // FrmLogon
@@ -102,7 +102,7 @@
             this.BackColor = System.Drawing.Color.Gray;
             this.BackgroundImage = global::JERPApp.Properties.Resources.logonbg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(273, 405);
+            this.ClientSize = new System.Drawing.Size(526, 340);
             this.ControlBox = false;
             this.Controls.Add(this.pnlCancel);
             this.Controls.Add(this.txtPassword);

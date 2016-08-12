@@ -151,6 +151,26 @@ namespace JERPData.Product
             }
             return ds;
         }
+
+        public DataSet GetDataSaleOrderNotesHasConfirm()
+        {
+            DataSet ds = null;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, "prd.GetDataSaleOrderNotesHasConfirm");
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+
         public DataSet GetDataSaleOrderNotesPagesFreeSearch(int PageIndex, int PageSize, ref int RecordCount, string WhereClause)
         {
             DataSet ds = null;

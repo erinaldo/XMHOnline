@@ -41,8 +41,8 @@
     <PublisherName>天衣ERP</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
-    <ApplicationRevision>102</ApplicationRevision>
-    <ApplicationVersion>1.0.3.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -236,6 +236,12 @@
     </Compile>
     <Compile Include="Define\Finance\CtrlInvoiceType.Designer.cs">
       <DependentUpon>CtrlInvoiceType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Define\Finance\CtrlMoneyType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Define\Finance\CtrlMoneyType.designer.cs">
+      <DependentUpon>CtrlMoneyType.cs</DependentUpon>
     </Compile>
     <Compile Include="Define\Finance\CtrlOtherExpenseType.cs">
       <SubType>UserControl</SubType>
@@ -728,6 +734,18 @@
     </Compile>
     <Compile Include="Sale\FrmSaleDeliverPlanBatch.Designer.cs">
       <DependentUpon>FrmSaleDeliverPlanBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sale\FrmSaleOrderNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sale\FrmSaleOrderNoteOper.designer.cs">
+      <DependentUpon>FrmSaleOrderNoteOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sale\FrmSalePriceOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sale\FrmSalePriceOper.designer.cs">
+      <DependentUpon>FrmSalePriceOper.cs</DependentUpon>
     </Compile>
     <Compile Include="Sale\FrmSalerCustomer.cs">
       <SubType>Form</SubType>
@@ -1968,6 +1986,42 @@
     <Compile Include="Store\Product\FrmSafeStore.designer.cs">
       <DependentUpon>FrmSafeStore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\Product\FrmSaleDeliverNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleDeliverNote.designer.cs">
+      <DependentUpon>FrmSaleDeliverNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleDeliverNoteConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleDeliverNoteConfirm.designer.cs">
+      <DependentUpon>FrmSaleDeliverNoteConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReplenishNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReplenishNote.designer.cs">
+      <DependentUpon>FrmSaleReplenishNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReplenishNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReplenishNoteOper.designer.cs">
+      <DependentUpon>FrmSaleReplenishNoteOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReturnNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReturnNote.designer.cs">
+      <DependentUpon>FrmSaleReturnNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReturnNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReturnNoteOper.designer.cs">
+      <DependentUpon>FrmSaleReturnNoteOper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\Product\FrmStorePlace.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2422,6 +2476,9 @@
     <EmbeddedResource Include="Define\Finance\CtrlInvoiceType.resx">
       <DependentUpon>CtrlInvoiceType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Define\Finance\CtrlMoneyType.resx">
+      <DependentUpon>CtrlMoneyType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Define\Finance\CtrlOtherExpenseType.resx">
       <DependentUpon>CtrlOtherExpenseType.cs</DependentUpon>
     </EmbeddedResource>
@@ -2681,6 +2738,12 @@
     <EmbeddedResource Include="Sale\FrmSaleDeliverPlanBatch.resx">
       <DependentUpon>FrmSaleDeliverPlanBatch.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sale\FrmSaleOrderNoteOper.resx">
+      <DependentUpon>FrmSaleOrderNoteOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sale\FrmSalePriceOper.resx">
+      <DependentUpon>FrmSalePriceOper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sale\FrmSalerCustomer.resx">
       <DependentUpon>FrmSalerCustomer.cs</DependentUpon>
@@ -3550,6 +3613,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\FrmSafeStore.resx">
       <DependentUpon>FrmSafeStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleDeliverNote.resx">
+      <DependentUpon>FrmSaleDeliverNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleDeliverNoteConfirm.resx">
+      <DependentUpon>FrmSaleDeliverNoteConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleReplenishNote.resx">
+      <DependentUpon>FrmSaleReplenishNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleReplenishNoteOper.resx">
+      <DependentUpon>FrmSaleReplenishNoteOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleReturnNote.resx">
+      <DependentUpon>FrmSaleReturnNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleReturnNoteOper.resx">
+      <DependentUpon>FrmSaleReturnNoteOper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\FrmStorePlace.resx">
       <DependentUpon>FrmStorePlace.cs</DependentUpon>

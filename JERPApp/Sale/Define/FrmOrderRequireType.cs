@@ -27,8 +27,8 @@ namespace JERPApp.Sale.Define
 
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(337);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(338);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(40);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(41);
             if (this.enableBrowse)
             {
                 this.LoadData();

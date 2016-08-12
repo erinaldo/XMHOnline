@@ -40,8 +40,8 @@ namespace JERPApp.Sale
         private bool enableSave = false;//±£´æ
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(11);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(12);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(42);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(43);
             if (this.enableBrowse)
             {
                 this.ctrlQFind.SeachGridView = this.dgrdv;

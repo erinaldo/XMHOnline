@@ -26,14 +26,16 @@ namespace JERPApp.Sale
         private bool enableSave = false;//±£´æ
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(75);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(76);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(58);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(59);
             if (this.enableBrowse)
             {
-              
+         
                 LoadData();
                 this.dgrdv.ContextMenuStrip = this.cMenu;
                 this.mItemRefresh.Click += new EventHandler(mItemRefresh_Click);
+                this.radNonConfirm.CheckedChanged += this.rad_CheckedChanged;
+                this.radConfirm.CheckedChanged += this.rad_CheckedChanged;
             }
             this.ColumnbtnConfirm.Visible = this.enableSave;
             if (this.enableSave)
@@ -41,6 +43,11 @@ namespace JERPApp.Sale
                 this.dgrdv.CellContentClick += new DataGridViewCellEventHandler(dgrdv_CellContentClick);
                 
             }
+        }
+
+        void rad_CheckedChanged(object sender, EventArgs e)
+        {
+            this.LoadData();
         }
 
         void dgrdv_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -70,7 +77,14 @@ namespace JERPApp.Sale
         }
         private void LoadData()
         {
-            this.dtblNotes = this.accNotes.GetDataSaleOrderNotesNeedConfirm ().Tables[0];
+            if (this.radNonConfirm.Checked)
+            {
+                this.dtblNotes = this.accNotes.GetDataSaleOrderNotesNeedConfirm().Tables[0];
+            }
+            else
+            {
+                this.dtblNotes = this.accNotes.GetDataSaleOrderNotesHasConfirm().Tables[0];
+            }
             this.dgrdv.DataSource = this.dtblNotes;
 
         }

@@ -2164,19 +2164,79 @@ BEGIN
 END
 
 
+
 /*
-工程产品资料类别查询
+数据表 [prd.Product]  根据名称及类别查找产品资料
 */
 --=====================================================================
-CREATE PROCEDURE prd.GetDataDGPJTypeProByParentID
+--- drop PROCEDURE prd.GetDataProductByPrdTypeIDAndPrdName
+CREATE PROCEDURE prd.GetDataProductByPrdTypeIDAndPrdName
 (
+	@PrdTypeID int   ,
+	@PrdName varchar (100)  
+)
+AS
+BEGIN
+	SELECT 
+		PrdID,
+		PrdTypeID,
+		PrdCode,
+		PrdName,
+		PrdSpec,
+		Model,
+		Surface
+	FROM prd.Product
+	WHERE 
+		(PrdTypeID=@PrdTypeID) and 
+		(PrdName=@PrdName)
+END
+
+
+/*
+数据表 [prd.DPPrdTypePro]  刀片属性类别条件查询
+*/
+--=====================================================================
+
+CREATE PROCEDURE prd.GetDataDPPrdTypeProByPrdTypeNameAndParentID
+(
+	@PrdTypeName varchar (50)  ,
 	@ParentID int   
 )
 AS
 BEGIN
 	SELECT 
-		*
-	FROM prd.PrdType
+		PrdTypeID,
+		PrdTypeCode,
+		PrdTypeName,
+		Type,
+		ParentID,
+		RootID
+	FROM prd.DPPrdTypePro
 	WHERE 
+		(PrdTypeName=@PrdTypeName) and 
 		(ParentID=@ParentID)
 END
+
+
+
+
+
+
+
+
+
+
+
+
+select * from prd.DPPrdTypePro  ---刀片类别表
+
+select* from [prd].[ComPrdType] --刀片和刀杆类别表
+
+select* from  [prd].[DGProduct]  --刀杆刀片产品表
+
+select* from  [prd].[ManuProductTypePro]  -- 刀片属性储存表
+
+select * from prd.ManuProductTypeProTable  --- 刀片属性控制表
+
+---update prd.ManuProductTypeProTable set FFieldText='刀片材质',FTypeParentID =44,FType=1 where Fid=30
+----update prd.ManuProductTypeProTable set FFieldText='被加工材料材质' where Fid=30

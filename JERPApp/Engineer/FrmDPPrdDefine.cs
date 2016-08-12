@@ -404,7 +404,7 @@ namespace JERPApp.Engineer
                          drow["ProType2"],
                          drow["ProType3"],
                          drow["ProType4"],
-                         -1,
+                         drow["ProType5"],
                          -1,
                          -1
                         );
@@ -461,7 +461,7 @@ namespace JERPApp.Engineer
                          drow["ProType2"],
                          drow["ProType3"],
                          drow["ProType4"],
-                         -1,
+                         drow["ProType5"],
                          -1,
                          -1
                         );
@@ -573,6 +573,10 @@ namespace JERPApp.Engineer
                 else if (kv.Key.Equals("ProType4"))
                 {
                     drowNew[kv.Key] = GetPrdTypeID(drow[kv.Value].ToString(), 8); ;
+                }
+                else if (kv.Key.Equals("ProType5"))
+                {
+                    drowNew[kv.Key] = GetPrdTypeID(drow[kv.Value].ToString(), 44); ;
                 }
                 else
                 {

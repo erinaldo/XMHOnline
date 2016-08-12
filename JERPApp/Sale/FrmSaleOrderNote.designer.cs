@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radFinished = new System.Windows.Forms.RadioButton();
@@ -56,6 +56,7 @@
             this.ColumnPriceTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSettleTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radConfirm = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.cMenu.SuspendLayout();
@@ -77,19 +78,20 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radConfirm);
             this.groupBox1.Controls.Add(this.radFinished);
             this.groupBox1.Controls.Add(this.radNonConfirm);
             this.groupBox1.Controls.Add(this.radNonDeliver);
             this.groupBox1.Location = new System.Drawing.Point(1, 23);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 32);
+            this.groupBox1.Size = new System.Drawing.Size(265, 32);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
             // radFinished
             // 
             this.radFinished.AutoSize = true;
-            this.radFinished.Location = new System.Drawing.Point(135, 12);
+            this.radFinished.Location = new System.Drawing.Point(199, 11);
             this.radFinished.Name = "radFinished";
             this.radFinished.Size = new System.Drawing.Size(59, 16);
             this.radFinished.TabIndex = 5;
@@ -104,14 +106,13 @@
             this.radNonConfirm.Name = "radNonConfirm";
             this.radNonConfirm.Size = new System.Drawing.Size(59, 16);
             this.radNonConfirm.TabIndex = 3;
-            this.radNonConfirm.TabStop = true;
             this.radNonConfirm.Text = "未审核";
             this.radNonConfirm.UseVisualStyleBackColor = true;
             // 
             // radNonDeliver
             // 
             this.radNonDeliver.AutoSize = true;
-            this.radNonDeliver.Location = new System.Drawing.Point(70, 12);
+            this.radNonDeliver.Location = new System.Drawing.Point(135, 11);
             this.radNonDeliver.Name = "radNonDeliver";
             this.radNonDeliver.Size = new System.Drawing.Size(59, 16);
             this.radNonDeliver.TabIndex = 4;
@@ -176,7 +177,7 @@
             this.pbar.Location = new System.Drawing.Point(0, 6);
             this.pbar.Name = "pbar";
             this.pbar.PageInBlock = 10;
-            this.pbar.PageIndex = 1;
+            this.pbar.PageIndex = 0;
             this.pbar.PageSize = 50;
             this.pbar.Size = new System.Drawing.Size(406, 27);
             this.pbar.TabIndex = 0;
@@ -198,29 +199,29 @@
             this.ColumnPriceTypeName,
             this.ColumnSettleTypeName,
             this.ColumnMemo});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgrdvNote.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgrdvNote.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgrdvNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrdvNote.Location = new System.Drawing.Point(0, 57);
             this.dgrdvNote.Name = "dgrdvNote";
             this.dgrdvNote.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgrdvNote.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dgrdvNote.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgrdvNote.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.dgrdvNote.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgrdvNote.RowTemplate.Height = 23;
             this.dgrdvNote.Size = new System.Drawing.Size(834, 422);
             this.dgrdvNote.TabIndex = 7;
@@ -316,6 +317,16 @@
             this.ColumnMemo.Name = "ColumnMemo";
             this.ColumnMemo.ReadOnly = true;
             // 
+            // radConfirm
+            // 
+            this.radConfirm.AutoSize = true;
+            this.radConfirm.Location = new System.Drawing.Point(70, 12);
+            this.radConfirm.Name = "radConfirm";
+            this.radConfirm.Size = new System.Drawing.Size(59, 16);
+            this.radConfirm.TabIndex = 6;
+            this.radConfirm.Text = "已审核";
+            this.radConfirm.UseVisualStyleBackColor = true;
+            // 
             // FrmSaleOrderNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -364,5 +375,6 @@
         private System.Windows.Forms.RadioButton radNonConfirm;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radFinished;
+        private System.Windows.Forms.RadioButton radConfirm;
     }
 }

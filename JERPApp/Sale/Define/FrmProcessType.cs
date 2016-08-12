@@ -27,8 +27,8 @@ namespace JERPApp.Sale.Define
         private bool enableSave = false;//保存
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(631);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(632);
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(36);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(37);
             if (this.enableBrowse)
             {
                 //加载数据
