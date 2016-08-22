@@ -33,8 +33,8 @@ namespace JERPApp.Store.Product
         private bool enableSave= false;
         private void SetPermit()
         {
-            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(187);
-            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(188);            
+            this.enableBrowse = JERPBiz.Frame.PermitHelper.EnableFunction(66);
+            this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(67);            
             if (this.enableBrowse)
             {
                 this.dgrdv .ContextMenuStrip  = this.cMenu;

@@ -381,6 +381,12 @@
     <Compile Include="Define\Product\CtrlDPTypeTreePro.Designer.cs">
       <DependentUpon>CtrlDPTypeTreePro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Define\Product\FrmBuyOrderItemSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Define\Product\FrmBuyOrderItemSearch.designer.cs">
+      <DependentUpon>FrmBuyOrderItemSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Define\Product\FrmManuPrdType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -393,11 +399,23 @@
     <Compile Include="Define\Product\CtrlDGPJTypeTreePro.Designer.cs">
       <DependentUpon>CtrlDGPJTypeTreePro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Define\Product\FrmSaleDeliverItemForReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Define\Product\FrmSaleDeliverItemForReturn.designer.cs">
+      <DependentUpon>FrmSaleDeliverItemForReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engineer\Define\FrmDPPrdTypePro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Engineer\Define\FrmDPPrdTypePro.Designer.cs">
       <DependentUpon>FrmDPPrdTypePro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmMachineProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmMachineProcess.Designer.cs">
+      <DependentUpon>FrmMachineProcess.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\Define\FrmManuPrdType.cs">
       <SubType>Form</SubType>
@@ -428,6 +446,30 @@
     </Compile>
     <Compile Include="Engineer\Define\FrmDGPrdTypePro.Designer.cs">
       <DependentUpon>FrmDGPrdTypePro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmModeProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmModeProcess.Designer.cs">
+      <DependentUpon>FrmModeProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmProcessNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmProcessNew.Designer.cs">
+      <DependentUpon>FrmProcessNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmProcessNewOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmProcessNewOper.Designer.cs">
+      <DependentUpon>FrmProcessNewOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmToolProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmToolProcess.Designer.cs">
+      <DependentUpon>FrmToolProcess.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\FrmDGPrdType.cs">
       <SubType>Form</SubType>
@@ -1974,11 +2016,59 @@
     <Compile Include="Store\Product\FrmBranchStore.designer.cs">
       <DependentUpon>FrmBranchStore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\Product\FrmBranchStoreMoveNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmBranchStoreMoveNote.designer.cs">
+      <DependentUpon>FrmBranchStoreMoveNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmBranchStoreMoveNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmBranchStoreMoveNoteOper.designer.cs">
+      <DependentUpon>FrmBranchStoreMoveNoteOper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\Product\FrmIntoStoreNote.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Store\Product\FrmIntoStoreNote.designer.cs">
       <DependentUpon>FrmIntoStoreNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteFromApply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteFromApply.Designer.cs">
+      <DependentUpon>FrmIntoStoreNoteFromApply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteFromBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteFromBox.Designer.cs">
+      <DependentUpon>FrmIntoStoreNoteFromBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteFromMtrStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteFromMtrStore.designer.cs">
+      <DependentUpon>FrmIntoStoreNoteFromMtrStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmIntoStoreNoteOper.designer.cs">
+      <DependentUpon>FrmIntoStoreNoteOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmOutStoreNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmOutStoreNote.designer.cs">
+      <DependentUpon>FrmOutStoreNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmOutStoreNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmOutStoreNoteOper.designer.cs">
+      <DependentUpon>FrmOutStoreNoteOper.cs</DependentUpon>
     </Compile>
     <Compile Include="Store\Product\FrmSafeStore.cs">
       <SubType>Form</SubType>
@@ -1998,6 +2088,12 @@
     <Compile Include="Store\Product\FrmSaleDeliverNoteConfirm.designer.cs">
       <DependentUpon>FrmSaleDeliverNoteConfirm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Store\Product\FrmSaleDeliverNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleDeliverNoteOper.designer.cs">
+      <DependentUpon>FrmSaleDeliverNoteOper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store\Product\FrmSaleReplenishNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2009,6 +2105,12 @@
     </Compile>
     <Compile Include="Store\Product\FrmSaleReplenishNoteOper.designer.cs">
       <DependentUpon>FrmSaleReplenishNoteOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReturnItemAppend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Store\Product\FrmSaleReturnItemAppend.designer.cs">
+      <DependentUpon>FrmSaleReturnItemAppend.cs</DependentUpon>
     </Compile>
     <Compile Include="Store\Product\FrmSaleReturnNote.cs">
       <SubType>Form</SubType>
@@ -2379,6 +2481,192 @@
     <Compile Include="Store\Product\Templet\FrmSaleReturnFormatOper.designer.cs">
       <DependentUpon>FrmSaleReturnFormatOper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supply\FrmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\FrmSupplier.designer.cs">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\FrmSupplierOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\FrmSupplierOper.designer.cs">
+      <DependentUpon>FrmSupplierOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\CtrlReplenishPlanOper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\CtrlReplenishPlanOper.designer.cs">
+      <DependentUpon>CtrlReplenishPlanOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmBuyPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmBuyPlan.Designer.cs">
+      <DependentUpon>FrmBuyPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmBuyPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmBuyPrice.designer.cs">
+      <DependentUpon>FrmBuyPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmBuyPriceOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmBuyPriceOper.designer.cs">
+      <DependentUpon>FrmBuyPriceOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmCostPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmCostPrice.Designer.cs">
+      <DependentUpon>FrmCostPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmFile.designer.cs">
+      <DependentUpon>FrmFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderItemAlter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderItemAlter.designer.cs">
+      <DependentUpon>FrmOrderItemAlter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderItemFromPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderItemFromPlan.Designer.cs">
+      <DependentUpon>FrmOrderItemFromPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNote.designer.cs">
+      <DependentUpon>FrmOrderNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNoteConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNoteConfirm.designer.cs">
+      <DependentUpon>FrmOrderNoteConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNoteConfirmOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNoteConfirmOper.designer.cs">
+      <DependentUpon>FrmOrderNoteConfirmOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNoteOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmOrderNoteOper.designer.cs">
+      <DependentUpon>FrmOrderNoteOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\FrmReplenishPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\FrmReplenishPlan.designer.cs">
+      <DependentUpon>FrmReplenishPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\Bill\FrmBuyOrderNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\Bill\FrmBuyOrderNote.designer.cs">
+      <DependentUpon>FrmBuyOrderNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmBuyPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmBuyPrice.Designer.cs">
+      <DependentUpon>FrmBuyPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmOrderMonthRpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmOrderMonthRpt.Designer.cs">
+      <DependentUpon>FrmOrderMonthRpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmOrderNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmOrderNote.designer.cs">
+      <DependentUpon>FrmOrderNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmOverDeliverRpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmOverDeliverRpt.Designer.cs">
+      <DependentUpon>FrmOverDeliverRpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPOFinished.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPOFinished.designer.cs">
+      <DependentUpon>FrmPOFinished.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPOFinishedDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPOFinishedDetail.designer.cs">
+      <DependentUpon>FrmPOFinishedDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPONonFinished.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPONonFinished.Designer.cs">
+      <DependentUpon>FrmPONonFinished.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPrdNonFinished.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmPrdNonFinished.Designer.cs">
+      <DependentUpon>FrmPrdNonFinished.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmReceiveItemRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmReceiveItemRecord.Designer.cs">
+      <DependentUpon>FrmReceiveItemRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmReplenishPrdNonFinished.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Report\FrmReplenishPrdNonFinished.Designer.cs">
+      <DependentUpon>FrmReplenishPrdNonFinished.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderField.designer.cs">
+      <DependentUpon>FrmOrderField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFieldTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFieldTitle.designer.cs">
+      <DependentUpon>FrmOrderFieldTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFormat.designer.cs">
+      <DependentUpon>FrmOrderFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFormatCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFormatCopy.designer.cs">
+      <DependentUpon>FrmOrderFormatCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFormatOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supply\Product\Templet\FrmOrderFormatOper.designer.cs">
+      <DependentUpon>FrmOrderFormatOper.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Common\FrmDiary.resx">
       <DependentUpon>FrmDiary.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -2556,14 +2844,23 @@
     <EmbeddedResource Include="Define\Product\CtrlDPTypeTreePro.resx">
       <DependentUpon>CtrlDPTypeTreePro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Define\Product\FrmBuyOrderItemSearch.resx">
+      <DependentUpon>FrmBuyOrderItemSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Define\Product\FrmManuPrdType.resx">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Define\Product\CtrlDGPJTypeTreePro.resx">
       <DependentUpon>CtrlDGPJTypeTreePro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Define\Product\FrmSaleDeliverItemForReturn.resx">
+      <DependentUpon>FrmSaleDeliverItemForReturn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmDPPrdTypePro.resx">
       <DependentUpon>FrmDPPrdTypePro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmMachineProcess.resx">
+      <DependentUpon>FrmMachineProcess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmManuPrdType.resx">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
@@ -2579,6 +2876,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmDGPrdTypePro.resx">
       <DependentUpon>FrmDGPrdTypePro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmModeProcess.resx">
+      <DependentUpon>FrmModeProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmProcessNew.resx">
+      <DependentUpon>FrmProcessNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmProcessNewOper.resx">
+      <DependentUpon>FrmProcessNewOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmToolProcess.resx">
+      <DependentUpon>FrmToolProcess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmDGPrdType.resx">
       <DependentUpon>FrmDGPrdType.cs</DependentUpon>
@@ -3608,8 +3917,32 @@
     <EmbeddedResource Include="Store\Product\FrmBranchStore.resx">
       <DependentUpon>FrmBranchStore.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmBranchStoreMoveNote.resx">
+      <DependentUpon>FrmBranchStoreMoveNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmBranchStoreMoveNoteOper.resx">
+      <DependentUpon>FrmBranchStoreMoveNoteOper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\FrmIntoStoreNote.resx">
       <DependentUpon>FrmIntoStoreNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmIntoStoreNoteFromApply.resx">
+      <DependentUpon>FrmIntoStoreNoteFromApply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmIntoStoreNoteFromBox.resx">
+      <DependentUpon>FrmIntoStoreNoteFromBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmIntoStoreNoteFromMtrStore.resx">
+      <DependentUpon>FrmIntoStoreNoteFromMtrStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmIntoStoreNoteOper.resx">
+      <DependentUpon>FrmIntoStoreNoteOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmOutStoreNote.resx">
+      <DependentUpon>FrmOutStoreNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmOutStoreNoteOper.resx">
+      <DependentUpon>FrmOutStoreNoteOper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\FrmSafeStore.resx">
       <DependentUpon>FrmSafeStore.cs</DependentUpon>
@@ -3620,11 +3953,17 @@
     <EmbeddedResource Include="Store\Product\FrmSaleDeliverNoteConfirm.resx">
       <DependentUpon>FrmSaleDeliverNoteConfirm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleDeliverNoteOper.resx">
+      <DependentUpon>FrmSaleDeliverNoteOper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\FrmSaleReplenishNote.resx">
       <DependentUpon>FrmSaleReplenishNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\FrmSaleReplenishNoteOper.resx">
       <DependentUpon>FrmSaleReplenishNoteOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Store\Product\FrmSaleReturnItemAppend.resx">
+      <DependentUpon>FrmSaleReturnItemAppend.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\FrmSaleReturnNote.resx">
       <DependentUpon>FrmSaleReturnNote.cs</DependentUpon>
@@ -3808,6 +4147,99 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\Product\Templet\FrmSaleReturnFormatOper.resx">
       <DependentUpon>FrmSaleReturnFormatOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\FrmSupplier.resx">
+      <DependentUpon>FrmSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\FrmSupplierOper.resx">
+      <DependentUpon>FrmSupplierOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\CtrlReplenishPlanOper.resx">
+      <DependentUpon>CtrlReplenishPlanOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmBuyPlan.resx">
+      <DependentUpon>FrmBuyPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmBuyPrice.resx">
+      <DependentUpon>FrmBuyPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmBuyPriceOper.resx">
+      <DependentUpon>FrmBuyPriceOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmCostPrice.resx">
+      <DependentUpon>FrmCostPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmFile.resx">
+      <DependentUpon>FrmFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmOrderItemAlter.resx">
+      <DependentUpon>FrmOrderItemAlter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmOrderItemFromPlan.resx">
+      <DependentUpon>FrmOrderItemFromPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmOrderNote.resx">
+      <DependentUpon>FrmOrderNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmOrderNoteConfirm.resx">
+      <DependentUpon>FrmOrderNoteConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmOrderNoteConfirmOper.resx">
+      <DependentUpon>FrmOrderNoteConfirmOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmOrderNoteOper.resx">
+      <DependentUpon>FrmOrderNoteOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\FrmReplenishPlan.resx">
+      <DependentUpon>FrmReplenishPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\Bill\FrmBuyOrderNote.resx">
+      <DependentUpon>FrmBuyOrderNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmBuyPrice.resx">
+      <DependentUpon>FrmBuyPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmOrderMonthRpt.resx">
+      <DependentUpon>FrmOrderMonthRpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmOrderNote.resx">
+      <DependentUpon>FrmOrderNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmOverDeliverRpt.resx">
+      <DependentUpon>FrmOverDeliverRpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmPOFinished.resx">
+      <DependentUpon>FrmPOFinished.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmPOFinishedDetail.resx">
+      <DependentUpon>FrmPOFinishedDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmPONonFinished.resx">
+      <DependentUpon>FrmPONonFinished.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmPrdNonFinished.resx">
+      <DependentUpon>FrmPrdNonFinished.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmReceiveItemRecord.resx">
+      <DependentUpon>FrmReceiveItemRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Report\FrmReplenishPrdNonFinished.resx">
+      <DependentUpon>FrmReplenishPrdNonFinished.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Templet\FrmOrderField.resx">
+      <DependentUpon>FrmOrderField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Templet\FrmOrderFieldTitle.resx">
+      <DependentUpon>FrmOrderFieldTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Templet\FrmOrderFormat.resx">
+      <DependentUpon>FrmOrderFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Templet\FrmOrderFormatCopy.resx">
+      <DependentUpon>FrmOrderFormatCopy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supply\Product\Templet\FrmOrderFormatOper.resx">
+      <DependentUpon>FrmOrderFormatOper.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="JERPApp_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
