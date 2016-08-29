@@ -220,7 +220,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(400, 188);
-            this.Controls.Add(this.ctrlDeptID);
+            //this.Controls.Add(this.ctrlDeptID);
             this.Controls.Add(this.txtPsnCode);
             this.Controls.Add(this.ckbPsnCode);
             this.Controls.Add(this.groupBox1);

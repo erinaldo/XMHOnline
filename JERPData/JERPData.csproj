@@ -107,6 +107,7 @@
     <Compile Include="Manufacture\ManufPlans.cs" />
     <Compile Include="Manufacture\ManufProcessXWorkgroup.cs" />
     <Compile Include="Manufacture\OutSrcAdvanceAMTRecords.cs" />
+    <Compile Include="Manufacture\PersonDayWorkinghour.cs" />
     <Compile Include="Manufacture\WorkingSheetListField.cs" />
     <Compile Include="Manufacture\WorkingSheetListFieldDetail.cs" />
     <Compile Include="Manufacture\WorkingSheetListFieldTitle.cs" />
@@ -322,6 +323,7 @@
     <Compile Include="Product\PrdSet.cs" />
     <Compile Include="Product\PrdType.cs" />
     <Compile Include="Product\ProcessNew.cs" />
+    <Compile Include="Product\ProcessNewTemp.cs" />
     <Compile Include="Product\ProductXBuyer.cs" />
     <Compile Include="Product\RepairDeliverItems.cs" />
     <Compile Include="Product\RepairDeliverNotes.cs" />

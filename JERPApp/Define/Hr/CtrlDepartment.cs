@@ -26,7 +26,7 @@ namespace JERPApp.Define.Hr
         JERPApp.Hr.FrmDepartment frmDept;
         private void RefreshDate()
         {
-           this.dtblDepts = this.accDepartment.GetDataDepartment  ().Tables[0];
+           this.dtblDepts = this.accDepartment.GetDataDepartment().Tables[0];
           
            this.dtblDepts.Columns.Add("ErpCode", typeof(string), "ISNULL(DeptCode,'')+' '+ISNULL(DeptName,'')");
            JCommon.Others.SetCtrlBindSrc(this.cmbItem, dtblDepts, "DeptID", "ErpCode");

@@ -181,13 +181,13 @@ namespace JERPApp.Engineer.Define
             int oldId = this.GetID(drow["ProcessCode"].ToString());
 
             int UseMachineID = -1;
-            UseMachineID = GetMachineProcessName(drow["UseMachineID"].ToString());
+            UseMachineID = GetMachineProcessName(drow["机台"].ToString());
 
             int ModelID = -1;
-            ModelID = GetModelProcessName(drow["ModelID"].ToString());
+            ModelID = GetModelProcessName(drow["磨具"].ToString());
 
             int ToolsID = -1;
-            ToolsID = GetToolProcessName(drow["ToolsID"].ToString());
+            ToolsID = GetToolProcessName(drow["工具"].ToString());
 
             if (drow["ProcessID"] == DBNull.Value)
             {

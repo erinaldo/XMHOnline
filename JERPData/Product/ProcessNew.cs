@@ -42,7 +42,25 @@ namespace JERPData.Product
             }
             return ds;
         }
-
+        //获取关联其他表数据
+        public DataSet GetDataProcessNewUnion()
+        {
+            DataSet ds = null;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, "manuf.GetDataProcessNewUnion");
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
 
         //插入数据
         public bool InsertProcessNew(ref string ErrorMsg, ref object ProcessID, object ProcessCode, object ProcessName, object ModeMachineTime, object TimeCost, object TimeTypeID, object UseMachineID, object ModelID, object ToolsID, object MoneyCost, object ConfirmPsnID, object ProcessMemo)

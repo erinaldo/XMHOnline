@@ -42,13 +42,13 @@
             this.cmbItem.Size = new System.Drawing.Size(218, 20);
             this.cmbItem.TabIndex = 0;
             // 
-            // CtrlPersonnel
+            // CtrlEngineerPsn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.cmbItem);
-            this.Name = "CtrlPersonnel";
+            this.Name = "CtrlEngineerPsn";
             this.Size = new System.Drawing.Size(218, 23);
             this.ResumeLayout(false);
 

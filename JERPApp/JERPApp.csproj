@@ -66,6 +66,42 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="JCommon, Version=0.0.5925.35994, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -339,6 +375,12 @@
     <Compile Include="Define\General\CtrlDiaryType.designer.cs">
       <DependentUpon>CtrlDiaryType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Define\Hr\FrmPsnSel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Define\Hr\FrmPsnSel.Designer.cs">
+      <DependentUpon>FrmPsnSel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Define\Manufacture\CtrlProcessTemplet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -350,6 +392,12 @@
     </Compile>
     <Compile Include="Define\Manufacture\CtrlProcessType.Designer.cs">
       <DependentUpon>CtrlProcessType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Define\Manufacture\FrmFinishedProcessNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Define\Manufacture\FrmFinishedProcessNew.Designer.cs">
+      <DependentUpon>FrmFinishedProcessNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Define\Manufacture\FrmProcessParmType.cs">
       <SubType>Form</SubType>
@@ -417,6 +465,12 @@
     <Compile Include="Engineer\Define\FrmMachineProcess.Designer.cs">
       <DependentUpon>FrmMachineProcess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Engineer\Define\FrmManuPersonDayTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmManuPersonDayTime.Designer.cs">
+      <DependentUpon>FrmManuPersonDayTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engineer\Define\FrmManuPrdType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -453,6 +507,12 @@
     <Compile Include="Engineer\Define\FrmModeProcess.Designer.cs">
       <DependentUpon>FrmModeProcess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Engineer\Define\FrmPersonProcessDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmPersonProcessDetails.Designer.cs">
+      <DependentUpon>FrmPersonProcessDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engineer\Define\FrmProcessNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -464,6 +524,12 @@
     </Compile>
     <Compile Include="Engineer\Define\FrmProcessNewOper.Designer.cs">
       <DependentUpon>FrmProcessNewOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmProcessNewTemp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmProcessNewTemp.Designer.cs">
+      <DependentUpon>FrmProcessNewTemp.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\Define\FrmToolProcess.cs">
       <SubType>Form</SubType>
@@ -2821,11 +2887,17 @@
       <DependentUpon>CtrlDiaryType.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Define\Hr\FrmPsnSel.resx">
+      <DependentUpon>FrmPsnSel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Define\Manufacture\CtrlProcessTemplet.resx">
       <DependentUpon>CtrlProcessTemplet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Define\Manufacture\CtrlProcessType.resx">
       <DependentUpon>CtrlProcessType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Define\Manufacture\FrmFinishedProcessNew.resx">
+      <DependentUpon>FrmFinishedProcessNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Define\Manufacture\FrmProcessParmType.resx">
       <DependentUpon>FrmProcessParmType.cs</DependentUpon>
@@ -2862,6 +2934,9 @@
     <EmbeddedResource Include="Engineer\Define\FrmMachineProcess.resx">
       <DependentUpon>FrmMachineProcess.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmManuPersonDayTime.resx">
+      <DependentUpon>FrmManuPersonDayTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmManuPrdType.resx">
       <DependentUpon>FrmManuPrdType.cs</DependentUpon>
     </EmbeddedResource>
@@ -2880,11 +2955,17 @@
     <EmbeddedResource Include="Engineer\Define\FrmModeProcess.resx">
       <DependentUpon>FrmModeProcess.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmPersonProcessDetails.resx">
+      <DependentUpon>FrmPersonProcessDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmProcessNew.resx">
       <DependentUpon>FrmProcessNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmProcessNewOper.resx">
       <DependentUpon>FrmProcessNewOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmProcessNewTemp.resx">
+      <DependentUpon>FrmProcessNewTemp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmToolProcess.resx">
       <DependentUpon>FrmToolProcess.cs</DependentUpon>
