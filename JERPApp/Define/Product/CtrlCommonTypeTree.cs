@@ -14,7 +14,7 @@ namespace JERPApp.Define.Product
         public CtrlCommonTypeTree()
         {
             InitializeComponent();
-            this.accPrdType = new JERPData.Product.ManuPrdType();
+            this.accCommomPrdType = new JERPData.Product.ManuCommonPrdType();
             this.treePrdType.DrawMode = TreeViewDrawMode.OwnerDrawText;
             this.treePrdType.DrawNode += new DrawTreeNodeEventHandler(treePrdType_DrawNode);
             this.treePrdType.AfterSelect += new TreeViewEventHandler(treePrdType_AfterSelect);
@@ -24,8 +24,7 @@ namespace JERPApp.Define.Product
             this.treePrdType .ContextMenuStrip = this.cMenu;
             this.mItemRefresh.Click += new EventHandler(mItemRefresh_Click);
             this.mItemDefine.Click += new EventHandler(mItemDefine_Click);
-
-          
+            LoadData();
         }
 
         public void InitiaParam(int type) 
@@ -65,9 +64,9 @@ namespace JERPApp.Define.Product
 
         }
 
-        private JERPData.Product.ManuPrdType accPrdType;
+        private JERPData.Product.ManuCommonPrdType accCommomPrdType;
         private DataTable dtblPrdType;
-        private JERPApp.Engineer.Define.FrmManuPrdType frmPrdType;
+        //private JERPApp.Engineer.Define.FrmManuCommonPrdType frmConmomPrdType;
         public void AllowDefine()
         {
             this.mItemDefine.Enabled = true;
@@ -84,10 +83,10 @@ namespace JERPApp.Define.Product
             this.treePrdType.Nodes.Clear();
             if (type == 0)
             {
-                this.dtblPrdType = this.accPrdType.GetDataPrdTypeAll().Tables[0];
+                this.dtblPrdType = this.accCommomPrdType.GetDataPrdTypeAll().Tables[0];
             }
             else {
-                this.dtblPrdType = this.accPrdType.GetDataPrdTypeByType(type).Tables[0];
+                this.dtblPrdType = this.accCommomPrdType.GetDataPrdTypeByType(type).Tables[0];
             } 
 
             DataRow drow = this.dtblPrdType.NewRow();
@@ -114,12 +113,12 @@ namespace JERPApp.Define.Product
 
         void mItemDefine_Click(object sender, EventArgs e)
         {
-            if (frmPrdType == null)
-            {
-                frmPrdType = new JERPApp.Engineer.Define.FrmManuPrdType();
-                new FrmStyle(frmPrdType).SetPopFrmStyle(this.ParentForm);                
-            }
-            frmPrdType.ShowDialog();
+            //if (frmConmomPrdType == null)
+            //{
+            //    frmConmomPrdType = new JERPApp.Engineer.Define.FrmManuCommonPrdType();
+            //    new FrmStyle(frmConmomPrdType).SetPopFrmStyle(this.ParentForm);                
+            //}
+            //frmConmomPrdType.ShowDialog();
         }
 
       

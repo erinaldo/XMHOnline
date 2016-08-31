@@ -465,6 +465,12 @@
     <Compile Include="Engineer\Define\FrmMachineProcess.Designer.cs">
       <DependentUpon>FrmMachineProcess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Engineer\Define\FrmManuCommonPrdType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\Define\FrmManuCommonPrdType.Designer.cs">
+      <DependentUpon>FrmManuCommonPrdType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engineer\Define\FrmManuPersonDayTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -536,6 +542,18 @@
     </Compile>
     <Compile Include="Engineer\Define\FrmToolProcess.Designer.cs">
       <DependentUpon>FrmToolProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\FrmCommonProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\FrmCommonProduct.Designer.cs">
+      <DependentUpon>FrmCommonProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Engineer\FrmCommonProductOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engineer\FrmCommonProductOper.Designer.cs">
+      <DependentUpon>FrmCommonProductOper.cs</DependentUpon>
     </Compile>
     <Compile Include="Engineer\FrmDGPrdType.cs">
       <SubType>Form</SubType>
@@ -2934,6 +2952,9 @@
     <EmbeddedResource Include="Engineer\Define\FrmMachineProcess.resx">
       <DependentUpon>FrmMachineProcess.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\Define\FrmManuCommonPrdType.resx">
+      <DependentUpon>FrmManuCommonPrdType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmManuPersonDayTime.resx">
       <DependentUpon>FrmManuPersonDayTime.cs</DependentUpon>
     </EmbeddedResource>
@@ -2969,6 +2990,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\Define\FrmToolProcess.resx">
       <DependentUpon>FrmToolProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\FrmCommonProduct.resx">
+      <DependentUpon>FrmCommonProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engineer\FrmCommonProductOper.resx">
+      <DependentUpon>FrmCommonProductOper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engineer\FrmDGPrdType.resx">
       <DependentUpon>FrmDGPrdType.cs</DependentUpon>
