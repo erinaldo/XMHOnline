@@ -1,6 +1,6 @@
 ﻿namespace JERPApp.Define.Product
 {
-    partial class CtrlDGPJTypeTreePro
+    partial class CtrlDGTypeTreePro
     {
         /// <summary> 
         /// 必需的设计器变量。

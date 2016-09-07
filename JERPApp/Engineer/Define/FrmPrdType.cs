@@ -88,16 +88,20 @@ namespace JERPApp.Engineer.Define
                     this.accPrdType.InsertPrdType(
                      ref errormsg,
                      ref objPrdTypeID,
+                     "",
                      drow["PrdTypeName"],
-                     ParentID);
+                     0,
+                     ParentID,
+                     0);
                 }
                 else
                 {
                     this.accPrdType.UpdatePrdType(
                         ref errormsg,
                         drow["PrdTypeID"],
-                        drow["PrdTypeName"],
-                        ParentID);
+                        "",
+                        drow["PrdTypeName"]
+                         );
                 }
 
             }
@@ -124,7 +128,10 @@ namespace JERPApp.Engineer.Define
                      ref errormsg,
                      ref objPrdTypeID,
                      drow["PrdTypeName"],
-                     ParentID);
+                     ParentID,
+                      "",
+                     0,
+                     0);
                     if (flag)
                     {
                         drow["PrdTypeID"] = objPrdTypeID;
@@ -137,7 +144,7 @@ namespace JERPApp.Engineer.Define
                         ref errormsg,
                         drow["PrdTypeID"],
                         drow["PrdTypeName"],
-                        ParentID);
+                        "");
                 }
                 drow.AcceptChanges();
             }

@@ -11,10 +11,11 @@ namespace JERPApp.Define.Product
     public partial class CtrlCommonTypeTree : UserControl
     {
         private int m_flag = 0;
+
         public CtrlCommonTypeTree()
         {
             InitializeComponent();
-            this.accCommomPrdType = new JERPData.Product.ManuCommonPrdType();
+            this.accPrdType = new JERPData.Product.PrdType();
             this.treePrdType.DrawMode = TreeViewDrawMode.OwnerDrawText;
             this.treePrdType.DrawNode += new DrawTreeNodeEventHandler(treePrdType_DrawNode);
             this.treePrdType.AfterSelect += new TreeViewEventHandler(treePrdType_AfterSelect);
@@ -24,7 +25,7 @@ namespace JERPApp.Define.Product
             this.treePrdType .ContextMenuStrip = this.cMenu;
             this.mItemRefresh.Click += new EventHandler(mItemRefresh_Click);
             this.mItemDefine.Click += new EventHandler(mItemDefine_Click);
-            LoadData();
+            //LoadData();
         }
 
         public void InitiaParam(int type) 
@@ -64,7 +65,7 @@ namespace JERPApp.Define.Product
 
         }
 
-        private JERPData.Product.ManuCommonPrdType accCommomPrdType;
+        private JERPData.Product.PrdType accPrdType;
         private DataTable dtblPrdType;
         //private JERPApp.Engineer.Define.FrmManuCommonPrdType frmConmomPrdType;
         public void AllowDefine()
@@ -83,17 +84,17 @@ namespace JERPApp.Define.Product
             this.treePrdType.Nodes.Clear();
             if (type == 0)
             {
-                this.dtblPrdType = this.accCommomPrdType.GetDataPrdTypeAll().Tables[0];
+                this.dtblPrdType = this.accPrdType.GetDataPrdType().Tables[0];
             }
             else {
-                this.dtblPrdType = this.accCommomPrdType.GetDataPrdTypeByType(type).Tables[0];
+                this.dtblPrdType = this.accPrdType.GetDataPrdTypeByType(type).Tables[0];
             } 
 
             DataRow drow = this.dtblPrdType.NewRow();
-            drow["PrdTypeID"] = 0;
-            drow["ParentID"] = -1;
-            drow["PrdTypeCode"] = "0";
-            drow["PrdTypeName"] = "类型分类";
+            //drow["PrdTypeID"] = 0;
+            //drow["ParentID"] = -1;
+            //drow["PrdTypeCode"] = "0";
+            //drow["PrdTypeName"] = "类型分类";
             if (this.dtblPrdType.Rows.Count == 0)
             {
                 this.dtblPrdType.Rows.Add(drow);
@@ -103,7 +104,7 @@ namespace JERPApp.Define.Product
                 this.dtblPrdType.Rows.InsertAt(drow, 0);
             }
 
-            this.InitTree(this.treePrdType.Nodes, -1);
+            this.InitTree(this.treePrdType.Nodes, 0);
             if (this.treePrdType.Nodes.Count > 0)
             {
                 this.treePrdType.SelectedNode = this.treePrdType.Nodes[0];

@@ -10,18 +10,18 @@ namespace JERPApp.Engineer.Define
 {
     public partial class FrmDPPrdTypePro : Form
     {
-        private static int m_Type = 1;
+        private static int m_Type = 20;
         public FrmDPPrdTypePro()
         {
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
-            this.accPrdType = new JERPData.Product.DPPrdTypePro();
+            this.accDPPrdTypePro = new JERPData.Product.DPPrdTypePro();
             this.ctrlParentID.InitiaParam(m_Type);
             this.SetPermit();
         }
 
 
-        private JERPData.Product.DPPrdTypePro accPrdType;
+        private JERPData.Product.DPPrdTypePro accDPPrdTypePro;
         private DataTable dtblPrdType;
 
         private bool enableBrowse = false;//浏览
@@ -56,7 +56,7 @@ namespace JERPApp.Engineer.Define
   
         private void LoadData()
         {
-            this.dtblPrdType = this.accPrdType.GetDataDPPrdTypeProByParentID(this.ctrlParentID.PrdTypeID).Tables[0];
+            this.dtblPrdType = this.accDPPrdTypePro.GetDataDPPrdTypeProByParentID(this.ctrlParentID.PrdTypeID).Tables[0];
             this.dgrdv.DataSource = this.dtblPrdType;
         }
 
@@ -105,7 +105,7 @@ namespace JERPApp.Engineer.Define
                 if (drow["PrdTypeID"] == DBNull.Value)
                 {
                     objPrdTypeID = DBNull.Value;
-                     flag= this.accPrdType.InsertDPPrdTypePro(
+                     flag= this.accDPPrdTypePro.InsertDPPrdTypePro(
                      ref errormsg,
                      ref objPrdTypeID,
                      drow["PrdTypeCode"],
@@ -124,7 +124,7 @@ namespace JERPApp.Engineer.Define
                 }
                 else
                 {
-                    flag = this.accPrdType.UpdateDPPrdTypePro(
+                    flag = this.accDPPrdTypePro.UpdateDPPrdTypePro(
                         ref errormsg,
                         drow["PrdTypeID"],
                         drow["PrdTypeCode"],
@@ -140,60 +140,6 @@ namespace JERPApp.Engineer.Define
             MessageBox.Show("成功进行保存操作");
         }
 
-
-
-        //void frmAlterManuType_AffterSelected()
-        //{
-        //    int ParentID = this.frmAlterManuType.PrdTypeID;
-        //    string errormsg = string.Empty;
-        //    DataRow drow;
-        //    foreach (DataGridViewRow grow in this.dgrdv.Rows)
-        //    {
-        //        if (grow.IsNewRow) continue;
-        //        if (!grow.Selected) continue;
-        //        drow = this.dtblPrdType.DefaultView[grow.Index].Row;
-        //        if (this.GetAllowAlterFlag(drow, ParentID) == false)
-        //        {
-        //            MessageBox.Show("对不起，不能将子集设为父集");
-        //            this.LoadData();
-        //            return;
-        //        }
-        //        if (drow["PrdTypeID"] == DBNull.Value)
-        //        {
-        //            object objPrdTypeID = DBNull.Value;
-        //            this.accPrdType.InsertPrdType(
-        //             ref errormsg,
-        //             ref objPrdTypeID,
-        //             drow["PrdTypeCode"],
-        //             drow["PrdTypeName"],
-        //             ParentID,
-        //             m_Type);
-        //        }
-        //        else
-        //        {
-        //            this.accPrdType.UpdatePrdType(
-        //                ref errormsg,
-        //                drow["PrdTypeID"],
-        //                 drow["PrdTypeCode"],
-        //                drow["PrdTypeName"],
-        //                ParentID);
-        //        }
-
-        //    }
-        //    MessageBox.Show("成功变换当前选中行的类别");
-        //    this.LoadData();
-        //    this.frmAlterManuType.Close();
-
-        //}
-
-        //private bool GetAllowAlterFlag(DataRow drow, int ParentID)
-        //{
-        //    if (drow["PrdTypeID"] == DBNull.Value) return true;
-        //    bool flag = false;
-        //    this.accPrdType.GetParmPrdTypeIsChildTree(ParentID, (int)drow["PrdTypeID"], ref flag);
-        //    return !flag;
-        //}
-
         void dgrdv_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             int irow = e.Row.Index;
@@ -208,7 +154,7 @@ namespace JERPApp.Engineer.Define
             DialogResult rul = MessageBox.Show("你的删除将不能恢复，请确认！", "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rul == DialogResult.Yes)
             {
-                flag = this.accPrdType.DeleteDPPrdTypePro(ref ErrorMsg,
+                flag = this.accDPPrdTypePro.DeleteDPPrdTypePro(ref ErrorMsg,
                     drow["PrdTypeID"]);
                 if (!flag)
                 {

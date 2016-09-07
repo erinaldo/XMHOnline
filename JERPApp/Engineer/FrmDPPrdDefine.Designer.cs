@@ -228,13 +228,13 @@
             // 
             // ColumnCustomCode
             // 
-            this.ColumnCustomCode.DataPropertyName = "CustomCode";
+            this.ColumnCustomCode.DataPropertyName = "Product_XMHCustomCode";
             this.ColumnCustomCode.HeaderText = "客户产品号";
             this.ColumnCustomCode.Name = "ColumnCustomCode";
             // 
             // ColumnCustomFlag
             // 
-            this.ColumnCustomFlag.DataPropertyName = "CustomFlag";
+            this.ColumnCustomFlag.DataPropertyName = "Product_XMHCustomFlag";
             this.ColumnCustomFlag.HeaderText = "客户产品";
             this.ColumnCustomFlag.Name = "ColumnCustomFlag";
             this.ColumnCustomFlag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -243,7 +243,7 @@
             // 
             // ColumnBrand
             // 
-            this.ColumnBrand.DataPropertyName = "Brand";
+            this.ColumnBrand.DataPropertyName = "Product_XMHBrand";
             this.ColumnBrand.HeaderText = "品牌";
             this.ColumnBrand.Name = "ColumnBrand";
             // 
@@ -259,28 +259,28 @@
             // 
             // ColumnJMPrice
             // 
-            this.ColumnJMPrice.DataPropertyName = "JMPrice";
+            this.ColumnJMPrice.DataPropertyName = "Product_XMHJMPrice";
             this.ColumnJMPrice.HeaderText = "加盟单价";
             this.ColumnJMPrice.Name = "ColumnJMPrice";
             this.ColumnJMPrice.Width = 80;
             // 
             // ColumnPFPrice
             // 
-            this.ColumnPFPrice.DataPropertyName = "PFPrice";
+            this.ColumnPFPrice.DataPropertyName = "Product_XMHPFPrice";
             this.ColumnPFPrice.HeaderText = "批发单价";
             this.ColumnPFPrice.Name = "ColumnPFPrice";
             this.ColumnPFPrice.Width = 80;
             // 
             // ColumnHYPrice
             // 
-            this.ColumnHYPrice.DataPropertyName = "HYPrice";
+            this.ColumnHYPrice.DataPropertyName = "Product_XMHHYPrice";
             this.ColumnHYPrice.HeaderText = "会员单价";
             this.ColumnHYPrice.Name = "ColumnHYPrice";
             this.ColumnHYPrice.Width = 80;
             // 
             // ColumnLSPrice
             // 
-            this.ColumnLSPrice.DataPropertyName = "LSPrice";
+            this.ColumnLSPrice.DataPropertyName = "Product_XMHLSPrice";
             this.ColumnLSPrice.HeaderText = "零售单价";
             this.ColumnLSPrice.Name = "ColumnLSPrice";
             this.ColumnLSPrice.Width = 80;

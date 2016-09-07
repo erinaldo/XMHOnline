@@ -83,12 +83,19 @@ namespace JERPApp.Engineer.Define
         }
 
         private void showProcessDetail(DataRow row){
+            if (row["WorkingDayID"] == null) {
+                MessageBox.Show("请先保存人员工时信息");
+                return;
+            }
+
             if (frmPersonProcessDetails == null) {
                 frmPersonProcessDetails = new JERPApp.Engineer.Define.FrmPersonProcessDetails();
                 new FrmStyle(frmPersonProcessDetails).SetPopFrmStyle(this);
 
             }
-            frmPersonProcessDetails.sWorkingDayID = long.Parse(row["WorkingDayID"].ToString());
+            if (!row["WorkingDayID"].ToString().Equals("")){
+                frmPersonProcessDetails.sWorkingDayID = long.Parse(row["WorkingDayID"].ToString());
+            }
             frmPersonProcessDetails.PsnName = row["PsnName"].ToString();
             frmPersonProcessDetails.ShowDialog();
         }

@@ -11,17 +11,28 @@ namespace JERPApp.Engineer
 {
     public partial class FrmDPPrdDefine : Form
     {
-        private static int m_flag = 2;
-        public FrmDPPrdDefine()
-        {
+
+        //private static int m_DGType = 1;
+        private static int DP_Type = 20;
+        private static int m_DPType = 2;
+        private static String TBNAME = "prd.Product_XMH";//另外加的部分
+        private static String TBNAME_T = "Product_XMH";//另外加的部分
+        private static String TBDEFINENAME = "prd.DPProDefine";//自定义字段定义部分
+        private static String TBDEFINESAVENAME = "prd.DPProductPro";//自定义字段保存部分
+
+        public FrmDPPrdDefine(){
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
-            this.accPrds = new JERPData.Product.ComProduct();
+            this.accPrd = new JERPData.Product.Product();
+            this.accPrd_XMH = new JERPData.Product.Product_XMH();
+            this.accData = new JERPData.Product.DPProDefine();
             this.accUnits = new JERPData.General.Unit();
-            this.accDPPrdType = new JERPData.Product.DPPrdTypePro();
-            this.accProductTypePro = new JERPData.Product.ManuProductTypePro();
-            this.accProType = new JERPData.General.ComPrdType();
-            this.ctrlPrdTypeID.InitiaParam(m_flag);
+            this.accDPPrdTypePro = new JERPData.Product.DPPrdTypePro();
+            this.accOtherPrds = new JERPData.Product.OtherProducePro();
+            this.accPrdType = new JERPData.Product.PrdType();
+            this.accDPPrdTyprPro = new JERPData.Product.DPPrdTypePro();
+            this.ctrlPrdTypeID.InitiaParam(m_DPType);
+            initSql();
             this.SetPermit();
         }
 
@@ -29,23 +40,46 @@ namespace JERPApp.Engineer
         private bool enableBrowse = false;//浏览
         private bool enableSave = false;//保存
 
+        private JERPData.Product.Product accPrd;
+        private JERPData.Product.Product_XMH accPrd_XMH;
+        private JERPData.Product.DPProDefine accData;
 
-        private JERPData.Product.ComProduct accPrds;
         private JERPData.General.Unit accUnits;
-        private JERPData.General.ComPrdType accProType;
+        //private JERPData.General.ComPrdType accProType;
 
-        private DataTable dtbliniProduct, dtblProduct, dtblUnits;
+        private DataTable dtbliniProduct, dtblProduct, dtblUnits, dtblDPType;
 
         //类型
-        private JERPData.Product.DPPrdTypePro accDPPrdType;
+        private JERPData.Product.OtherProducePro accOtherPrds;
+
+        //刀杠类型
+        private JERPData.Product.DPPrdTypePro accDPPrdTypePro;
+
+        //刀片类型
+        private JERPData.Product.PrdType accPrdType;
+
         //属性
-        private JERPData.Product.ManuProductTypePro accProductTypePro;
+        private JERPData.Product.DPPrdTypePro accDPPrdTyprPro;
+
+        private static String M_SQL = String.Empty;
+        private static String M_PRE = "t1";
+
+
+        //自定义相关的字段
+        List<JERPBiz.Product.DPProDefineEntity> dpProDefineEntityList = new List<JERPBiz.Product.DPProDefineEntity>();
 
         //private DataTable dtblPrdType;
 
-        private JERPApp.Define.Product.FrmManuPrdType frmPrdType;
+        //private JERPApp.Define.Product.FrmManuPrdType frmPrdType;
+        private JERPApp.Define.Product.FrmPrdType frmPrdType;    
+
         private JCommon.FrmExcelImport frmImport;
         private JCommon.FrmImgBrowse frmImgBrowse;
+
+        private void initSql()
+        {
+            M_SQL = getDPSQLDefine();
+        }
 
         private void SetPermit()
         {
@@ -80,34 +114,49 @@ namespace JERPApp.Engineer
 
             }
 
-            initDgrdv("FrmManuPrdDefine");
+            initDgrdv();
 
         }
 
         //初始化dgrdv控件，增加列
-        private void initDgrdv(String name) {
-            DataSet ds = accPrds.GetDataManuProductTypeProTable();
-            //String[] FieldNames = new String[] { "FieldName","Type" ,"FieldType" ,"FieldText"};
-            for(int row= 0;row < ds.Tables[0].Rows.Count;row ++){
+        private void initDgrdv()
+        {
+            DataSet ds = accDPPrdTypePro.GetDataDPProAndProTypeDefine();
+            for (int row = 0; row < ds.Tables[0].Rows.Count; row++)
+            {
                 DataGridViewComboBoxColumn colbox = new DataGridViewComboBoxColumn();
-                DataRow datarow=  ds.Tables[0].Rows[row];
-                String fieldName = (String) datarow["FFieldName"];
-                String fieldText = (String) datarow["FFieldText"];
-                String type = (String) datarow["FType"];
-                String TypeParentID = (String)datarow["FTypeParentID"];
-                if (type.Equals("1")){
-                    colbox.HeaderText = fieldText ;
-                    colbox.Name  = fieldName;  
-                    colbox.Visible = true;
-                    colbox.DataPropertyName = fieldName;
-                    colbox.DisplayIndex = dgrdv.Columns.Count+row+1;
+                DataRow datarow = ds.Tables[0].Rows[row];
+                String fieldName = datarow["FFieldName"].ToString();
+                String fieldText = datarow["FFieldText"].ToString();
+                String Fvisable = datarow["Fvisable"].ToString();
+                //String FTypeSrcID = (String)datarow["FTypeSrcID"];
+                String FTypeSrcID = datarow["PrdTypeID"].ToString();
 
-                    int TParentID = Int32.Parse(TypeParentID);
-                    colbox.DataSource = this.accDPPrdType.GetDataDPPrdTypeProByParentID(TParentID).Tables[0];
-                    colbox.ValueMember = "PrdTypeID";
-                    colbox.DisplayMember = "PrdTypeName";
-                    dgrdv.Columns.Add(colbox);
+                if (!fieldName.Equals("PrdID"))
+                {
+                    if (Fvisable.Equals("1"))
+                    {
+                        colbox.HeaderText = fieldText;
+                        colbox.Name = fieldName;
+                        colbox.Visible = true;
+                        colbox.DataPropertyName = fieldName;
+                        colbox.DisplayIndex = dgrdv.Columns.Count + row + 1;
 
+                        int TypeSrcID = Int32.Parse(FTypeSrcID);
+                        colbox.DataSource = this.accDPPrdTyprPro.GetDataDPPrdTypeProByParentID(TypeSrcID).Tables[0];
+                        colbox.ValueMember = "PrdTypeID";
+                        colbox.DisplayMember = "PrdTypeName";
+                        dgrdv.Columns.Add(colbox);
+                    }
+                    else
+                    {
+
+                        colbox.HeaderText = fieldText;
+                        colbox.Name = fieldName;
+                        colbox.Visible = false;
+                        colbox.DataPropertyName = fieldName;
+                        dgrdv.Columns.Add(colbox);
+                    }
 
                 }
             }
@@ -151,15 +200,19 @@ namespace JERPApp.Engineer
                 return;
             }
             string errorMsg = String.Empty;
-            Boolean flag = accPrds.DeleteProduct(ref errorMsg, drow["PrdID"]);
-            if (!flag)
+            Boolean flag = accPrd.DeleteProduct(ref errorMsg, drow["PrdID"]);
+            if (flag)
+            {
+                accPrd_XMH.DeleteProduct_XMH(ref errorMsg, drow["PrdID"]); //删除特殊属性
+                accDPPrdTypePro.DeleteDPProductPro(ref errorMsg, drow["PrdID"]); //删除相关属性
+            }
+            else
             {
                 e.Cancel = true;
                 return;
             }
-            e.Cancel = true;
             MessageBox.Show("删除成功。");
-            accProductTypePro.DeleteManuProductTypePro(ref errorMsg, drow["PrdID"]); //删除相关属性
+            //accProductTypePro.DeleteManuProductTypePro(ref errorMsg, drow["PrdID"]); //删除相关属性
         }
 
         void btnExport_Click(object sender, EventArgs e)
@@ -181,11 +234,13 @@ namespace JERPApp.Engineer
         {
             if (frmPrdType == null)
             {
-                frmPrdType = new JERPApp.Define.Product.FrmManuPrdType();
+                frmPrdType = new JERPApp.Define.Product.FrmPrdType();
                 new FrmStyle(frmPrdType).SetPopFrmStyle(this);
-                frmPrdType.AffterSelected += new JERPApp.Define.Product.FrmManuPrdType.AffterSelectedDelegate(frmPrdType_AffterSelected);
+                frmPrdType.M_type = m_DPType;
+                frmPrdType.AffterSelected += new JERPApp.Define.Product.FrmPrdType.AffterSelectedDelegate(frmPrdType_AffterSelected);
             }
             frmPrdType.ShowDialog();
+
         }
 
 
@@ -198,12 +253,21 @@ namespace JERPApp.Engineer
             //    Debug.WriteLine(cuCell.RowIndex + ":" + cuCell.ColumnIndex );
             //}
             bool flag = false;
-            String errormsg = String.Empty; 
+            String errormsg = String.Empty;
             for (int irow = 0; irow < this.dgrdv.Rows.Count - 1; irow++)
             {
                 if (this.dgrdv.Rows[irow].Selected)
                 {
-                    this.ChangeManuPrdType(ref flag, ref errormsg , PrdTypeID, this.dtblProduct.DefaultView[irow].Row["PrdID"]);
+                    //this.ChangeManuPrdType(ref flag, ref errormsg, PrdTypeID, this.dtblProduct.DefaultView[irow].Row["PrdID"]);
+                    try
+                    {
+                        this.SaveRow(PrdTypeID, this.dtblProduct.DefaultView[irow].Row);
+                        flag = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        flag = false;
+                    }
                 }
             }
             if (flag)
@@ -212,7 +276,8 @@ namespace JERPApp.Engineer
                 MessageBox.Show("成功变换当前选中行的类别");
                 this.LoadData();
             }
-            else {
+            else
+            {
                 MessageBox.Show("变换类别失败:" + errormsg);
             }
             frmPrdType.Close();
@@ -267,7 +332,10 @@ namespace JERPApp.Engineer
         private void LoadData()
         {
 
-            this.dtbliniProduct = this.accPrds.GetDataDPProductByPrdTypeID(this.ctrlPrdTypeID.PrdTypeID).Tables[0];
+            String sWhere = " where  " + M_PRE + ".PrdTypeID" + " = " + this.ctrlPrdTypeID.PrdTypeID;
+            String sql = M_SQL + sWhere;
+            this.dtbliniProduct = this.accPrd_XMH.GetDataProduct_XMHBySql(sql).Tables[0];
+
 
             //AddOtherCol(this.dtbliniProduct);//增加属性列
 
@@ -300,7 +368,7 @@ namespace JERPApp.Engineer
                 frmImgBrowse.Browse(JERPData.ServerParameter.ERPFileFolder + @"\Product\PrdImg\" + objPrdID.ToString());
                 frmImgBrowse.ShowDialog();
                 this.dgrdv[icol, irow].Value = frmImgBrowse.Count;
-                this.accPrds.UpdateProductForImgCount(ref errormsg,
+                this.accPrd.UpdateProductForImgCount(ref errormsg,
                     objPrdID,
                     frmImgBrowse.Count);
             }
@@ -342,17 +410,18 @@ namespace JERPApp.Engineer
             return true;
         }
 
-        private void ChangeManuPrdType(ref bool flag,ref String errormsg, int PrdTypeID, Object PrdID)
-        {
-            if (PrdID == DBNull.Value) return;
-            flag = this.accPrds.UpdateComProductForPrdTypeID(ref errormsg, PrdID, PrdTypeID);
-        }
+        //private void ChangeManuPrdType(ref bool flag,ref String errormsg, int PrdTypeID, Object PrdID)
+        //{
+        //    if (PrdID == DBNull.Value) return;
+        //    flag = this.accPrds.UpdateComProductForPrdTypeID(ref errormsg, PrdID, PrdTypeID);
+        //}
 
         private void SaveRow(int PrdTypeID, DataRow drow)
         {
             string errormsg = string.Empty;
             bool flag = false;
             int oldprdid = this.GetPrdID(drow["PrdCode"].ToString());
+            Object ID = DBNull.Value;
             if (drow["PrdID"] == DBNull.Value)
             {
                 if (oldprdid > -1)
@@ -361,7 +430,7 @@ namespace JERPApp.Engineer
                     return;
                 }
                 object objPrdID = DBNull.Value;
-                flag = this.accPrds.InsertProductForImport(
+                flag = this.accPrd.InsertProductForImport(
                         ref errormsg,
                         ref objPrdID,
                         PrdTypeID,
@@ -379,35 +448,18 @@ namespace JERPApp.Engineer
                         0,//drow["PrdWeight"],
                         0,//drow["SaleFlag"],
                         drow["UnitID"],
-                        drow["DPType"],
-                        drow["JMPrice"],
-                        drow["PFPrice"],
-                        drow["HYPrice"],
-                        drow["LSPrice"],
-                        drow["CustomCode"],
-                        drow["Brand"],
                         0,//drow["MinPackingQty"],
                         drow["URL"],
                         drow["Memo"],
-                        drow["CustomFlag"],
                         0//drow["StopFlag"]
                         );
                 if (flag)
                 {
+                    EditProduct_XMH(ref errormsg, objPrdID, drow);
                     drow["PrdID"] = objPrdID;
                     drow.AcceptChanges();
-                    //增加属性
-                    this.accProductTypePro.InsertManuProductTypePro(
-                         ref errormsg,
-                         drow["PrdID"],
-                         drow["ProType1"],
-                         drow["ProType2"],
-                         drow["ProType3"],
-                         drow["ProType4"],
-                         drow["ProType5"],
-                         -1,
-                         -1
-                        );
+                    //属性
+                    DPProductPro(ref errormsg, ref ID, objPrdID, drow);
                     return;
                 }
             }
@@ -418,8 +470,9 @@ namespace JERPApp.Engineer
                 {
                     drow.RowError = "此编号已被别的产品使用";
                     return;
+
                 }
-                flag = this.accPrds.UpdateProductForImport(
+                flag = this.accPrd.UpdateProductForImport(
                         ref errormsg,
                         drow["PrdID"],
                         PrdTypeID,
@@ -437,42 +490,96 @@ namespace JERPApp.Engineer
                         0,//drow["PrdWeight"],
                         0,//drow["SaleFlag"],
                         drow["UnitID"],
-                        drow["DPType"],
-                        drow["JMPrice"],
-                        drow["PFPrice"],
-                        drow["HYPrice"],
-                        drow["LSPrice"],
-                        drow["CustomCode"],
-                        drow["Brand"],
                         0,//drow["MinPackingQty"],
                         drow["URL"],
                         drow["Memo"],
-                        drow["CustomFlag"],
                         0//drow["StopFlag"]
                         );
                 if (flag)
                 {
+                    EditProduct_XMH(ref errormsg, drow["PrdID"], drow);
+                    DPProductPro(ref errormsg, ref ID, drow["PrdID"], drow);
                     drow.AcceptChanges();
-                    //增加属性
-                    this.accProductTypePro.InsertManuProductTypePro(
-                         ref errormsg,
-                         drow["PrdID"],
-                         drow["ProType1"],
-                         drow["ProType2"],
-                         drow["ProType3"],
-                         drow["ProType4"],
-                         drow["ProType5"],
-                         -1,
-                         -1
-                        );
                 }
+            }
+
+        }
+
+        private void EditProduct_XMH(ref string errormsg, Object objPrdID, DataRow drow)
+        {
+            if (drow[TBNAME_T + "PrdID"] == null || drow[TBNAME_T + "PrdID"].ToString().Equals(""))
+            {
+                accPrd_XMH.InsertProduct_XMH(
+                ref errormsg,
+                objPrdID,
+                drow[TBNAME_T + "DPType"],
+                drow[TBNAME_T + "JMPrice"],
+                drow[TBNAME_T + "PFPrice"],
+                drow[TBNAME_T + "HYPrice"],
+                drow[TBNAME_T + "LSPrice"],
+                drow[TBNAME_T + "CustomCode"],
+                drow[TBNAME_T + "Brand"],
+                drow[TBNAME_T + "CustomFlag"]
+                );
+            }
+            else
+            {
+                accPrd_XMH.UpdateProduct_XMH(
+                ref errormsg,
+                drow[TBNAME_T + "PrdID"],
+                drow[TBNAME_T + "DPType"],
+                drow[TBNAME_T + "JMPrice"],
+                drow[TBNAME_T + "PFPrice"],
+                drow[TBNAME_T + "HYPrice"],
+                drow[TBNAME_T + "LSPrice"],
+                drow[TBNAME_T + "CustomCode"],
+                drow[TBNAME_T + "Brand"],
+                drow[TBNAME_T + "CustomFlag"]
+                );
+            }
+        }
+
+        private void DPProductPro(ref string errormsg, ref Object ID, Object objPrdID, DataRow drow)
+        {
+
+
+            if (this.accDPPrdTypePro.GetDataDPProductProByPrdID((int)objPrdID) == null || this.accDPPrdTypePro.GetDataDPProductProByPrdID((int)objPrdID).Tables[0].Rows.Count == 0)
+            {
+                this.accDPPrdTypePro.InsertDPProductPro(
+                    ref errormsg,
+                    ref ID,
+                    drow["PrdID"],
+                    drow["ProType1"],
+                    drow["ProType2"],
+                    drow["ProType3"],
+                    drow["ProType4"],
+                    drow["ProType5"],
+                    DBNull.Value,
+  
+                    DBNull.Value
+                    );
+            }
+            else
+            {
+                //增加属性
+                this.accDPPrdTypePro.UpdateDPProductPro(
+                    ref errormsg,
+                    drow["PrdID"],
+                    drow["ProType1"],
+                    drow["ProType2"],
+                    drow["ProType3"],
+                    drow["ProType4"],
+                    drow["ProType5"],
+                    DBNull.Value,
+                    DBNull.Value
+                        );
             }
         }
 
         private int GetPrdID(string PrdCode)
         {
             int rut = -1;
-            this.accPrds.GetParmProductPrdID(PrdCode, ref rut);
+            this.accPrd.GetParmProductPrdID(PrdCode, ref rut);
             return rut;
 
         }
@@ -554,7 +661,7 @@ namespace JERPApp.Engineer
                 {
                     drowNew[kv.Key] = this.GetUnitID(UnitName);
                 }
-                else if (kv.Key.Equals("CustomFlag"))
+                else if (kv.Key.Equals("Product_XMHCustomFlag"))
                 {
                     drowNew[kv.Key] = CustomFlag;
                 }
@@ -611,7 +718,7 @@ namespace JERPApp.Engineer
             return UnitID;
         }
 
-                //列字段机对应的列名
+        //列字段机对应的列名
         private Dictionary<string, string> getColumns()
         {
             int count = dgrdv.ColumnCount;
@@ -630,7 +737,7 @@ namespace JERPApp.Engineer
         int GetPrdTypeID(string TypeName ,int patentID)
         {
             int PrdTypeID = -1;
-            DataSet data = this.accDPPrdType.GetDataDPPrdTypeProByPrdTypeNameAndParentID(TypeName, patentID);
+            DataSet data = this.accDPPrdTypePro.GetDataDPPrdTypeProByPrdTypeNameAndParentID(TypeName, patentID);
             if (data.Tables[0] != null && data.Tables[0].Rows.Count > 0)
             { 
                 foreach (DataRow  datarow in data.Tables[0].Rows ){
@@ -646,6 +753,72 @@ namespace JERPApp.Engineer
             //this.dgrdv.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.Red;
             //MessageBox.Show("第" + e.RowIndex + "行，列" + columnName +"错误，请重新选择");
         }
+
+
+
+        //查询脚本
+        private String getDPSQLDefine()
+        {
+            string[] ColNames = JERPData.CommonTool.getTableColumns(TBNAME);
+            string Sel = JERPData.CommonTool.getSelCol("t2", TBNAME, ColNames);
+            String Sel2 = getDefineSel("t3", GetDefineColumns());
+            return " select " + M_PRE + ".*  " + Sel + Sel2
+               + " from prd.Product " + M_PRE
+               + " left join " + TBNAME + " t2  on t1.PrdID = t2.PrdID "
+               + " left join " + TBDEFINESAVENAME + " t3 on t1.PrdID = t3.PrdID ";
+        }
+
+
+
+        //把一个数组变为查询脚本，可以通用
+        private String getDefineSel(String pre, String[] columns)
+        {
+            StringBuilder sBuilter = new StringBuilder();
+            foreach (String col in columns)
+            {
+                if (col != null && col != "")
+                {
+                    sBuilter.Append("," + pre + "." + col);
+                }
+            }
+            return sBuilter.ToString();
+
+        }
+
+        //所有显示的字段值
+        private String[] GetDefineColumns()
+        {
+            List<JERPBiz.Product.DPProDefineEntity> dpProDefineEntityList = GetDefineObjs();
+            String[] Fields = new String[dpProDefineEntityList.Count];
+            int count = 0;
+            foreach (JERPBiz.Product.DPProDefineEntity dgProDefineEntity in dpProDefineEntityList)
+            {
+
+                if (dgProDefineEntity.Fvisable.ToString().Equals("1"))
+                {
+                    Fields[count] = dgProDefineEntity.FFieldName.ToString();
+                    count++;
+                }
+            }
+            return Fields;
+        }
+        //自定义字段对象
+        private List<JERPBiz.Product.DPProDefineEntity> GetDefineObjs()
+        {
+            JERPBiz.Product.DPProDefineEntity dpProDefineEntity = null;
+            DataTable dt = accData.GetDataDPProDefine().Tables[0];
+
+            foreach (DataRow drow in dt.Rows)
+            {
+                dpProDefineEntity = new JERPBiz.Product.DPProDefineEntity();
+                int fid = (int)drow["Fid"];
+                dpProDefineEntity.LoadData(fid);
+                dpProDefineEntityList.Add(dpProDefineEntity);
+            }
+            return dpProDefineEntityList;
+        }
+
+
 
     }
 }

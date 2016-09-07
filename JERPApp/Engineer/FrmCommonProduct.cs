@@ -15,12 +15,12 @@ namespace JERPApp.Engineer
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
             this.ctrlQFind.SeachGridView = this.dgrdv;
-            this.accComPrds = new JERPData.Product.ComProduct();
+            this.accPrd = new JERPData.Product.Product();
             this.SetPermit();
         }
 
-        private JERPData.Product.ComProduct accComPrds;
-        private DataTable dtblIniComPrds, dtblComPrds;
+        private JERPData.Product.Product accPrd;
+        private DataTable dtblIniPrd, dtblPrd;
         //private FrmPrdClone frmClone;
         private FrmCommonProductOper frmComOper;
         //private FrmPrdSetOper frmPrdSetOper;
@@ -37,7 +37,7 @@ namespace JERPApp.Engineer
             this.enableSave = JERPBiz.Frame.PermitHelper.EnableFunction(103);
             if (this.enableBrowse)
             {
-                this.ctrlPrdTypeID.AffterSelected += new JERPApp.Define.Product.CtrlCommonTypeTree.AffterSelectDelegate(ctrlPrdTypeID_AffterSelected);
+                this.ctrlPrdTypeID.AffterSelected += new JERPApp.Define.Product.CtrlPrdTypeTree.AffterSelectDelegate(ctrlPrdTypeID_AffterSelected);  
                 this.ctrlQFind.BeforeFilter += new JCommon.CtrlGridFind.BeforeFilterDelegate(ctrlQFind_BeforeFilter);
                 this.btnSearch.Click += new EventHandler(btnSearch_Click);
             }
@@ -64,7 +64,7 @@ namespace JERPApp.Engineer
             int irow = e.RowIndex;
             int icol = e.ColumnIndex;
             if ((irow == -1) || (icol == -1)) return;
-            int PrdID = (int)this.dtblComPrds.DefaultView[irow]["PrdID"];
+            int PrdID = (int)this.dtblPrd.DefaultView[irow]["PrdID"];
             if (this.dgrdv.Columns[icol].Name == this.ColumnMark.Name)
             {
 
@@ -101,7 +101,7 @@ namespace JERPApp.Engineer
                 frmFileBrowse.Browse(JERPData.ServerParameter.ERPFileFolder + @"\Product\PrdFile\" + PrdID.ToString());
                 frmFileBrowse.ShowDialog();
                 this.dgrdv[icol, irow].Value = frmFileBrowse.Count;
-                this.accComPrds.UpdateDGProductForImgCount(
+                this.accPrd.UpdateProductForImgCount(
                     ref errormsg,
                     PrdID,
                     frmFileBrowse.Count);
@@ -117,7 +117,7 @@ namespace JERPApp.Engineer
                 frmImgBrowse.Browse(JERPData.ServerParameter.ERPFileFolder + @"\Product\PrdImg\" + PrdID.ToString());
                 frmImgBrowse.ShowDialog();
                 this.dgrdv[icol, irow].Value = frmImgBrowse.Count;
-                this.accComPrds.UpdateProductForImgCount(ref errormsg,
+                this.accPrd.UpdateProductForImgCount(ref errormsg,
                     PrdID,
                     frmImgBrowse.Count);
             }
@@ -125,9 +125,9 @@ namespace JERPApp.Engineer
 
         private void LoadData()
         {
-            this.dtblIniComPrds = this.accComPrds.GetDataComProductByFreeSearch(this.whereclause).Tables[0];
-            this.dtblIniComPrds.Columns.Add("Mark", typeof(Image));
-            foreach (DataRow drow in this.dtblIniComPrds.Rows)
+            this.dtblIniPrd = this.accPrd.GetDataProductByFreeSearch(this.whereclause).Tables[0];
+            this.dtblIniPrd.Columns.Add("Mark", typeof(Image));
+            foreach (DataRow drow in this.dtblIniPrd.Rows)
             {
                 if (this.GetParentFlag((int)drow["PrdID"]))
                 {
@@ -138,8 +138,8 @@ namespace JERPApp.Engineer
                     drow["Mark"] = global::JERPApp.Properties.Resources.subtract;
                 }
             }
-            this.dtblComPrds = this.dtblIniComPrds.Copy();
-            this.dgrdv.DataSource = this.dtblComPrds;
+            this.dtblPrd = this.dtblIniPrd.Copy();
+            this.dgrdv.DataSource = this.dtblPrd;
 
         }
 
@@ -152,14 +152,14 @@ namespace JERPApp.Engineer
         private bool GetParentFlag(int PrdID)
         {
             bool flag = false;
-            this.accComPrds.GetParmComProductParentFlag(PrdID, ref flag);
+            this.accPrd.GetParmProductParentFlag(PrdID, ref flag);
             return flag;
         }
 
         void ctrlQFind_BeforeFilter()
         {
-            this.dtblComPrds = this.dtblIniComPrds.Copy();
-            this.dgrdv.DataSource = this.dtblComPrds;
+            this.dtblPrd = this.dtblIniPrd.Copy();
+            this.dgrdv.DataSource = this.dtblPrd;
         }
 
 

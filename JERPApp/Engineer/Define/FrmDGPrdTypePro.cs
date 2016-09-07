@@ -15,13 +15,15 @@ namespace JERPApp.Engineer.Define
         {
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
-            this.accPrdType = new JERPData.Product.DGPJPrdTyprPro();
+            this.accDGPrdTyprPro = new JERPData.Product.DGPrdTypePro();
             this.ctrlParentID.InitiaParam(m_Type);
             this.SetPermit();
         }
 
 
-        private JERPData.Product.DGPJPrdTyprPro accPrdType;
+        private JERPData.Product.DGPrdTypePro accDGPrdTyprPro;
+
+
         private DataTable dtblPrdType;
 
         private bool enableBrowse = false;//浏览
@@ -36,7 +38,7 @@ namespace JERPApp.Engineer.Define
             {
                 this.LoadData();
                 this.ctrlParentID.AffterSelected += this.LoadData;
-                this.ctrlParentID.BeforeSelected += new JERPApp.Define.Product.CtrlDGPJTypeTreePro.BeforeSelectDelegate(ctrlParentID_BeforeSelected);
+                this.ctrlParentID.BeforeSelected += new JERPApp.Define.Product.CtrlDGTypeTreePro.BeforeSelectDelegate(ctrlParentID_BeforeSelected);
                 this.dgrdv.ContextMenuStrip = this.cMenu;
             }
             this.btnSave.Enabled = this.enableSave;
@@ -56,7 +58,7 @@ namespace JERPApp.Engineer.Define
   
         private void LoadData()
         {
-            this.dtblPrdType = this.accPrdType.GetDataComTypeProByParentID(this.ctrlParentID.PrdTypeID).Tables[0];
+            this.dtblPrdType = this.accDGPrdTyprPro.GetDataDGPrdTypeProByParentID(this.ctrlParentID.PrdTypeID).Tables[0];
             this.dgrdv.DataSource = this.dtblPrdType;
         }
 
@@ -105,7 +107,7 @@ namespace JERPApp.Engineer.Define
                 if (drow["PrdTypeID"] == DBNull.Value)
                 {
                     objPrdTypeID = DBNull.Value;
-                     flag= this.accPrdType.InsertComTypePro(
+                     flag= this.accDGPrdTyprPro.InsertDGPrdTypePro(
                      ref errormsg,
                      ref objPrdTypeID,
                      drow["PrdTypeCode"],
@@ -124,7 +126,7 @@ namespace JERPApp.Engineer.Define
                 }
                 else
                 {
-                    flag = this.accPrdType.UpdateComTypePro(
+                    flag = this.accDGPrdTyprPro.UpdateDGPrdTypePro(
                         ref errormsg,
                         drow["PrdTypeID"],
                         drow["PrdTypeCode"],
@@ -208,7 +210,7 @@ namespace JERPApp.Engineer.Define
             DialogResult rul = MessageBox.Show("你的删除将不能恢复，请确认！", "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rul == DialogResult.Yes)
             {
-                flag = this.accPrdType.DeleteComTypePro(ref ErrorMsg,
+                flag = this.accDGPrdTyprPro.DeleteDGPrdTypePro(ref ErrorMsg,
                     drow["PrdTypeID"]);
                 if (!flag)
                 {

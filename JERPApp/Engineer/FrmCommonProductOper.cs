@@ -22,6 +22,7 @@ namespace JERPApp.Engineer
             this.btnDelete.Click += new EventHandler(btnDelete_Click);
             this.btnSave.Click += new EventHandler(btnSave_Click);
             this.btnExport.Click += new EventHandler(btnExport_Click);
+            this.btnClose.Click += new EventHandler(btnClose_Click);
 
             //工序新增和保存
             this.btnManufProcessAppend.Click += new EventHandler(btnManufProcessAppend_Click);
@@ -31,17 +32,33 @@ namespace JERPApp.Engineer
             this.btnMaxPrdCode.Click += new EventHandler(btnMaxPrdCode_Click);
             this.ctrlPrdTypeID.AllowDefine();
             this.FormClosed += new FormClosedEventHandler(FrmProductOper_FormClosed);
-
-
+            hideTab();//隐藏其它的TAB
             init();
         }
 
+        private void hideTab()
+        {
+            this.tabMain.TabPages.Remove(this.tabMain.TabPages["tabPackage"]);
+            this.tabMain.TabPages.Remove(this.tabMain.TabPages["pageProcess"]);
+            this.tabMain.TabPages.Remove(this.tabMain.TabPages["pageSetBom"]);
+            this.tabMain.TabPages.Remove(this.tabMain.TabPages["pageDevelop"]);
+            this.tabMain.TabPages.Remove(this.tabMain.TabPages["pageFile"]);
+            this.tabMain.TabPages.Remove(this.tabMain.TabPages["pageImg"]);
+            //for (int i = 1; i < this.tabMain.TabPages.Count; i++)
+            //{
+            //    this.tabMain.TabPages.Remove(this.tabMain.TabPages[i]);
+            //    Console.WriteLine(i);
+            //}
+        }
+
         private JERPData.Product.ManuProcessNew accManuProcessNew;
-        private JERPBiz.Product.DGProductEntity dGProductEntity;
+        //private JERPBiz.Product.DGProductEntity dGProductEntity;
+        //private JERPBiz.Product.DPProductEntity dPProductEntity;
+        private JERPBiz.Product.ProductEntity productEntity;
         private JERPData.Product.ComProduct accComPrd;
         private JERPBiz.Product.BOMPrintHelper printhelper;
         //private JERPData.Manufacture.ManufProcess accManufProcess;
-        private FrmManufProcessAppend frmManufProcessAppend;
+        //private FrmManufProcessAppend frmManufProcessAppend;
         private FrmMaxPrdCode frmMaxPrdCode;
         //private FrmPrdDelete frmDelete;
 
@@ -53,8 +70,7 @@ namespace JERPApp.Engineer
         private DataTable dtbliniProcessNewItems, dtblProcessNewItems;
 
         private void init() {
-
-            dGProductEntity = new JERPBiz.Product.DGProductEntity();
+            productEntity = new JERPBiz.Product.ProductEntity();
             this.dgrdvProcess.AutoGenerateColumns = false;//控件的不根据datasource自动产生列
             accProcessNew = new JERPData.Product.ProcessNew();
             SetColumnSrc();
@@ -157,9 +173,8 @@ namespace JERPApp.Engineer
             }
             DataRow drowNew = this.dtblProcessNewItems.NewRow();
             drowNew["ProcessID"] = ProcessID;
-
             drowNew["ProcessTempIndex"] = this.dtblProcessNewItems.Rows.Count + 1;
-
+            drowNew["ProcessCode"] = drow["ProcessCode"];
             drowNew["ProcessName"] = drow["ProcessName"];
             drowNew["MachineProcessName"] = drow["MachineProcessName"];
             drowNew["ModelProcessName"] = drow["ModelProcessName"];
@@ -233,11 +248,11 @@ namespace JERPApp.Engineer
         public void Edit(int PrdID)
         {
             this.PrdID = PrdID;
-            this.dGProductEntity.LoadData(PrdID);
-            this.ctrlPrdTypeID.PrdTypeID = this.dGProductEntity.PrdTypeID;
-            this.txtPrdCode.Text = this.dGProductEntity.PrdCode;
-            this.txtPrdName.Text = this.dGProductEntity.PrdName;
-            this.txtPrdSpec.Text = this.dGProductEntity.PrdSpec;
+            this.productEntity.LoadData(PrdID);
+            this.ctrlPrdTypeID.PrdTypeID = this.productEntity.PrdTypeID;
+            this.txtPrdCode.Text = this.productEntity.PrdCode;
+            this.txtPrdName.Text = this.productEntity.PrdName;
+            this.txtPrdSpec.Text = this.productEntity.PrdSpec;
             //this.txtSurface.Text = this.PrdEntity.Surface;
             //this.txtModel.Text = this.PrdEntity.Model;
             //this.txtManufacturer.Text = this.PrdEntity.Manufacturer;
@@ -279,8 +294,8 @@ namespace JERPApp.Engineer
         {
             if (ValidateData() == false) return;
             Boolean flag = false;
- 
-            foreach (DataRow drow in this.dgrdvProcess.Rows)
+
+            foreach (DataRow drow in this.dtblProcessNewItems.Rows)
             {
                 if (drow.RowState == DataRowState.Deleted)
                 {
@@ -308,21 +323,16 @@ namespace JERPApp.Engineer
             string errormsg = string.Empty;
             Boolean flag = false;
             Object ID = drow["ID"];
-            if (ID != DBNull.Value){
+            if (ID == DBNull.Value){
                 flag = this.accManuProcessNew.InsertManuProcessNew(
                     ref errormsg,
                     ref ID,
                     this.PrdID,
                     drow["ProcessTempIndex"],
                     drow["ProcessID"],
-                    drow["ProcessCode"],
-                    drow["ProcessName"],
                     drow["ModeMachineTime"],
                     drow["TimeCost"],
-                    drow["TimeTypeID"],
-                    drow["UseMachineID"],
-                    drow["ModelID"],
-                    drow["ToolsID"],
+                    2,
                     drow["MoneyCost"],
                     null,
                     drow["ProcessMemo"]);
@@ -337,14 +347,9 @@ namespace JERPApp.Engineer
                     this.PrdID,
                     drow["ProcessTempIndex"],
                     drow["ProcessID"],
-                    drow["ProcessCode"],
-                    drow["ProcessName"],
                     drow["ModeMachineTime"],
                     drow["TimeCost"],
-                    drow["TimeTypeID"],
-                    drow["UseMachineID"],
-                    drow["ModelID"],
-                    drow["ToolsID"],
+                    2,
                     drow["MoneyCost"],
                     null,
                     drow["ProcessMemo"]);
@@ -355,7 +360,6 @@ namespace JERPApp.Engineer
             }
             
         }
-
 
 
         private bool ValidateData()
@@ -441,6 +445,11 @@ namespace JERPApp.Engineer
                 //    this.PrdID,
                 //    this.ctrlManufImg.Count);
             }
+        }
+        //关闭窗体
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         //输出打印

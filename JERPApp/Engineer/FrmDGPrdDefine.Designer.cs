@@ -33,6 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgrdv = new JCommon.MyDataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ctrlQFind = new JCommon.CtrlGridFind();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.cMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.mItemPrdType = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlCommonTypeTree();
             this.ColumnPrdCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrdSpec = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,16 +60,6 @@
             this.ColumnAssistantCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPrdCodeSrc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ctrlQFind = new JCommon.CtrlGridFind();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.cMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mItemRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.mItemPrdType = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlCommonTypeTree();
             ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).BeginInit();
             this.panel2.SuspendLayout();
             this.cMenu.SuspendLayout();
@@ -113,131 +113,6 @@
             this.dgrdv.Size = new System.Drawing.Size(1018, 624);
             this.dgrdv.TabIndex = 1;
             this.dgrdv.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgrdv_DataError);
-            // 
-            // ColumnPrdCode
-            // 
-            this.ColumnPrdCode.DataPropertyName = "PrdCode";
-            this.ColumnPrdCode.Frozen = true;
-            this.ColumnPrdCode.HeaderText = "产品编号";
-            this.ColumnPrdCode.Name = "ColumnPrdCode";
-            // 
-            // ColumnPrdName
-            // 
-            this.ColumnPrdName.DataPropertyName = "PrdName";
-            this.ColumnPrdName.Frozen = true;
-            this.ColumnPrdName.HeaderText = "产品名称";
-            this.ColumnPrdName.Name = "ColumnPrdName";
-            // 
-            // ColumnPrdSpec
-            // 
-            this.ColumnPrdSpec.DataPropertyName = "PrdSpec";
-            this.ColumnPrdSpec.Frozen = true;
-            this.ColumnPrdSpec.HeaderText = "产品规格";
-            this.ColumnPrdSpec.Name = "ColumnPrdSpec";
-            // 
-            // ColumnDPType
-            // 
-            this.ColumnDPType.DataPropertyName = "DPType";
-            this.ColumnDPType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDPType.HeaderText = "刀片类别";
-            this.ColumnDPType.Name = "ColumnDPType";
-            this.ColumnDPType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnDPType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnCustomCode
-            // 
-            this.ColumnCustomCode.DataPropertyName = "CustomCode";
-            this.ColumnCustomCode.HeaderText = "客户产品号";
-            this.ColumnCustomCode.Name = "ColumnCustomCode";
-            // 
-            // ColumnCustomFlag
-            // 
-            this.ColumnCustomFlag.DataPropertyName = "CustomFlag";
-            this.ColumnCustomFlag.HeaderText = "客户产品";
-            this.ColumnCustomFlag.Name = "ColumnCustomFlag";
-            this.ColumnCustomFlag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnCustomFlag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnCustomFlag.Width = 80;
-            // 
-            // ColumnBrand
-            // 
-            this.ColumnBrand.DataPropertyName = "Brand";
-            this.ColumnBrand.HeaderText = "品牌";
-            this.ColumnBrand.Name = "ColumnBrand";
-            // 
-            // ColumnUnitID
-            // 
-            this.ColumnUnitID.DataPropertyName = "UnitID";
-            this.ColumnUnitID.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ColumnUnitID.HeaderText = "单位";
-            this.ColumnUnitID.Name = "ColumnUnitID";
-            this.ColumnUnitID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnUnitID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnUnitID.Width = 54;
-            // 
-            // ColumnJMPrice
-            // 
-            this.ColumnJMPrice.DataPropertyName = "JMPrice";
-            this.ColumnJMPrice.HeaderText = "加盟单价";
-            this.ColumnJMPrice.Name = "ColumnJMPrice";
-            this.ColumnJMPrice.Width = 80;
-            // 
-            // ColumnPFPrice
-            // 
-            this.ColumnPFPrice.DataPropertyName = "PFPrice";
-            this.ColumnPFPrice.HeaderText = "批发单价";
-            this.ColumnPFPrice.Name = "ColumnPFPrice";
-            this.ColumnPFPrice.Width = 80;
-            // 
-            // ColumnHYPrice
-            // 
-            this.ColumnHYPrice.DataPropertyName = "HYPrice";
-            this.ColumnHYPrice.HeaderText = "会员单价";
-            this.ColumnHYPrice.Name = "ColumnHYPrice";
-            this.ColumnHYPrice.Width = 80;
-            // 
-            // ColumnLSPrice
-            // 
-            this.ColumnLSPrice.DataPropertyName = "LSPrice";
-            this.ColumnLSPrice.HeaderText = "零售单价";
-            this.ColumnLSPrice.Name = "ColumnLSPrice";
-            this.ColumnLSPrice.Width = 80;
-            // 
-            // ColumnImgCount
-            // 
-            this.ColumnImgCount.DataPropertyName = "ImgCount";
-            this.ColumnImgCount.HeaderText = "图片";
-            this.ColumnImgCount.Name = "ColumnImgCount";
-            this.ColumnImgCount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnImgCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnImgCount.Width = 60;
-            // 
-            // ColumnDWGNo
-            // 
-            this.ColumnDWGNo.DataPropertyName = "DWGNo";
-            this.ColumnDWGNo.HeaderText = "图号";
-            this.ColumnDWGNo.Name = "ColumnDWGNo";
-            this.ColumnDWGNo.Width = 60;
-            // 
-            // ColumnAssistantCode
-            // 
-            this.ColumnAssistantCode.DataPropertyName = "AssistantCode";
-            this.ColumnAssistantCode.HeaderText = "助记码";
-            this.ColumnAssistantCode.Name = "ColumnAssistantCode";
-            // 
-            // ColumnPrdCodeSrc
-            // 
-            this.ColumnPrdCodeSrc.DataPropertyName = "PrdCodeSrc";
-            this.ColumnPrdCodeSrc.HeaderText = "对应产品编号";
-            this.ColumnPrdCodeSrc.Name = "ColumnPrdCodeSrc";
-            this.ColumnPrdCodeSrc.Visible = false;
-            // 
-            // ColumnMemo
-            // 
-            this.ColumnMemo.DataPropertyName = "Memo";
-            this.ColumnMemo.HeaderText = "备注";
-            this.ColumnMemo.Name = "ColumnMemo";
-            this.ColumnMemo.Width = 180;
             // 
             // panel2
             // 
@@ -323,6 +198,131 @@
             this.ctrlPrdTypeID.Name = "ctrlPrdTypeID";
             this.ctrlPrdTypeID.Size = new System.Drawing.Size(176, 659);
             this.ctrlPrdTypeID.TabIndex = 1;
+            // 
+            // ColumnPrdCode
+            // 
+            this.ColumnPrdCode.DataPropertyName = "PrdCode";
+            this.ColumnPrdCode.Frozen = true;
+            this.ColumnPrdCode.HeaderText = "产品编号";
+            this.ColumnPrdCode.Name = "ColumnPrdCode";
+            // 
+            // ColumnPrdName
+            // 
+            this.ColumnPrdName.DataPropertyName = "PrdName";
+            this.ColumnPrdName.Frozen = true;
+            this.ColumnPrdName.HeaderText = "产品名称";
+            this.ColumnPrdName.Name = "ColumnPrdName";
+            // 
+            // ColumnPrdSpec
+            // 
+            this.ColumnPrdSpec.DataPropertyName = "PrdSpec";
+            this.ColumnPrdSpec.Frozen = true;
+            this.ColumnPrdSpec.HeaderText = "产品规格";
+            this.ColumnPrdSpec.Name = "ColumnPrdSpec";
+            // 
+            // ColumnDPType
+            // 
+            this.ColumnDPType.DataPropertyName = "Product_XMHDPType";
+            this.ColumnDPType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnDPType.HeaderText = "刀片类别";
+            this.ColumnDPType.Name = "ColumnDPType";
+            this.ColumnDPType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnDPType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColumnCustomCode
+            // 
+            this.ColumnCustomCode.DataPropertyName = "Product_XMHCustomCode";
+            this.ColumnCustomCode.HeaderText = "客户产品号";
+            this.ColumnCustomCode.Name = "ColumnCustomCode";
+            // 
+            // ColumnCustomFlag
+            // 
+            this.ColumnCustomFlag.DataPropertyName = "Product_XMHCustomFlag";
+            this.ColumnCustomFlag.HeaderText = "客户产品";
+            this.ColumnCustomFlag.Name = "ColumnCustomFlag";
+            this.ColumnCustomFlag.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnCustomFlag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnCustomFlag.Width = 80;
+            // 
+            // ColumnBrand
+            // 
+            this.ColumnBrand.DataPropertyName = "Product_XMHBrand";
+            this.ColumnBrand.HeaderText = "品牌";
+            this.ColumnBrand.Name = "ColumnBrand";
+            // 
+            // ColumnUnitID
+            // 
+            this.ColumnUnitID.DataPropertyName = "UnitID";
+            this.ColumnUnitID.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ColumnUnitID.HeaderText = "单位";
+            this.ColumnUnitID.Name = "ColumnUnitID";
+            this.ColumnUnitID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnUnitID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnUnitID.Width = 54;
+            // 
+            // ColumnJMPrice
+            // 
+            this.ColumnJMPrice.DataPropertyName = "Product_XMHJMPrice";
+            this.ColumnJMPrice.HeaderText = "加盟单价";
+            this.ColumnJMPrice.Name = "ColumnJMPrice";
+            this.ColumnJMPrice.Width = 80;
+            // 
+            // ColumnPFPrice
+            // 
+            this.ColumnPFPrice.DataPropertyName = "Product_XMHPFPrice";
+            this.ColumnPFPrice.HeaderText = "批发单价";
+            this.ColumnPFPrice.Name = "ColumnPFPrice";
+            this.ColumnPFPrice.Width = 80;
+            // 
+            // ColumnHYPrice
+            // 
+            this.ColumnHYPrice.DataPropertyName = "Product_XMHHYPrice";
+            this.ColumnHYPrice.HeaderText = "会员单价";
+            this.ColumnHYPrice.Name = "ColumnHYPrice";
+            this.ColumnHYPrice.Width = 80;
+            // 
+            // ColumnLSPrice
+            // 
+            this.ColumnLSPrice.DataPropertyName = "Product_XMHLSPrice";
+            this.ColumnLSPrice.HeaderText = "零售单价";
+            this.ColumnLSPrice.Name = "ColumnLSPrice";
+            this.ColumnLSPrice.Width = 80;
+            // 
+            // ColumnImgCount
+            // 
+            this.ColumnImgCount.DataPropertyName = "ImgCount";
+            this.ColumnImgCount.HeaderText = "图片";
+            this.ColumnImgCount.Name = "ColumnImgCount";
+            this.ColumnImgCount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnImgCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnImgCount.Width = 60;
+            // 
+            // ColumnDWGNo
+            // 
+            this.ColumnDWGNo.DataPropertyName = "DWGNo";
+            this.ColumnDWGNo.HeaderText = "图号";
+            this.ColumnDWGNo.Name = "ColumnDWGNo";
+            this.ColumnDWGNo.Width = 60;
+            // 
+            // ColumnAssistantCode
+            // 
+            this.ColumnAssistantCode.DataPropertyName = "AssistantCode";
+            this.ColumnAssistantCode.HeaderText = "助记码";
+            this.ColumnAssistantCode.Name = "ColumnAssistantCode";
+            // 
+            // ColumnPrdCodeSrc
+            // 
+            this.ColumnPrdCodeSrc.DataPropertyName = "PrdCodeSrc";
+            this.ColumnPrdCodeSrc.HeaderText = "对应产品编号";
+            this.ColumnPrdCodeSrc.Name = "ColumnPrdCodeSrc";
+            this.ColumnPrdCodeSrc.Visible = false;
+            // 
+            // ColumnMemo
+            // 
+            this.ColumnMemo.DataPropertyName = "Memo";
+            this.ColumnMemo.HeaderText = "备注";
+            this.ColumnMemo.Name = "ColumnMemo";
+            this.ColumnMemo.Width = 180;
             // 
             // FrmDGPrdDefine
             // 

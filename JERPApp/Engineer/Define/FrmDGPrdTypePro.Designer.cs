@@ -39,7 +39,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.cMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mItemAlterType = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctrlParentID = new JERPApp.Define.Product.CtrlDGPJTypeTreePro();
+            this.ctrlParentID = new JERPApp.Define.Product.CtrlDGTypeTreePro();
             ((System.ComponentModel.ISupportInitialize)(this.dgrdv)).BeginInit();
             this.panel1.SuspendLayout();
             this.cMenu.SuspendLayout();
@@ -152,6 +152,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 类型;
         private System.Windows.Forms.ContextMenuStrip cMenu;
         private System.Windows.Forms.ToolStripMenuItem mItemAlterType;
-        private JERPApp.Define.Product.CtrlDGPJTypeTreePro ctrlParentID;
+        private JERPApp.Define.Product.CtrlDGTypeTreePro ctrlParentID;
     }
 }

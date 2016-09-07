@@ -10,6 +10,7 @@ namespace JERPApp.Define.Product
 {
     public partial class CtrlPrdTypeTree : UserControl
     {
+        private static int m_flag = -1;
         public CtrlPrdTypeTree()
         {
             InitializeComponent();
@@ -24,6 +25,11 @@ namespace JERPApp.Define.Product
             this.mItemRefresh.Click += new EventHandler(mItemRefresh_Click);
             this.mItemDefine.Click += new EventHandler(mItemDefine_Click); 
           
+        }
+
+        public void InitiaParam(int type)
+        {
+            this.LoadData(type);
         }
 
         void treePrdType_DrawNode(object sender, DrawTreeNodeEventArgs e)
@@ -66,8 +72,23 @@ namespace JERPApp.Define.Product
         }
         public void LoadData()
         {
+            this.LoadData(m_flag);
+        }
+
+        public void LoadData(int type)
+        {
             this.treePrdType.Nodes.Clear();
             this.dtblPrdType = this.accPrdType.GetDataPrdType ().Tables[0];
+
+            if (type == -1)
+            {
+                this.dtblPrdType = this.accPrdType.GetDataPrdType().Tables[0];
+            }
+            else 
+            {
+                this.dtblPrdType = this.accPrdType.GetDataPrdTypeByType(type).Tables[0];
+            } 
+
             this.InitTree(this.treePrdType.Nodes, 0);
             if (this.treePrdType.Nodes.Count > 0)
             {

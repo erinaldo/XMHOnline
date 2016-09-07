@@ -29,7 +29,49 @@ namespace JERPData.Product
 			this.sqlConn=DBConnection.JSqlDBConn;
 		}
 
-        public DataSet GetDataComTypeProByPrdTypeID(int PrdTypeID)
+        //public DataSet GetDataComTypePro()
+        //{
+        //    DataSet ds = null;
+        //    try
+        //    {
+        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+        //        ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypePro");
+        //    }
+        //    catch//(SqlException ex)
+        //    {
+        //        // ex.Message --这里作调试用
+        //    }
+        //    finally
+        //    {
+        //        this.sqlConn.Close();
+        //    }
+        //    return ds;
+        //}
+
+
+        //public DataSet GetDataComTypeProByParentID(int ParentID)
+        //{
+        //    DataSet ds = null;
+        //    SqlParameter[] arParams = new SqlParameter[1];
+        //    arParams[0] = new SqlParameter("@ParentID", SqlDbType.Int);
+        //    arParams[0].Value = ParentID;
+        //    try
+        //    {
+        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+        //        ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypeProByParentID", arParams);
+        //    }
+        //    catch//(SqlException ex)
+        //    {
+        //        // ex.Message --这里作调试用
+        //    }
+        //    finally
+        //    {
+        //        this.sqlConn.Close();
+        //    }
+        //    return ds;
+        //}
+
+        public DataSet GetDataDPPrdTypeProByPrdTypeID(int PrdTypeID)
         {
             DataSet ds = null;
             SqlParameter[] arParams = new SqlParameter[1];
@@ -38,46 +80,7 @@ namespace JERPData.Product
             try
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypeProByPrdTypeID", arParams);
-            }
-            catch//(SqlException ex)
-            {
-                // ex.Message --这里作调试用
-            }
-            finally
-            {
-                this.sqlConn.Close();
-            }
-            return ds;
-        }
-        public DataSet GetDataComTypeProByType(int Type)
-        {
-            DataSet ds = null;
-            SqlParameter[] arParams = new SqlParameter[1];
-            arParams[0] = new SqlParameter("@Type", SqlDbType.Int);
-            arParams[0].Value = Type;
-            try
-            {
-                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypeProByType",arParams);
-            }
-            catch//(SqlException ex)
-            {
-                // ex.Message --这里作调试用
-            }
-            finally
-            {
-                this.sqlConn.Close();
-            }
-            return ds;
-        }
-        public DataSet GetDataComTypePro()
-        {
-            DataSet ds = null;
-            try
-            {
-                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypePro");
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataDPPrdTypeProByPrdTypeID", arParams);
             }
             catch//(SqlException ex)
             {
@@ -90,52 +93,7 @@ namespace JERPData.Product
             return ds;
         }
 
-
-        public DataSet GetDataComTypeProByParentID(int ParentID)
-        {
-            DataSet ds = null;
-            SqlParameter[] arParams = new SqlParameter[1];
-            arParams[0] = new SqlParameter("@ParentID", SqlDbType.Int);
-            arParams[0].Value = ParentID;
-            try
-            {
-                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataComTypeProByParentID", arParams);
-            }
-            catch//(SqlException ex)
-            {
-                // ex.Message --这里作调试用
-            }
-            finally
-            {
-                this.sqlConn.Close();
-            }
-            return ds;
-        }
-
-        public DataSet GetDataProductByPrdTypeID(int PrdTypeID)
-        {
-            DataSet ds = null;
-            SqlParameter[] arParams = new SqlParameter[1];
-            arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
-            arParams[0].Value = PrdTypeID;
-            try
-            {
-                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
-                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataProductByPrdTypeID", arParams);
-            }
-            catch//(SqlException ex)
-            {
-                // ex.Message --这里作调试用
-            }
-            finally
-            {
-                this.sqlConn.Close();
-            }
-            return ds;
-        }
-
-        public bool InsertComTypePro(ref string ErrorMsg, ref object PrdTypeID, object PrdTypeCode, object PrdTypeName, object Type, object ParentID, object RootID)
+        public bool InsertDGPrdTypePro(ref string ErrorMsg, ref object PrdTypeID, object PrdTypeCode, object PrdTypeName, object Type, object ParentID, object RootID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -160,7 +118,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.InsertComTypePro", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.InsertDGPrdTypePro", arParams);
                 PrdTypeID = arParams[0].Value;
                 DBTransaction.Commit();
                 flag = true;
@@ -178,7 +136,7 @@ namespace JERPData.Product
             return flag;
         }
 
-        public bool UpdateComTypePro(ref string ErrorMsg, object PrdTypeID, object PrdTypeCode, object PrdTypeName)
+        public bool UpdateDGPrdTypePro(ref string ErrorMsg, object PrdTypeID, object PrdTypeCode, object PrdTypeName)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -196,7 +154,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateComTypePro", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateDGPrdTypePro", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }
@@ -213,7 +171,8 @@ namespace JERPData.Product
             return flag;
         }
 
-        public bool UpdateComTypeProForParentID(ref string ErrorMsg, object ParentID)
+
+        public bool UpdateDPPrdTypeProForParentID(ref string ErrorMsg, object ParentID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -225,7 +184,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateComTypeProForParentID", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdateDPPrdTypeProForParentID", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }
@@ -242,8 +201,7 @@ namespace JERPData.Product
             return flag;
         }
 
-
-        public bool DeleteComTypePro(ref string ErrorMsg, object PrdTypeID)
+        public bool DeleteDGPrdTypePro(ref string ErrorMsg, object PrdTypeID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -255,7 +213,7 @@ namespace JERPData.Product
             {
                 if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
                 DBTransaction = this.sqlConn.BeginTransaction();
-                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.DeleteComTypePro", arParams);
+                SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.DeleteDGPrdTypePro", arParams);
                 DBTransaction.Commit();
                 flag = true;
             }

@@ -154,7 +154,9 @@
     <Compile Include="Product\BuyReplenishNoteEntity.cs" />
     <Compile Include="Product\BuyReturnFormatEntity.cs" />
     <Compile Include="Product\BuyReturnNoteEntity.cs" />
+    <Compile Include="Product\DGProDefineEntity.cs" />
     <Compile Include="Product\DGProductEntity.cs" />
+    <Compile Include="Product\DPProDefineEntity.cs" />
     <Compile Include="Product\ExpressReceiptFormatEntity.cs" />
     <Compile Include="Product\ExpressReceiptNoteEntity.cs" />
     <Compile Include="Product\ExpressReceiptNotePrintHelper.cs" />

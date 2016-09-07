@@ -16,7 +16,8 @@ namespace JERPApp.Engineer
             this.dgrdv.AutoGenerateColumns = false;
             this.accPrds = new JERPData.Product.ManuProduct();
             this.accUnits = new JERPData.General.Unit();
-            this.accManuPrdType = new JERPData.Product.ManuPrdType();
+            //this.accManuPrdType = new JERPData.Product.ManuPrdType();
+            this.accPrdType = new JERPData.Product.PrdType()
             this.accProductTypePro = new JERPData.Product.ManuProductTypePro();
             this.accProType = new JERPData.General.ComPrdType();
             this.SetPermit();
@@ -35,7 +36,8 @@ namespace JERPApp.Engineer
         private DataTable dtbliniProduct, dtblProduct, dtblUnits, dtbManuPrdType1, dtbManuPrdType2, dtbManuPrdType3, dtbManuPrdType4;
 
         //类型
-        private JERPData.Product.ManuPrdType accManuPrdType;
+        //private JERPData.Product.ManuPrdType accManuPrdType;
+        private JERPData.Product.PrdType accPrdType;
         //属性
         private JERPData.Product.ManuProductTypePro accProductTypePro;
 
@@ -114,9 +116,12 @@ namespace JERPApp.Engineer
                     colbox.DisplayIndex = dgrdv.Columns.Count + row + 1;
 
                     int TParentID = Int32.Parse(TypeParentID);
-                    colbox.DataSource = this.accManuPrdType.GetDataPrdTypeByParentID(TParentID).Tables[0];
-                    colbox.ValueMember = "ManuPrdTypeID";
-                    colbox.DisplayMember = "ManuPrdTypeName";
+                    //colbox.DataSource = this.accManuPrdType.GetDataPrdTypeByParentID(TParentID).Tables[0];
+                    //colbox.ValueMember = "ManuPrdTypeID";
+                    //colbox.DisplayMember = "ManuPrdTypeName";
+                    colbox.DataSource = this.accPrdType.GetDataPrdTypeByParentID(TParentID).Tables[0];
+                    colbox.ValueMember = "PrdTypeID";
+                    colbox.DisplayMember = "PrdTypeName";
                     dgrdv.Columns.Add(colbox);
                 }
              

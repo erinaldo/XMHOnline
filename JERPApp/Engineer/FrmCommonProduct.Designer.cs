@@ -40,7 +40,7 @@
             this.ctrlCommonTypeTree1 = new JERPApp.Define.Product.CtrlCommonTypeTree();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlCommonTypeTree();
+            this.ctrlPrdTypeID = new JERPApp.Define.Product.CtrlPrdTypeTree();
             this.btnSearch = new System.Windows.Forms.Button();
             this.ckbPrdCode = new System.Windows.Forms.CheckBox();
             this.txtPrdSpec = new System.Windows.Forms.TextBox();
@@ -544,8 +544,8 @@
         private JCommon.CtrlGridFind ctrlQFind;
         private JERPApp.Define.Product.CtrlCommonTypeTree ctrlCommonTypeTree1;
         private System.Windows.Forms.Label label1;
-        private JERPApp.Define.Product.CtrlCommonTypeTree ctrlPrdTypeID;
         private System.Windows.Forms.ContextMenuStrip cMenu;
         private System.Windows.Forms.ToolStripMenuItem mItemRefresh;
+        private JERPApp.Define.Product.CtrlPrdTypeTree ctrlPrdTypeID;
     }
 }

@@ -15,15 +15,15 @@ namespace JERPApp.Engineer.Define
         {
             InitializeComponent();
             this.dgrdv.AutoGenerateColumns = false;
-            this.accManuPrdType = new JERPData.Product.ManuPrdType();
+            this.accPrdType = new JERPData.Product.PrdType();
             this.ctrlParentID.InitiaParam(m_Type);
             this.SetPermit();
         }
 
 
-        private JERPData.Product.ManuPrdType accManuPrdType;
+        private JERPData.Product.PrdType accPrdType;
         private DataTable dtblPrdType;
-        private JERPApp.Define.Product.FrmManuPrdType frmAlterManuType;
+        private JERPApp.Define.Product.FrmPrdType frmAlterType;
         private bool enableBrowse = false;//浏览
         private bool enableSave = false;//保存
 
@@ -56,7 +56,14 @@ namespace JERPApp.Engineer.Define
   
         private void LoadData()
         {
-            this.dtblPrdType = this.accManuPrdType.GetDataPrdTypeByParentID(this.ctrlParentID.PrdTypeID, m_Type).Tables[0];
+            if (this.ctrlParentID.PrdTypeID == 0)
+            {
+                this.dtblPrdType = this.accPrdType.GetDataPrdTypeByParentIDAndType(this.ctrlParentID.PrdTypeID, m_Type).Tables[0];
+            }
+            else
+            {
+                this.dtblPrdType = this.accPrdType.GetDataPrdTypeByParentID(this.ctrlParentID.PrdTypeID).Tables[0];
+            }
             this.dgrdv.DataSource = this.dtblPrdType;
         }
 
@@ -82,13 +89,13 @@ namespace JERPApp.Engineer.Define
         }
 
         void mItemAlterType_Click(object sender,EventArgs e) {
-            if (frmAlterManuType == null)
+            if (frmAlterType == null)
             {
-                frmAlterManuType = new JERPApp.Define.Product.FrmManuPrdType();
-                new FrmStyle(frmAlterManuType).SetPopFrmStyle(this);
-                frmAlterManuType.AffterSelected += new JERPApp.Define.Product.FrmManuPrdType.AffterSelectedDelegate(frmAlterManuType_AffterSelected);
+                frmAlterType = new JERPApp.Define.Product.FrmPrdType();
+                new FrmStyle(frmAlterType).SetPopFrmStyle(this);
+                frmAlterType.AffterSelected += new JERPApp.Define.Product.FrmPrdType.AffterSelectedDelegate(frmAlterType_AffterSelected);
             }
-            frmAlterManuType.ShowDialog();
+            frmAlterType.ShowDialog();
         }
 
         void btnSave_Click(object sender, EventArgs e)
@@ -104,13 +111,14 @@ namespace JERPApp.Engineer.Define
                 if (drow["PrdTypeID"] == DBNull.Value)
                 {
                     objPrdTypeID = DBNull.Value;
-                     flag= this.accManuPrdType.InsertPrdType(
+                     flag= this.accPrdType.InsertPrdType(
                      ref errormsg,
                      ref objPrdTypeID,
-                     drow["PrdTypeCode"],
                      drow["PrdTypeName"],
                      ParentID,
-                     m_Type);
+                     drow["PrdTypeCode"],
+                     m_Type,
+                     0);
                     if (flag)
                     {
                         drow["PrdTypeID"] = objPrdTypeID;
@@ -122,12 +130,12 @@ namespace JERPApp.Engineer.Define
                 }
                 else
                 {
-                    flag= this.accManuPrdType.UpdatePrdType(
+                    flag= this.accPrdType.UpdatePrdType(
                         ref errormsg,
                         drow["PrdTypeID"],
-                        drow["PrdTypeCode"],
                         drow["PrdTypeName"],
-                        ParentID);
+                        drow["PrdTypeCode"]
+                        );
                     if (!flag)
                     {
                         MessageBox.Show(errormsg);
@@ -141,9 +149,9 @@ namespace JERPApp.Engineer.Define
 
 
 
-        void frmAlterManuType_AffterSelected()
+        void frmAlterType_AffterSelected()
         {
-            int ParentID = this.frmAlterManuType.PrdTypeID;
+            int ParentID = this.frmAlterType.PrdTypeID;
             string errormsg = string.Empty;
             DataRow drow;
             foreach (DataGridViewRow grow in this.dgrdv.Rows)
@@ -160,28 +168,29 @@ namespace JERPApp.Engineer.Define
                 if (drow["PrdTypeID"] == DBNull.Value)
                 {
                     object objPrdTypeID = DBNull.Value;
-                    this.accManuPrdType.InsertPrdType(
+                    this.accPrdType.InsertPrdType(
                      ref errormsg,
                      ref objPrdTypeID,
                      drow["PrdTypeCode"],
                      drow["PrdTypeName"],
                      ParentID,
-                     m_Type);
+                     m_Type,
+                     0);
                 }
                 else
                 {
-                    this.accManuPrdType.UpdatePrdType(
+                    this.accPrdType.UpdatePrdType(
                         ref errormsg,
                         drow["PrdTypeID"],
                          drow["PrdTypeCode"],
-                        drow["PrdTypeName"],
-                        ParentID);
+                        drow["PrdTypeName"]
+                        );
                 }
 
             }
             MessageBox.Show("成功变换当前选中行的类别");
             this.LoadData();
-            this.frmAlterManuType.Close();
+            this.frmAlterType.Close();
 
         }
 
@@ -189,7 +198,7 @@ namespace JERPApp.Engineer.Define
         {
             if (drow["PrdTypeID"] == DBNull.Value) return true;
             bool flag = false;
-            this.accManuPrdType.GetParmPrdTypeIsChildTree(ParentID, (int)drow["PrdTypeID"], ref flag);
+            this.accPrdType.GetParmPrdTypeIsChildTree(ParentID, (int)drow["PrdTypeID"], ref flag);
             return !flag;
         }
 
@@ -207,7 +216,7 @@ namespace JERPApp.Engineer.Define
             DialogResult rul = MessageBox.Show("你的删除将不能恢复，请确认！", "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (rul == DialogResult.Yes)
             {
-                flag = this.accManuPrdType.DeletePrdType(ref ErrorMsg,
+                flag = this.accPrdType.DeletePrdType(ref ErrorMsg,
                     drow["PrdTypeID"]);
                 if (!flag)
                 {

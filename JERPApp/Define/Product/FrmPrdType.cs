@@ -10,11 +10,29 @@ namespace JERPApp.Define.Product
 {
     public partial class FrmPrdType : Form
     {
+        int m_type = -1 ;
+        public int M_type
+        {
+            get
+            {
+                return m_type;
+            }
+            set
+            {
+                m_type = value;
+            }
+        }
+
         public FrmPrdType()
         {
             InitializeComponent();
             this.btnConfirm.Click += new EventHandler(btnConfirm_Click);
         }
+
+        private void FrmPrdType_Load(object sender, EventArgs e)
+        {
+            this.ctrlPrdTypeID.InitiaParam(m_type);
+        } 
 
         void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -53,6 +71,6 @@ namespace JERPApp.Define.Product
             {
                 return this.ctrlPrdTypeID.PrdTypeName;
             }
-        } 
+        }
     }
 }

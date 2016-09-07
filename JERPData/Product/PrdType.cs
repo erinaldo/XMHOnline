@@ -77,6 +77,31 @@ namespace JERPData.Product
             }
             return ds;
         }
+
+        //按类别获取类型定义
+        public DataSet GetDataPrdTypeByType(int Type)
+        {
+            DataSet ds = null;
+            SqlParameter[] arParams = new SqlParameter[1];
+            arParams[0] = new SqlParameter("@Type", SqlDbType.Int);
+            arParams[0].Value = Type;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataPrdTypeByType", arParams);
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+
+
         public bool GetParmPrdTypeTreePrdTypeName(int PrdTypeID, ref string PrdTypeName)
         {
             bool flag = false;
@@ -233,6 +258,31 @@ namespace JERPData.Product
             }
             return flag;
         }
+
+        public DataSet GetDataPrdTypeByParentIDAndType(int ParentID, int Type)
+        {
+            DataSet ds = null;
+            SqlParameter[] arParams = new SqlParameter[2];
+            arParams[0] = new SqlParameter("@ParentID", SqlDbType.Int);
+            arParams[1] = new SqlParameter("@Type", SqlDbType.Int);
+            arParams[0].Value = ParentID;
+            arParams[1].Value = Type;
+            try
+            {
+                if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+                ds = SqlHelper.ExecuteDataset(sqlConn, CommandType.StoredProcedure, "prd.GetDataPrdTypeByParentIDAndType", arParams);
+            }
+            catch//(SqlException ex)
+            {
+                // ex.Message --这里作调试用
+            }
+            finally
+            {
+                this.sqlConn.Close();
+            }
+            return ds;
+        }
+
         public bool GetParmPrdTypeIsChildTree(int PrdTypeID, int ParentID, ref bool IsChildTreeFlag)
         {
             bool flag = false;
@@ -261,19 +311,28 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool InsertPrdType(ref string ErrorMsg, ref object PrdTypeID, object PrdTypeName, object ParentID)
+
+
+        public bool InsertPrdType(ref string ErrorMsg, ref object PrdTypeID, object PrdTypeName, object ParentID, object PrdTypeCode, object Type, object RootID)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
-            SqlParameter[] arParams = new SqlParameter[3];
+            SqlParameter[] arParams = new SqlParameter[6];
             arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
             arParams[0].Direction = ParameterDirection.InputOutput;
             arParams[1] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
             arParams[1].Size = 50;
             arParams[2] = new SqlParameter("@ParentID", SqlDbType.Int);
+            arParams[3] = new SqlParameter("@PrdTypeCode", SqlDbType.VarChar);
+            arParams[3].Size = 50;
+            arParams[4] = new SqlParameter("@Type", SqlDbType.Int);
+            arParams[5] = new SqlParameter("@RootID", SqlDbType.Int);
             arParams[0].Value = PrdTypeID;
             arParams[1].Value = PrdTypeName;
             arParams[2].Value = ParentID;
+            arParams[3].Value = PrdTypeCode;
+            arParams[4].Value = Type;
+            arParams[5].Value = RootID;
             SqlTransaction DBTransaction = null;
             try
             {
@@ -296,7 +355,8 @@ namespace JERPData.Product
             }
             return flag;
         }
-        public bool UpdatePrdType(ref string ErrorMsg, object PrdTypeID, object PrdTypeName, object ParentID)
+
+        public bool UpdatePrdType(ref string ErrorMsg, object PrdTypeID, object PrdTypeName, object PrdTypeCode)
         {
             bool flag = false;
             ErrorMsg = string.Empty;
@@ -304,10 +364,11 @@ namespace JERPData.Product
             arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
             arParams[1] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
             arParams[1].Size = 50;
-            arParams[2] = new SqlParameter("@ParentID", SqlDbType.Int);
+            arParams[2] = new SqlParameter("@PrdTypeCode", SqlDbType.VarChar);
+            arParams[2].Size = 50;
             arParams[0].Value = PrdTypeID;
             arParams[1].Value = PrdTypeName;
-            arParams[2].Value = ParentID;
+            arParams[2].Value = PrdTypeCode;
             SqlTransaction DBTransaction = null;
             try
             {
@@ -329,5 +390,77 @@ namespace JERPData.Product
             }
             return flag;
         }
+
+
+        //public bool InsertPrdType(ref string ErrorMsg, ref object PrdTypeID, object PrdTypeName, object ParentID)
+        //{
+        //    bool flag = false;
+        //    ErrorMsg = string.Empty;
+        //    SqlParameter[] arParams = new SqlParameter[3];
+        //    arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+        //    arParams[0].Direction = ParameterDirection.InputOutput;
+        //    arParams[1] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
+        //    arParams[1].Size = 50;
+        //    arParams[2] = new SqlParameter("@ParentID", SqlDbType.Int);
+        //    arParams[0].Value = PrdTypeID;
+        //    arParams[1].Value = PrdTypeName;
+        //    arParams[2].Value = ParentID;
+        //    SqlTransaction DBTransaction = null;
+        //    try
+        //    {
+        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+        //        DBTransaction = this.sqlConn.BeginTransaction();
+        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.InsertPrdType", arParams);
+        //        PrdTypeID = arParams[0].Value;
+        //        DBTransaction.Commit();
+        //        flag = true;
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        ErrorMsg = ex.Message; //返回错误信息
+        //        flag = false;
+        //        DBTransaction.Rollback();//--回退事务
+        //    }
+        //    finally
+        //    {
+        //        this.sqlConn.Close();
+        //    }
+        //    return flag;
+        //}
+
+        //public bool UpdatePrdType(ref string ErrorMsg, object PrdTypeID, object PrdTypeName, object ParentID)
+        //{
+        //    bool flag = false;
+        //    ErrorMsg = string.Empty;
+        //    SqlParameter[] arParams = new SqlParameter[3];
+        //    arParams[0] = new SqlParameter("@PrdTypeID", SqlDbType.Int);
+        //    arParams[1] = new SqlParameter("@PrdTypeName", SqlDbType.VarChar);
+        //    arParams[1].Size = 50;
+        //    arParams[2] = new SqlParameter("@ParentID", SqlDbType.Int);
+        //    arParams[0].Value = PrdTypeID;
+        //    arParams[1].Value = PrdTypeName;
+        //    arParams[2].Value = ParentID;
+        //    SqlTransaction DBTransaction = null;
+        //    try
+        //    {
+        //        if (this.sqlConn.State == System.Data.ConnectionState.Closed) this.sqlConn.Open();
+        //        DBTransaction = this.sqlConn.BeginTransaction();
+        //        SqlHelper.ExecuteNonQuery(DBTransaction, CommandType.StoredProcedure, "prd.UpdatePrdType", arParams);
+        //        DBTransaction.Commit();
+        //        flag = true;
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        ErrorMsg = ex.Message; //返回错误信息
+        //        flag = false;
+        //        DBTransaction.Rollback();//--回退事务
+        //    }
+        //    finally
+        //    {
+        //        this.sqlConn.Close();
+        //    }
+        //    return flag;
+        //}
+
     }
 }

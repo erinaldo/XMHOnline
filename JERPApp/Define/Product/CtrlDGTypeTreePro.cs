@@ -8,14 +8,15 @@ using System.Windows.Forms;
 
 namespace JERPApp.Define.Product
 {
-    public partial class CtrlDGPJTypeTreePro : UserControl
+    public partial class CtrlDGTypeTreePro : UserControl
     {
         private static int m_flag = 0;
 
-        public CtrlDGPJTypeTreePro()
+        public CtrlDGTypeTreePro()
         {
             InitializeComponent();
-            this.accPrdType = new JERPData.Product.DGPJPrdTyprPro();
+            this.accDGPrdTyprPro = new JERPData.Product.DGPrdTypePro();
+            //this.accPrdType = new JERPData.Product.PrdType();
             this.treePrdType.DrawMode = TreeViewDrawMode.OwnerDrawText;
             this.treePrdType.DrawNode += new DrawTreeNodeEventHandler(treePrdType_DrawNode);
             this.treePrdType.AfterSelect += new TreeViewEventHandler(treePrdType_AfterSelect);
@@ -64,9 +65,10 @@ namespace JERPApp.Define.Product
 
         }
 
-        private JERPData.Product.DGPJPrdTyprPro accPrdType;
+        private JERPData.Product.DGPrdTypePro accDGPrdTyprPro;
+        //private JERPData.Product.PrdType accPrdType;
         private DataTable dtblPrdType;
-        private JERPApp.Engineer.Define.FrmManuPrdType frmPrdType;
+        private JERPApp.Engineer.Define.FrmPrdType frmPrdType;
         public void AllowDefine()
         {
             this.mItemDefine.Enabled = true;
@@ -83,10 +85,10 @@ namespace JERPApp.Define.Product
             this.treePrdType.Nodes.Clear();
             if (type == 0)
             {
-                this.dtblPrdType = this.accPrdType.GetDataComTypePro().Tables[0];
+                this.dtblPrdType = this.accDGPrdTyprPro.GetDataDGPrdTypePro().Tables[0];
             }
             else {
-                this.dtblPrdType = this.accPrdType.GetDataComTypeProByType(type).Tables[0];
+                this.dtblPrdType = this.accDGPrdTyprPro.GetDataDGPrdTypeProByType(type).Tables[0];
             } 
 
             DataRow drow = this.dtblPrdType.NewRow();
@@ -115,7 +117,7 @@ namespace JERPApp.Define.Product
         {
             if (frmPrdType == null)
             {
-                frmPrdType = new JERPApp.Engineer.Define.FrmManuPrdType();
+                frmPrdType = new JERPApp.Engineer.Define.FrmPrdType();
                 new FrmStyle(frmPrdType).SetPopFrmStyle(this.ParentForm);                
             }
             frmPrdType.ShowDialog();
